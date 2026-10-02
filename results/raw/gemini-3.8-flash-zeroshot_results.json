@@ -1,0 +1,1488 @@
+{
+  "model": "gemini-3.8-flash-zeroshot",
+  "provider": "google-gemini-3.8-flash-high-zeroshot",
+  "timestamp": "2026-10-02 23:10:00",
+  "total_cases": 60,
+  "mode": "Zero-Shot (No RAG Grounding, pure pretrained weights)",
+  "results": [
+    {
+      "case_id": "A01",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English phrase \"Pretty little girls' school\" is a classic example of modifier-scope ambiguity in noun-noun and adjective-noun compounding. Because English allows multi-modifier stacking before a head noun without overt punctuation or structural grouping brackets, and because \"pretty\" exhibits lexical category ambiguity (functioning either as an adverb of degree or as an attributive adjective), there are multiple distinct syntactic interpretations and parse trees (at least 5 valid bracketings):\n\n- Parse 1: [[[Pretty little] girls'] school]\n  In this parse, \"pretty\" acts as an adverb of degree modifying the adjective \"little\" (meaning \"quite / rather small\"), forming the modifier unit \"pretty-little\". This unit modifies the genitive noun \"girls'\", which in turn modifies the head noun \"school\". Meaning: A school for young girls who are quite small in stature.\n\n- Parse 2: [Pretty [[little girls'] school]]\n  Here, \"pretty\" functions as an attributive adjective modifying the entire constituent \"little girls' school\". Meaning: The school itself (which is designated for little girls) is visually attractive or pleasant.\n\n- Parse 3: [[Pretty [little girls']] school]\n  In this parse, both \"pretty\" and \"little\" are stacked adjectives that independently modify \"girls'\". Meaning: A school for girls who are both attractive and small.\n\n- Parse 4: [[Pretty little] [girls' school]]\n  Here, \"pretty\" is an adverb modifying \"little\", and the compound unit \"pretty-little\" modifies the compound noun \"girls' school\". Meaning: A girls' school that is relatively small in size.\n\n- Parse 5: [Pretty [little [girls' school]]]\n  Here, \"pretty\" modifies \"little [girls' school]\", where \"little\" modifies \"girls' school\". Meaning: A small school for girls, which is also attractive.\n\nThe primary source of ambiguity is the absence of overt syntactic boundary markers in English compounding, leaving modifier scope, part-of-speech assignment, and hierarchical bracketing open to multiple structural interpretations.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"le bilti cmalo nirli ckela\"\n\n- Syntactic Breakdown:\n  - \"le\": Descriptor / article indicating a definite description (\"the / the one(s) that\").\n  - \"bilti\": Predicate word meaning \"pretty / beautiful\".\n  - \"cmalo\": Predicate word meaning \"small / little\".\n  - \"nirli\": Predicate word meaning \"girl\".\n  - \"ckela\": Predicate word meaning \"school\".\n\nIn Loglan's formal grammar, a sequence of predicates forming a complex predicate (modifier chain) without overt grouping operators is governed by a strict, unambiguous default rule: left-associativity. Modifiers bind left-to-right in hierarchical pairs:\n`le (((bilti cmalo) nirli) ckela)`\n\n1. \"bilti\" modifies \"cmalo\" to form the modifier phrase \"(bilti cmalo)\" (\"beautifully-small\" or \"pretty-small\").\n2. The complex unit \"(bilti cmalo)\" modifies \"nirli\", forming \"((bilti cmalo) nirli)\" (\"pretty-small girl\").\n3. The resulting complex unit \"((bilti cmalo) nirli)\" modifies the final head predicate \"ckela\", yielding \"school for pretty-small girls\".\n\nNumber of parses: The Loglan phrase has exactly one unambiguous parse tree. Loglan was computationally engineered by James Cooke Brown with an unambiguous phrase-structure grammar (conflict-free / LALR(1)). Under Loglan grammar rules, a modifier chain without grouping operators cannot branch in any other direction.\n\nTo express the other English parses in Loglan, a speaker is required to use overt grouping particles:\n- \"le bilti ge cmalo nirli ckela\": The operator \"ge\" groups everything to its right into a single modified term, producing the reading where \"bilti\" modifies the entire phrase \"cmalo nirli ckela\" (an attractive school for little girls).\n- \"le ke bilti cmalo gu nirli ckela\": The bracket pair \"ke...gu\" explicitly groups a specific sub-sequence.\n- \"le bilti ce cmalo nirli ckela\": The logical connective \"ce\" conjoins \"bilti\" and \"cmalo\" as co-equal properties (\"pretty and small\").\n\nWithout these operators, the sentence strictly yields only its single default parse.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English relies on unmarked linear juxtaposition for nominal compounding, conflating distinct hierarchical dependencies and allowing part-of-speech ambiguity (\"pretty\" as adverb vs adjective). The listener must infer modifier scope from prosody, semantics, or pragmatic context.\n- Loglan eliminates structural and syntactic ambiguity entirely by employing a formal grammar where modifier relationships follow strict mathematical precedence (left-associativity by default) and alternate hierarchical trees require overt structural operators (\"ge\", \"ke...gu\", \"ce\"). Consequently, every well-formed Loglan utterance maps deterministically to a single syntactic parse tree.",
+      "gold": {
+        "id": "A01",
+        "category": "disambiguation",
+        "english": "Pretty little girls' school",
+        "loglan": "le bilti cmalo nirli ckela",
+        "loglan_variants": [
+          {
+            "phrase": "le bilti cmalo nirli ckela",
+            "grouping": "(((bilti cmalo) nirli) ckela)",
+            "meaning": "school for unusually small girls"
+          },
+          {
+            "phrase": "le bilti ge cmalo nirli ckela",
+            "grouping": "(bilti (cmalo (nirli ckela)))",
+            "meaning": "an attractive school for little girls"
+          },
+          {
+            "phrase": "le ke bilti cmalo gu nirli ckela",
+            "grouping": "((bilti cmalo) (nirli ckela))",
+            "meaning": "pretty-little girls' school"
+          },
+          {
+            "phrase": "le bilti ce cmalo nirli ckela",
+            "grouping": "((bilti and cmalo) nirli ckela)",
+            "meaning": "school for girls who are both pretty and little"
+          }
+        ],
+        "expected_english_parses": 5,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Modifier Scope / Nominal Compounding",
+        "gold_explanation": "In English, 4 modifiers stack without parenthetical boundaries, creating at least 5 distinct bracketings. In Loglan, default modifier binding is strictly left-to-right unless grouping operators (ge, ke...gu, ce) explicitly alter the tree."
+      },
+      "input_tokens": 120,
+      "output_tokens": 1205,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A02",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"I saw the man with the telescope\" is the textbook illustration of prepositional phrase (PP) attachment ambiguity. The prepositional phrase \"with the telescope\" can attach at two distinct syntactic levels in the phrase structure:\n\n- Parse 1 (VP / Instrumental Attachment):\n  `[S [NP I] [VP [VP saw [NP the man]] [PP with the telescope]]]`\n  In this parse, the PP \"with the telescope\" attaches to the verb phrase headed by \"saw\". The preposition \"with\" functions instrumentally, denoting the means or instrument through which the seeing action was performed. Meaning: I used a telescope as an optical instrument to observe the man.\n\n- Parse 2 (NP / Attributive Modifier Attachment):\n  `[S [NP I] [VP saw [NP the man [PP with the telescope]]]]`\n  In this parse, the PP \"with the telescope\" attaches directly to the direct object noun phrase \"the man\", functioning as an adnominal restrictive post-modifier. The preposition \"with\" indicates possession or accompaniment. Meaning: I saw a man who was carrying, holding, or equipped with a telescope.\n\nThe ambiguity exists because English surface syntax does not indicate whether a post-verbal prepositional phrase attaches high (to the matrix verb phrase) or low (to the immediately preceding noun phrase), and because the preposition \"with\" is highly polysemous.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Mi pa vizka le mrenu liu teletro\"\n\n- Syntactic Breakdown:\n  - \"Mi\": Subject pronoun (\"I / me\").\n  - \"pa\": Past tense operator.\n  - \"vizka\": Two-place predicate verb (\"sees / views\", with argument frame: x1 sees x2).\n  - \"le mrenu\": Direct argument / object occupying the x2 slot (\"the man\").\n  - \"liu\": Case operator / preposition introducing an instrument or tool.\n  - \"teletro\": Predicate noun (\"telescope\").\n\nIn Loglan syntax, case operators (case tags) explicitly specify the semantic and grammatical role of an argument relative to the predicate. The operator \"liu\" specifically denotes the instrumental case (\"by means of / using as instrument\"). Under Loglan's formal grammar rules, a case-tagged phrase following a core predicate argument binds directly to the predicate verb phrase as an instrumental case adjunct.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. The presence of the case operator \"liu\" explicitly and uniquely marks \"teletro\" as the instrument of the act of seeing (\"vizka\"). It cannot attach to the noun phrase \"le mrenu\".\n\nIf one wished to convey Parse 2 (the man possessing the telescope), Loglan syntax requires an explicit nominal associative particle:\n- \"Mi pa vizka le mrenu pe le teletro\": Here, \"pe\" is the dedicated associative modifier that binds a descriptive term to an immediately preceding nominal argument, forming a complex noun phrase (\"the man associated with the telescope\").\n\nBecause \"liu\" is used rather than \"pe\", the sentence deterministically encodes only the instrumental interpretation.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English relies on an ambiguous surface preposition (\"with\") that conflates instrumentality, possession, and accompaniment, and allows identical linear strings to have multiple attachment sites (VP vs NP).\n- Loglan systematically resolves attachment ambiguity by strictly separating clause/predicate case operators (such as \"liu\" for instrument) from nominal associative operators (such as \"pe\" for adnominal attribution). Every case tag and operator has a rigidly defined scope and attachment site in the grammar, guaranteeing that the sentence has exactly one syntactic parse.",
+      "gold": {
+        "id": "A02",
+        "category": "disambiguation",
+        "english": "I saw the man with the telescope",
+        "loglan": "Mi pa vizka le mrenu liu teletro",
+        "loglan_variants": [
+          {
+            "phrase": "Mi pa vizka le mrenu liu teletro",
+            "meaning": "I saw the man using a telescope (instrument)"
+          },
+          {
+            "phrase": "Mi pa vizka le mrenu pe le teletro",
+            "meaning": "I saw the man who possessed the telescope (modifier)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Prepositional Phrase Attachment",
+        "gold_explanation": "English 'with' can attach to the verb phrase (instrument) or noun phrase (possession). In Loglan, 'liu' (or case tag 'ka') marks instrument, whereas 'pe' marks noun modification."
+      },
+      "input_tokens": 120,
+      "output_tokens": 907,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A03",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"Flying planes can be dangerous\" is a celebrated example of structural ambiguity originally highlighted in generative linguistics (Chomsky 1957). The ambiguity centers on whether \"Flying\" functions as a transitive non-finite verb (gerund) or as an attributive participial adjective:\n\n- Parse 1 (Gerundive Non-finite VP as Subject):\n  `[S [NP/VP [V-ing Flying] [NP planes]] [VP can be dangerous]]`\n  In this parse, \"Flying\" is a transitive gerund-participle that takes the noun phrase \"planes\" as its direct object. The entire non-finite verbal constituent \"[Flying planes]\" occupies the sentential subject position. Meaning: The activity or action of piloting airplanes can be dangerous.\n\n- Parse 2 (Plural NP with Participial Adjective as Subject):\n  `[S [NP [Adj Flying] [N planes]] [VP can be dangerous]]`\n  In this parse, \"Flying\" is an adjectival participle functioning as a pre-nominal modifier to the head noun \"planes\". The plural noun phrase \"[Flying planes]\" is the subject of the clause. Meaning: Airplanes that are currently in flight (or capable of flight) can be dangerous.\n\nThis ambiguity is made possible because English morphology uses the identical \"-ing\" suffix for both verbal gerunds and participial adjectives, and because the modal auxiliary verb \"can\" neutralizes subject-verb agreement (in contrast to \"is dangerous\" vs \"are dangerous\", which would disambiguate grammatical number).\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Lepo volsi da ga kanmo lepo kinsei\"\n\n- Syntactic Breakdown:\n  - \"Lepo\": Clausal event abstractor (\"le po\" = \"the event / act / state of\").\n  - \"volsi\": Predicate verb meaning \"fly / flies\".\n  - \"da\": Third-person variable pronoun functioning as the argument of \"volsi\" (\"something / it / them\").\n  - \"ga\": Predicate separator / grammatical particle demarcating the subject from the main predicate.\n  - \"kanmo\": Predicate verb meaning \"can / be able / be possible\".\n  - \"lepo kinsei\": Subordinate event abstraction meaning \"the state of being dangerous\" (\"kinsei\" = dangerous).\n\nIn Loglan syntax, \"Lepo volsi da\" is explicitly and unambiguously an event abstraction clause. The abstractor \"lepo\" nominalizes the underlying proposition \"volsi da\" (\"someone flies it / something flies\"), creating an event argument that occupies the subject slot of the main predicate \"kanmo\". The particle \"ga\" clearly delimits the boundary of this clausal subject before the matrix predicate.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. There is no possibility of interpreting \"volsi\" as an attributive adjective modifying an entity noun, because \"lepo\" specifically denotes an event, and \"da\" is a pronominal argument, not a modified nominal head.\n\nIf one intended to express Parse 2 (the physical airplanes that are flying), Loglan would employ an entity descriptor with a complex predicate or modifier:\n- \"Le volsi plano ga kanmo lepo kinsei\": (\"The flying planes can be dangerous\"). Here, \"le\" describes physical objects (\"plano\" = planes), and \"volsi\" acts as a predicate modifier to \"plano\".\n\nBecause the sentence uses \"Lepo volsi da\", it unambiguously selects the event interpretation.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English conflates verbal actions (gerunds) and nominal modifiers (participial adjectives) under the morphologically identical \"-ing\" form, and modal auxiliaries fail to mark number agreement, resulting in multiple grammatical parses.\n- Loglan structurally separates physical entities from events through distinct functional operators (\"le\" for individual entities vs \"lepo\" for event abstractions) and enforces explicit argument positions and predicate separators (\"ga\"), ensuring that every sentence possesses exactly one unambiguous parse tree.",
+      "gold": {
+        "id": "A03",
+        "category": "disambiguation",
+        "english": "Flying planes can be dangerous",
+        "loglan": "Lepo volsi da ga kanmo lepo kinsei",
+        "loglan_variants": [
+          {
+            "phrase": "Lepo volsi ga kanmo lepo kinsei",
+            "meaning": "The act of flying planes can be dangerous (gerund/action)"
+          },
+          {
+            "phrase": "Le volsi plano ga kanmo lepo kinsei",
+            "meaning": "Airplanes that are in flight can be dangerous (participial adjective)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Gerund vs Participial Adjective",
+        "gold_explanation": "English 'flying' can be a noun (gerund) taking an object, or an adjective modifying 'planes'. Loglan distinguishes events (lepo volsi) from objects (le volsi plano)."
+      },
+      "input_tokens": 120,
+      "output_tokens": 959,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A04",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"The chicken is ready to eat\" is another classic Chomskyan example illustrating control and thematic role ambiguity in non-finite infinitival complement clauses. The surface string allows two distinct syntactic derivations depending on whether the subject \"The chicken\" controls the agent or the patient role of the infinitive \"to eat\":\n\n- Parse 1 (Subject Control / Agent Reading):\n  `[S [NP The chicken]_i [VP is ready [CP PRO_i to eat [NP e]]]]`\n  In this parse, \"The chicken\" is the controller of the null subject (PRO) of the embedded infinitive clause \"to eat\". The chicken is the semantic AGENT performing the eating action. Meaning: The live chicken is hungry, prepared, or waiting to consume food.\n\n- Parse 2 (Tough-Movement / Object Gap / Patient Reading):\n  `[S [NP The chicken]_i [VP is ready [CP (for someone) to eat [NP e]_i]]]`\n  In this parse, the matrix subject \"The chicken\" is co-indexed with the empty direct object position (gap/trace) of the transitive verb \"to eat\", while the implicit agent of eating is arbitrary or unexpressed. The chicken is the semantic PATIENT (the item being eaten). Meaning: The prepared, cooked chicken is ready to be consumed by people.\n\nThe ambiguity arises because English infinitival complements in tough-movement and control constructions leave the grammatical voice, control relationship, and empty category positions unmarked on the surface.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Le cicko ga setfa lepo cti\"\n\n- Syntactic Breakdown:\n  - \"Le cicko\": Nominal argument / subject (\"the chicken\", from predicate \"cicko\" = chicken/fowl).\n  - \"ga\": Predicate separator marking the start of the matrix predicate.\n  - \"setfa\": Predicate meaning \"set / ready / prepared\" (with argument frame: x1 is ready/set for event x2).\n  - \"lepo cti\": Subordinate event abstraction (\"the event of eating\", from predicate \"cti\" = eats).\n\nIn Loglan, every predicate has a formally defined argument structure. For the predicate \"cti\", the standard slots are: x1 eats x2. An active, unconverted predicate \"cti\" inherently designates the action from the perspective of its agent (x1). The phrase \"lepo cti\" denotes the active event of eating.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. In Loglan's formal grammar, \"Le cicko\" is the subject (x1) of \"setfa\", and \"lepo cti\" is the complement argument (x2). Syntactically, there are no unexpressed gaps or ambiguous control movements.\n\nTo express Parse 2 (the chicken is ready to be eaten), Loglan explicitly requires the passive voice conversion operator \"nu\":\n- \"Le cicko ga setfa lepo nu cti\": The operator \"nu\" converts the predicate \"cti\", swapping the x1 and x2 argument slots so that x1 becomes the food eaten. \"lepo nu cti\" unambiguously signifies \"the event of being eaten\".\n\nBecause \"nu\" is absent in \"Le cicko ga setfa lepo cti\", the sentence strictly and unambiguously represents the active reading where the chicken is ready to eat.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English allows active non-finite infinitival forms (\"to eat\") to function ambiguously in both subject-control and object-gap (tough-movement) contexts, obscuring whether the subject is the agent or patient of the subordinate verb.\n- Loglan requires explicit operators (such as the passive operator \"nu\") to alter predicate argument hierarchies. Active predicates remain strictly active, and clausal abstractions maintain unambiguous argument roles, guaranteeing that every construction has exactly one parse tree.",
+      "gold": {
+        "id": "A04",
+        "category": "disambiguation",
+        "english": "The chicken is ready to eat",
+        "loglan": "Le cicko ga setfa lepo cti",
+        "loglan_variants": [
+          {
+            "phrase": "Le cicko ga setfa lepo cti",
+            "meaning": "The chicken is ready to feed/eat something (agent)"
+          },
+          {
+            "phrase": "Le cicko ga setfa lepo nu cti",
+            "meaning": "The chicken is prepared to be eaten by someone (patient)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Subject vs Object Infinitive Control",
+        "gold_explanation": "English 'to eat' does not mark voice. Loglan explicitly requires the passive conversion operator 'nu' if the chicken is the dish rather than the diner."
+      },
+      "input_tokens": 120,
+      "output_tokens": 901,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A05",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"Visiting relatives can be boring\" exhibits structural ambiguity between a non-finite gerund phrase acting as a clausal subject and a plural noun phrase with a participial pre-modifier acting as the subject:\n\n- Parse 1 (Transitive Gerund Clause as Subject):\n  `[S [NP/VP [V-ing Visiting] [NP relatives]] [VP can be boring]]`\n  In this parse, \"Visiting\" is a transitive non-finite verb (gerund) taking the noun phrase \"relatives\" as its direct object. The entire gerund phrase \"[Visiting relatives]\" serves as the sentential subject. Meaning: The act or experience of paying a visit to one's relatives can be boring.\n\n- Parse 2 (Plural NP with Participial Adjective as Subject):\n  `[S [NP [Adj Visiting] [N relatives]] [VP can be boring]]`\n  In this parse, \"Visiting\" is an attributive participial adjective modifying the head noun \"relatives\". The plural noun phrase \"[Visiting relatives]\" is the subject of the clause. Meaning: Relatives who are visiting (i.e. guests staying at one's home) can be boring people.\n\nThe ambiguity is generated by the morphological homophony between the gerundive verb and the participial adjective ending in \"-ing\", together with the modal auxiliary \"can\", which does not show number agreement (unlike \"is\" vs \"are\").\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Lepo vizka le famva ga bordi\"\n\n- Syntactic Breakdown:\n  - \"Lepo\": Clausal event abstractor (\"le po\" = \"the event / state of\").\n  - \"vizka\": Predicate verb meaning \"visit / see\" (with argument frame: x1 visits/sees x2).\n  - \"le famva\": Direct object argument occupying the x2 slot (\"the relatives / the family\", from \"famva\" = family/relative).\n  - \"ga\": Predicate separator marking the matrix predicate.\n  - \"bordi\": Predicate verb meaning \"boring / bores / is dull\" (with argument frame: x1 bores x2).\n\nIn Loglan's formal grammar, \"Lepo vizka le famva\" is syntactically a nominalized event clause. The particle \"lepo\" scopes over the subordinate predicate \"vizka\" and its argument \"le famva\". The entire event abstraction acts as the x1 argument (subject) of the main predicate \"bordi\".\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. Because \"lepo\" explicitly marks an event abstraction, the subject can only be interpreted as an activity (the act of visiting the relatives). It cannot grammatically be interpreted as a description of people.\n\nIf one intended to convey Parse 2 (the visiting relatives are boring people), Loglan would use an entity description:\n- \"Le vizka famva ga bordi\": Here, \"le\" introduces an individual/entity description, where \"vizka\" modifies the head predicate \"famva\" to mean \"visiting relatives\" or \"guests\".\n\nThe presence of \"lepo\" deterministically selects the event reading, leaving zero syntactic ambiguity.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English conflates the verbal gerund taking an object and the adjectival participle modifying a noun under the identical \"-ing\" suffix, while modal verbs neutralize agreement that would otherwise signal grammatical number.\n- Loglan systematically differentiates event nominalizations (\"lepo\") from entity descriptions (\"le\") and requires distinct syntactic structures for clause arguments versus nominal modifiers, ensuring that every sentence has exactly one unambiguous parse.",
+      "gold": {
+        "id": "A05",
+        "category": "disambiguation",
+        "english": "Visiting relatives can be boring",
+        "loglan": "Lepo vizka le famva ga bordi",
+        "loglan_variants": [
+          {
+            "phrase": "Lepo vizka le famva ga bordi",
+            "meaning": "The action of visiting one's relatives can be boring"
+          },
+          {
+            "phrase": "Le vizka famva ga bordi",
+            "meaning": "Relatives who come to visit can be boring"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Gerund Subject vs Modifying Participle",
+        "gold_explanation": "Event nominalizer 'lepo' makes the visiting an action; modifier 'vizka famva' describes the people visiting."
+      },
+      "input_tokens": 120,
+      "output_tokens": 844,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A06",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"More intelligent leaders are needed\" displays modifier scope and grammatical category ambiguity centered on the word \"More\". In English syntax, \"more\" can function either as a degree adverb or as an indefinite quantifier/determiner:\n\n- Parse 1 (Degree Adverb modifying Adjective):\n  `[S [NP [AP [Adv More] [Adj intelligent]] [N leaders]] [VP are needed]]`\n  In this parse, \"More\" is an adverb of degree modifying the adjective \"intelligent\", forming the comparative adjective phrase \"[More intelligent]\". This phrase modifies the noun \"leaders\". Meaning: We require leaders who possess a higher degree of intelligence (leaders smarter than the current ones).\n\n- Parse 2 (Quantifier/Determiner modifying Noun Phrase):\n  `[S [NP [Det More] [NP [Adj intelligent] [N leaders]]] [VP are needed]]`\n  In this parse, \"More\" is a quantifier/determiner taking wide scope over the entire nominal constituent \"[intelligent leaders]\". Meaning: An additional quantity or number of intelligent leaders is needed (we need a greater headcount of leaders who are intelligent).\n\nThe ambiguity exists because \"more\" in English serves as both the comparative degree form of adjectives/adverbs and the comparative quantifier for mass and plural count nouns without any distinction in word order or morphology.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Mi nu cladu le mroto rorpeo\"\n\n- Syntactic Breakdown:\n  - \"Mi\": Subject pronoun (\"I / we\").\n  - \"nu\": Passive operator converting the following predicate.\n  - \"cladu\": Predicate meaning \"need / require\" (\"nu cladu\" = is needed / required by).\n  - \"le\": Descriptor marking the argument.\n  - \"mroto\": Predicate modifier (from root/compound for \"more / greater degree\" or comparative).\n  - \"rorpeo\": Compound predicate meaning \"leader / guiding person\" (from \"ro\" / \"peo\").\n\nIn Loglan grammar, modifier associations within a complex predicate follow strict phrase-structure rules. A predicate modifier inside a descriptor phrase \"le [modifier head]\" modifies the head predicate according to deterministic precedence rules.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. In Loglan, degree modifiers within complex predicates are structurally distinguished from numerical quantifiers.\n\nIn Loglan, if an increased number or quantity of leaders is intended (Parse 2), Loglan places a quantifier before the descriptor:\n- \"Moro le [intelligent] rorpeo ga nu cladu\": The quantifier \"moro\" (\"more in number\") precedes the argument \"le...\", explicitly quantifying the count of entities.\nConversely, when comparative degree modifies the predicate property, it is embedded as a modifier of the predicate itself.\n\nBecause Loglan's formal grammar strictly differentiates quantifier positions from predicate modifier positions, the sentence has exactly one parse tree.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English collapses comparative degree adverbs and numerical quantifiers into the single ambiguous word \"more\", allowing identical surface strings to have two divergent semantic scopes.\n- Loglan assigns quantifiers and predicate modifiers to structurally distinct syntactic positions and lexical classes, completely preventing scope ambiguity and ensuring a single unambiguous parse.",
+      "gold": {
+        "id": "A06",
+        "category": "disambiguation",
+        "english": "More intelligent leaders are needed",
+        "loglan": "Mi nu cladu le mroto rorpeo",
+        "loglan_variants": [
+          {
+            "phrase": "Le trena rorpeo",
+            "meaning": "Leaders who are more intelligent than current ones"
+          },
+          {
+            "phrase": "Mote rorpeo pe le rorpeo",
+            "meaning": "A greater quantity of intelligent leaders"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Degree Adverb vs Quantifier Scope",
+        "gold_explanation": "English 'more' ambiguously quantifies either the degree of intelligence or the count of leaders."
+      },
+      "input_tokens": 120,
+      "output_tokens": 831,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A07",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"He decided on the boat\" contains a classic prepositional phrase attachment and semantic role ambiguity. The prepositional phrase \"on the boat\" can function either as a locative adjunct or as the prepositional complement of the verb \"decide\":\n\n- Parse 1 (Locative Adjunct modifying VP):\n  `[S [NP He] [VP [VP decided] [PP(loc) on the boat]]]`\n  In this parse, \"on the boat\" is a locative prepositional phrase that attaches to the verb phrase \"decided\". The preposition \"on\" expresses physical location. Meaning: While he was physically situated aboard the boat, he made a decision (the subject matter of which is unstated).\n\n- Parse 2 (Prepositional Verb Complement / Topic):\n  `[S [NP He] [VP [V decided on] [NP the boat]]]`\n  In this parse, \"decide on\" functions as a prepositional verb, and \"on the boat\" is its selectional complement. The preposition \"on\" introduces the chosen option or topic of decision. Meaning: He chose or selected the boat (e.g., deciding to buy, rent, or take the boat rather than another alternative).\n\nThe ambiguity is driven by the polysemy of the English preposition \"on\" (spatial location vs topic/selection) and the structural flexibility of post-verbal PP attachment.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Da pa ditca dio le botsu\"\n\n- Syntactic Breakdown:\n  - \"Da\": Third-person pronoun / variable (\"he / she / it\").\n  - \"pa\": Past tense operator.\n  - \"ditca\": Predicate verb meaning \"decide / determine\" (with standard argument frame: x1 decides x2 [topic/decision] among alternatives x3).\n  - \"dio\": Case operator / preposition specifying a precise case argument role.\n  - \"le botsu\": Argument noun phrase (\"the boat\", from \"botsu\" = boat).\n\nIn Loglan's case-tag system, prepositions (case tags) explicitly define the thematic and structural relation between the predicate and the nominal argument. In Loglan, locative relations are governed by dedicated spatial operators (such as \"vi\" = \"at / on / in\"), whereas topical or selectional arguments use dedicated case operators or occupy direct argument slots of \"ditca\".\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. In Loglan grammar, a case operator in the post-predicate position binds deterministically to the predicate \"ditca\", assigning \"le botsu\" to the exact semantic role specified by the operator \"dio\".\n\nIf physical location aboard the boat were intended (Parse 1), Loglan syntax requires the spatial locative operator \"vi\":\n- \"Da pa ditca vi le botsu\": (\"He decided while located at/on the boat\").\nIf the decision choice itself is expressed as a direct argument, it occupies the x2 slot of \"ditca\":\n- \"Da pa ditca le botsu\": (\"He decided upon / chose the boat\").\n\nBecause \"dio\" specifically designates this case relation, the parse tree is unique and unambiguous.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English uses the single preposition \"on\" to represent both physical spatial location and abstract topical choice, leading to both structural attachment and thematic ambiguity.\n- Loglan separates spatial location (\"vi\") from topical arguments through distinct, non-overlapping case tags and argument positions, ensuring that each sentence has exactly one parse tree.",
+      "gold": {
+        "id": "A07",
+        "category": "disambiguation",
+        "english": "He decided on the boat",
+        "loglan": "Da pa ditca dio le botsu",
+        "loglan_variants": [
+          {
+            "phrase": "Da pa ditca vi le botsu",
+            "meaning": "He made his decision while physically located on the boat"
+          },
+          {
+            "phrase": "Da pa ditca beu le botsu",
+            "meaning": "The boat was the object of his choice"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Locative vs Topic Preposition Attachment",
+        "gold_explanation": "Loglan separates location ('vi') from topic or choice slot ('beu' / argument x2)."
+      },
+      "input_tokens": 120,
+      "output_tokens": 824,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A08",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English phrase \"Old men and women\" is a classic example of coordination scope ambiguity. The syntactic reach of the pre-head modifier \"Old\" across the coordinating conjunction \"and\" is structurally underspecified:\n\n- Parse 1 (Wide Scope of Adjective):\n  `[NP [Adj Old] [Coord [N men] and [N women]]]`\n  In this parse, the adjective \"Old\" takes wide scope and distributes over the entire coordinate nominal structure \"[men and women]\". Meaning: Both the men are old and the women are old.\n\n- Parse 2 (Narrow Scope of Adjective):\n  `[Coord [NP [Adj Old] [N men]] and [NP [N women]]]`\n  In this parse, the adjective \"Old\" takes narrow scope, modifying only the immediately adjacent head noun \"men\". The second conjunct \"women\" is uncoordinated with the modifier. Meaning: The men are old, but the women are of unspecified age (or women in general).\n\nThe ambiguity exists because English surface syntax lacks explicit structural brackets or delimiters to indicate whether a pre-nominal modifier scopes over the first conjunct alone or over the entire coordination.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Le nirto mrenu e fumna\"\n\n- Syntactic Breakdown:\n  - \"Le\": Descriptor / article (\"the\").\n  - \"nirto\": Predicate meaning \"old / aged\".\n  - \"mrenu\": Predicate meaning \"man / men\".\n  - \"e\": Unmarked word-level logical connective (\"and\").\n  - \"fumna\": Predicate meaning \"woman / women\".\n\nIn Loglan's formal grammar, logical connectives between predicates have rigorously defined precedence rules. The unhyphenated connective \"e\" connects the adjacent predicates. Under Loglan's predicate algebra, a modifier preceding a coordinated predicate sequence binds according to deterministic operator precedence rules.\n\nNumber of parses: The Loglan expression has exactly one unambiguous parse tree. In Loglan grammar, unmarked word-level coordination has fixed scope. An unbracketed sequence does not permit multiple structural readings.\n\nTo explicitly modify both conjuncts or alter the scope, Loglan provides overt grouping mechanisms:\n- \"Le nirto ke mrenu e fumna gu\": The bracket pair \"ke...gu\" groups \"mrenu e fumna\" into a single compound unit, forcing \"nirto\" to distribute over both (\"old men-and-women\").\n- \"Le nirto ge mrenu e fumna\": The prefix grouping operator \"ge\" groups everything to its right into a single modified term.\n- \"Le nirto mrenu ce nirto fumna\": Using the connective \"ce\" to conjoin explicit complex terms.\n\nBecause Loglan grammar specifies a deterministic parse for every string lacking grouping operators, \"Le nirto mrenu e fumna\" has exactly one unambiguous parse tree.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English relies on unmarked conjunctions where modifier distribution cannot be determined syntactically, forcing reliance on intonation, commas, or pragmatic context.\n- Loglan implements formal operator precedence for all logical connectives (\"e\", \"a\", \"o\", \"u\") and provides unambiguous grouping operators (\"ke...gu\", \"ge\"), guaranteeing that every coordinate phrase has a single, mathematically defined parse tree.",
+      "gold": {
+        "id": "A08",
+        "category": "disambiguation",
+        "english": "Old men and women",
+        "loglan": "Le nirto mrenu e fumna",
+        "loglan_variants": [
+          {
+            "phrase": "Le nirto mrenu e fumna",
+            "meaning": "(Old men) and (women of any age)"
+          },
+          {
+            "phrase": "Le ke nirto mrenu e fumna gu",
+            "meaning": "Old (men and women)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Adjective Scope across Conjunction",
+        "gold_explanation": "In Loglan, conjunction 'e' binds tighter than pre-modifier unless grouped with 'ke...gu'."
+      },
+      "input_tokens": 120,
+      "output_tokens": 780,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A09",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"We called the students from France\" exhibits prepositional phrase attachment ambiguity. The prepositional phrase \"from France\" can attach either to the verb phrase or to the direct object noun phrase:\n\n- Parse 1 (NP Attributive Modifier / Origin of Students):\n  `[S [NP We] [VP called [NP the students [PP from France]]]]`\n  In this parse, the PP \"from France\" attaches directly to the noun phrase \"the students\", functioning as an adnominal modifier denoting the geographic origin or provenance of the students. Meaning: We called/telephoned the students who come from France.\n\n- Parse 2 (VP Adjunct / Origin of Calling Action):\n  `[S [NP We] [VP [VP called [NP the students]] [PP from France]]]`\n  In this parse, the PP \"from France\" attaches to the verb phrase \"called\". The preposition \"from\" denotes the physical origin or location of the callers at the time the call was initiated. Meaning: We made the call from France to the students.\n\nEnglish surface syntax does not indicate whether \"from France\" attaches high (to the VP) or low (to the direct object NP), and the preposition \"from\" expresses both geographic origin of an entity and spatial origin of an action.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Mi pa kamba le stude pe la Frans\"\n\n- Syntactic Breakdown:\n  - \"Mi\": Subject pronoun (\"we / I\").\n  - \"pa\": Past tense operator.\n  - \"kamba\": Predicate verb meaning \"call / summon / telephone\" (with argument frame: x1 calls x2).\n  - \"le stude\": Direct object argument occupying the x2 slot (\"the students\", from \"stude\" = student).\n  - \"pe\": Dedicated nominal associative operator / case connector (\"of / associated with / which is related to\").\n  - \"la Frans\": Proper name argument (\"France\").\n\nIn Loglan syntax, the particle \"pe\" is specifically an adnominal associative linker. Its grammatical function is strictly restricted to attaching a modifying term or argument to an immediately preceding nominal head. It cannot attach to the verb phrase or function as a clausal adjunct.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. The presence of \"pe\" syntactically binds \"la Frans\" to \"le stude\". The resulting constituent is the complex noun phrase \"the students associated with France\".\n\nIf the speaker intended to express Parse 2 (the call originated from France), Loglan requires a clause-level source case tag rather than \"pe\":\n- \"Mi pa kamba le stude sau la Frans\" (or using source tag \"de\"): The case operator \"sau\" / \"de\" attaches to the predicate clause, indicating the source/origin of the action (\"We called the students, originating from France\").\n\nBecause the sentence uses \"pe\", it deterministically produces only the NP-attachment parse.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English uses the single preposition \"from\" for both nominal post-modification and verbal source adjuncts, creating structural attachment ambiguity.\n- Loglan uses dedicated syntactic particles: \"pe\" is reserved exclusively for nominal modification, while clausal case tags govern verbal arguments and adjuncts, ensuring that each sentence has exactly one unambiguous parse tree.",
+      "gold": {
+        "id": "A09",
+        "category": "disambiguation",
+        "english": "We called the students from France",
+        "loglan": "Mi pa kamba le stude pe la Frans",
+        "loglan_variants": [
+          {
+            "phrase": "Mi pa kamba le stude pe la Frans",
+            "meaning": "We contacted students whose origin was France"
+          },
+          {
+            "phrase": "Mi pa kamba de sau la Frans",
+            "meaning": "We made the telephone call from France"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Source Location of Action vs Origin of Patient",
+        "gold_explanation": "Case tag 'sau' (source) vs associative connector 'pe' (origin/modifier)."
+      },
+      "input_tokens": 120,
+      "output_tokens": 802,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A10",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"They are cooking apples\" exhibits part-of-speech ambiguity and syntactic category ambiguity involving the auxiliary vs copular verb \"are\" and the verbal participle vs participial adjective \"cooking\":\n\n- Parse 1 (Present Progressive Transitive Verb + Direct Object):\n  `[S [NP They] [VP [V are cooking] [NP apples]]]`\n  In this parse, \"are\" serves as an auxiliary verb, and \"cooking\" is the main lexical verb in the present participle form. Together, \"are cooking\" constitutes a transitive progressive verb phrase taking \"apples\" as its direct object. The pronoun \"They\" refers to people or agents. Meaning: Certain individuals are currently preparing/cooking apples.\n\n- Parse 2 (Copula + Predicative Noun Phrase with Compound Modifier):\n  `[S [NP They] [VP [V are] [NP [Adj cooking] [N apples]]]]`\n  In this parse, \"are\" is the main copular verb, and \"cooking\" is a participial/functional adjective modifying the head noun \"apples\" (a \"cooking apple\" is a recognized cultivar of apple suitable for culinary use rather than raw consumption, such as a Bramley apple). The pronoun \"They\" refers to the fruit. Meaning: The objects referred to are culinary cooking-apples.\n\nThe ambiguity is possible because English allows \"-ing\" words to serve as progressive verbal participles or attributive nouns/adjectives, and \"are\" functions as both an aspectual auxiliary and a relational copula.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Da kukra le pligo\"\n\n- Syntactic Breakdown:\n  - \"Da\": Third-person pronoun / variable (\"they / he / she / it\").\n  - \"kukra\": Predicate verb meaning \"cook / cooks\" (with argument frame: x1 cooks x2).\n  - \"le pligo\": Direct object argument occupying the x2 slot (\"the apple / the apples\", from \"pligo\" = apple).\n\nIn Loglan, every simple sentence exhibits a clear, unambiguous SVO argument structure. Predicate verbs occupy the central verbal position between the subject and object arguments. In \"Da kukra le pligo\", \"Da\" fills the x1 agent slot, \"kukra\" is the main predicate verb, and \"le pligo\" fills the x2 patient slot.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. There is no copular verb, no auxiliary verb, and no morphological ambiguity. \"kukra\" is unambiguously the active predicate verb of the sentence, not an adjectival modifier of \"pligo\".\n\nIf one wished to convey Parse 2 in Loglan (identifying the objects as cooking apples), Loglan would use a copular predicate structure with a complex predicate:\n- \"Da pligo\": (\"They are apples\").\n- \"Da kukra pligo\": (\"They are cooking-apples\" / culinary apples), where \"kukra pligo\" is a complex predicate functioning as the main predicate of \"Da\".\n\nBecause \"le\" introduces \"pligo\" as a separate argument following \"kukra\", the sentence deterministically encodes only the transitive verb reading (\"They cook the apples\").\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English permits homophony between verbal participles and attributive nominal modifiers, and relies on \"to be\" as both auxiliary and copula, resulting in dual syntactic parses.\n- Loglan strictly differentiates predicate verbs from nominal arguments by syntactic position and structural descriptors (\"le\"), eliminating categorical ambiguity and yielding exactly one parse tree.",
+      "gold": {
+        "id": "A10",
+        "category": "disambiguation",
+        "english": "They are cooking apples",
+        "loglan": "Da kukra le pligo",
+        "loglan_variants": [
+          {
+            "phrase": "Da kukra le pligo",
+            "meaning": "They are currently preparing apples (action)"
+          },
+          {
+            "phrase": "Da pligo pe le kukra",
+            "meaning": "Those items are cooking-apples (culinary variety)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Auxiliary + Participle vs Copula + Compound Noun",
+        "gold_explanation": "Loglan requires a predicate marker 'ga' / tense 'pa' or nominalizer 'le'."
+      },
+      "input_tokens": 120,
+      "output_tokens": 835,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A11",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"She told the girl that she loved her\" displays pronominal reference resolution ambiguity (coreference / binding ambiguity) within an embedded complement clause:\n\nThe embedded clause \"that she loved her\" is syntactically a declarative complement clause to the ditransitive communication verb \"told\". However, because English third-person feminine pronouns (\"she\", \"her\") carry only gender and number features without referential indices, there are multiple valid binding parses / referential interpretations:\n\n- Parse 1 (Subject Coreference / Direct Reading):\n  `[S She_1 told [the girl]_2 [that she_1 loved her_2]]`\n  In this interpretation, the embedded subject \"she\" corefers with the matrix subject \"She\" (Woman 1), and the embedded object \"her\" corefers with the indirect object \"the girl\" (Woman 2). Meaning: Woman 1 told the girl that Woman 1 loved the girl.\n\n- Parse 2 (Object Coreference / Reciprocal Reading):\n  `[S She_1 told [the girl]_2 [that she_2 loved her_1]]`\n  In this interpretation, the embedded subject \"she\" corefers with the indirect object \"the girl\" (Woman 2), and the embedded object \"her\" corefers with the matrix subject \"She\" (Woman 1). Meaning: Woman 1 told the girl that the girl loved Woman 1.\n\n- Parse 3 (Exophoric / Disjoint Coreference):\n  `[S She_1 told [the girl]_2 [that she_3 loved her_2]]` (or `her_3`)\n  In this interpretation, \"she\" or \"her\" refers to an external, third female entity not previously mentioned in the sentence. Meaning: Woman 1 told the girl that Woman 3 loved the girl (or that Woman 1 loved Woman 3).\n\nEnglish syntax provides no morphological mechanism on pronouns to distinguish between multiple same-gender referents in the same sentence.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Da pa trena de lepo da cluva de\"\n\n- Syntactic Breakdown:\n  - \"Da\": Bound pronominal variable 1 (referent 1, corresponding to \"She\").\n  - \"pa\": Past tense operator.\n  - \"trena\": Predicate verb meaning \"tell / narrate / say to\" (with argument frame: x1 tells x2 proposition x3).\n  - \"de\": Bound pronominal variable 2 (referent 2, corresponding to \"the girl\").\n  - \"lepo\": Clausal event abstractor introducing the proposition x3.\n  - \"da\": Pronominal variable 1 (strictly bound to referent 1).\n  - \"cluva\": Predicate verb meaning \"love / loves\" (with argument frame: x1 loves x2).\n  - \"de\": Pronominal variable 2 (strictly bound to referent 2).\n\nIn Loglan, pronominal reference is handled through an ordered system of mathematical bound variables: \"da\", \"de\", \"di\", \"do\", \"du\". Each distinct variable is uniquely bound to a distinct referent in the discourse. Because the first entity is assigned to \"da\" and the second entity to \"de\", their recurrence inside the embedded clause \"lepo da cluva de\" explicitly and unambiguously identifies the subject of \"cluva\" as referent 1 (\"da\") and the object as referent 2 (\"de\").\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree and exactly one referential interpretation. There is zero referential ambiguity.\n\nIf the speaker intended Parse 2, Loglan syntax requires switching the variables:\n- \"Da pa trena de lepo de cluva da\": (Referent 1 told Referent 2 that Referent 2 loved Referent 1).\nIf an external third person were involved (Parse 3), Loglan would use a third distinct variable \"di\":\n- \"Da pa trena de lepo di cluva de\": (Referent 1 told Referent 2 that Referent 3 loved Referent 2).\n\nBecause \"Da\" and \"de\" are used in precise positions, the parse and reference are completely deterministic.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English relies on natural language pronouns marked only for gender, case, and number, creating referential opacity and multiple interpretations whenever two referents share gender features.\n- Loglan replaces ambiguous natural pronouns with distinct, indexed logical variables (\"da\", \"de\", \"di\", \"do\", \"du\") and explicit event nominalizers (\"lepo\"), ensuring that both the syntactic parse tree and the semantic binding of referents are entirely unambiguous.",
+      "gold": {
+        "id": "A11",
+        "category": "disambiguation",
+        "english": "She told the girl that she loved her",
+        "loglan": "Da pa trena de lepo da cluva de",
+        "loglan_variants": [
+          {
+            "phrase": "Da pa trena de lepo da cluva de",
+            "meaning": "Speaker told girl that speaker loved girl"
+          },
+          {
+            "phrase": "Da pa trena de lepo de cluva da",
+            "meaning": "Speaker told girl that girl loved speaker"
+          },
+          {
+            "phrase": "Da pa trena de lepo di cluva de",
+            "meaning": "Speaker told girl that third person loved girl"
+          }
+        ],
+        "expected_english_parses": 3,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Pronoun Reference Resolution",
+        "gold_explanation": "Loglan variables da, de, di, do, du bind strictly to distinct referents without ambiguity."
+      },
+      "input_tokens": 120,
+      "output_tokens": 1024,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A12",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"The man left with the money\" contains prepositional phrase attachment and semantic role ambiguity. The prepositional phrase \"with the money\" can attach to either the verb phrase or the noun phrase, and the preposition \"with\" can express comitative accompaniment or instrumental means:\n\n- Parse 1 (Comitative VP Adjunct / Accompaniment):\n  `[S [NP The man] [VP [VP left] [PP with the money]]]`\n  In this parse, \"with the money\" attaches to the verb phrase \"left\". The preposition \"with\" functions comitatively, indicating accompaniment or possession during the departure. Meaning: The man departed, taking or carrying the money along with him.\n\n- Parse 2 (Attributive NP Modifier / Possession):\n  `[S [NP The man [PP with the money]] [VP left]]`\n  In this parse, \"with the money\" attaches directly to the subject noun phrase \"The man\", functioning as an adnominal restrictive modifier identifying the man. Meaning: The specific man who possessed the money has departed.\n\n- Parse 3 (Instrumental / Means VP Adjunct):\n  `[S [NP The man] [VP [VP left] [PP(inst) with the money]]]`\n  In this parse, \"with the money\" attaches to the VP \"left\" as an instrument or means of facilitating the departure (e.g. by using the money to pay or bribe his way out).\n\nEnglish allows \"with\" to ambiguously signal accompaniment, possession, or instrument, and permits attachment to either the VP or the NP without surface distinction.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Le mrenu pa godzi kau le mani\"\n\n- Syntactic Breakdown:\n  - \"Le mrenu\": Subject argument (\"the man\", from \"mrenu\" = man).\n  - \"pa\": Past tense operator.\n  - \"godzi\": Predicate verb meaning \"go / leave / depart\" (with argument frame: x1 goes to x2 from x3 via x4).\n  - \"kau\": Dedicated comitative case operator / preposition meaning \"accompanied by / together with\".\n  - \"le mani\": Argument noun phrase (\"the money\", from \"mani\" = money).\n\nIn Loglan grammar, \"kau\" is the specific case tag for comitative accompaniment. When a case operator like \"kau\" appears in the predicate frame following the verb \"godzi\", it attaches directly to the predicate verb phrase as a case adjunct specifying who or what accompanies the subject in the action.\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. In Loglan, nominal modification requires the associative particle \"pe\". Because \"kau\" is a predicate case operator rather than \"pe\", it cannot attach to the noun phrase \"Le mrenu\".\n\nIf one wished to convey Parse 2 (the man who had the money), Loglan would use the nominal associative operator:\n- \"Le mrenu pe le mani pa godzi\": (\"The man associated with the money left\").\nIf one wished to convey Parse 3 (instrumental means), Loglan would use the instrumental case operator \"liu\":\n- \"Le mrenu pa godzi liu le mani\": (\"The man left using the money as instrument\").\n\nBecause \"kau\" is used, the sentence unambiguously conveys comitative accompaniment.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English conflates accompaniment, possession, and instrumentality under the multifunctional preposition \"with\", and leaves PP attachment to the subject NP vs VP ambiguous.\n- Loglan assigns distinct case operators to distinct semantic roles (\"kau\" for comitative accompaniment, \"liu\" for instrument, \"pe\" for noun association) and enforces strict syntactic attachment rules, ensuring exactly one parse tree.",
+      "gold": {
+        "id": "A12",
+        "category": "disambiguation",
+        "english": "The man left with the money",
+        "loglan": "Le mrenu pa godzi kau le mani",
+        "loglan_variants": [
+          {
+            "phrase": "Le mrenu pa godzi kau le mani",
+            "meaning": "The man departed carrying the money"
+          },
+          {
+            "phrase": "Le mrenu pa godzi pe le mani",
+            "meaning": "The man departed because of the money"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Comitative vs Instrumental/Causal",
+        "gold_explanation": "Comitative particle 'kau' explicitly denotes accompaniment."
+      },
+      "input_tokens": 120,
+      "output_tokens": 865,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A13",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English phrase \"No smoking section\" is a familiar real-world signage phrase exhibiting modifier scope and syntactic category ambiguity:\n\n- Parse 1 (Negative Existential Quantifier over Compound Noun):\n  `[NP [Det No] [NP [N smoking] [N section]]]`\n  In this parse, \"No\" is a negative determiner/quantifier taking wide scope over the entire compound noun phrase \"[smoking section]\". Meaning: There is no smoking section present (i.e., this establishment lacks a designated smoking section).\n\n- Parse 2 (Prohibitive Compound Modifier over Head Noun):\n  `[NP [Mod [Neg No] [N smoking]] [N section]]`\n  In this parse, \"No-smoking\" functions as a hyphenless compound modifier modifying the head noun \"section\". Meaning: A section designated for non-smoking (a smoke-free zone where smoking is prohibited).\n\n- Parse 3 (Elliptical Signage / Fragment Warning):\n  `[S [VP No smoking], [NP section]]`\n  An elliptical imperative or warning sign declaring \"No smoking!\" within this section.\n\nThe ambiguity is created because English often omits hyphens in compound modifiers (writing \"No smoking section\" instead of \"No-smoking section\") and because \"no\" can function either as a determiner quantifying a noun phrase or as a negative prefix within a compound modifier.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"No smokra panto\"\n\n- Syntactic Breakdown:\n  - \"No\": Negation operator / particle (\"not / no\").\n  - \"smokra\": Predicate meaning \"smoke / smoking\".\n  - \"panto\": Predicate meaning \"part / portion / section\".\n\nIn Loglan's formal grammar, \"No\" is a sentence/predicate negation operator. When \"no\" directly precedes a predicate modifier chain, it has a strictly defined, unambiguous scope in the phrase-structure grammar. In a complex predicate without grouping particles, the modifier elements bind according to deterministic rules.\n\nNumber of parses: The Loglan expression has exactly one unambiguous parse tree. In Loglan grammar, \"no\" directly negates the predicate unit it precedes.\n\nIn Loglan, structural ambiguity between negative quantification and predicate modification is impossible:\n- Sentence/predicate negation is marked by \"no\" preceding the predicate.\n- Negative quantification over an argument requires a quantifier preceding the descriptor (e.g. \"ni le smokra panto\" = \"zero smoking sections\").\n- A designated non-smoking section can be constructed unambiguously as a complex predicate or descriptor (\"le no-smokra panto\").\n\nBecause the grammar defines exact precedence and scope for \"no\", the expression yields exactly one parse tree.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English relies on unhyphenated compound structures where negative words like \"no\" ambiguously scope over either the head noun, the pre-modifier, or the entire noun phrase.\n- Loglan strictly formalizes operator scopes, distinguishing predicate negation from quantifier negation and enforcing rigid compounding rules, thereby ensuring a single unambiguous syntactic interpretation.",
+      "gold": {
+        "id": "A13",
+        "category": "disambiguation",
+        "english": "No smoking section",
+        "loglan": "No smokra panto",
+        "loglan_variants": [
+          {
+            "phrase": "No smokra panto",
+            "meaning": "A section where smoking is forbidden"
+          },
+          {
+            "phrase": "No pe le smokra panto",
+            "meaning": "Absence of a smoking section"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Predicate Negation vs Quantifier Negation",
+        "gold_explanation": "Sentence negation 'no' precedes predicate vs term negation."
+      },
+      "input_tokens": 120,
+      "output_tokens": 760,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A14",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English sentence \"Stolen painting found by tree\" exhibits syntactic ambiguity centered on the preposition \"by\", along with the ellipsis characteristic of newspaper headline syntax:\n\n- Parse 1 (Locative Prepositional Phrase Adjunct):\n  `[S [NP Stolen painting] [VP [V found] [PP(loc) by tree]]]`\n  In this parse, \"by tree\" is a locative prepositional phrase modifying the passive verb \"found\". The preposition \"by\" expresses spatial proximity (meaning \"beside / near / adjacent to\"). Meaning: The stolen painting was discovered located near a tree.\n\n- Parse 2 (Passive Agent Complement):\n  `[S [NP Stolen painting] [VP [V found] [PP(agent) by [NP tree]]]]`\n  In this parse, \"by\" functions as the passive agent marker introducing the agent that performed the action of finding. Meaning: An agent named \"Tree\" (or an anthropomorphized tree) found the stolen painting.\n\n- Parse 3 (Reduced Relative Clause / Noun Phrase Fragment):\n  `[NP [NP Stolen painting] [VP found by tree]]`\n  In headline syntax, the phrase can be parsed as a noun phrase fragment where \"found by tree\" is a reduced passive relative clause modifying \"Stolen painting\" (meaning \"The stolen painting that was found by a tree\").\n\nThe ambiguity stems from the dual role of the English preposition \"by\" (spatial proximity vs passive agent), compounded by headline compression that omits determiners (\"a\", \"the\") and auxiliary verbs (\"was\").\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Le nu spali pa cluva vi le trime\"\n\n- Syntactic Breakdown:\n  - \"Le nu spali\": Subject argument (\"the stolen item / the stolen painting\"). \"nu\" is the passive conversion operator that inverts \"spali\" (\"steals\", x1 steals x2 from x3), making the patient (x2, the stolen object) the head of the description.\n  - \"pa\": Past tense operator.\n  - \"cluva\": Predicate verb functioning here as the main predicate (found / discovered).\n  - \"vi\": Dedicated spatial locative case operator / preposition meaning \"at / near / in the vicinity of\".\n  - \"le trime\": Argument noun phrase (\"the tree\", from \"trime\" = tree).\n\nIn Loglan syntax, \"vi\" is strictly and exclusively a spatial locative operator. It can never function as an agent marker. In Loglan, the agent of a passive predicate is expressed either through its underlying argument slot or through a dedicated source/agent case operator (such as \"sau\" or \"de\").\n\nNumber of parses: The Loglan sentence has exactly one unambiguous parse tree. The presence of the spatial operator \"vi\" uniquely and deterministically establishes that \"le trime\" is the physical location of the finding, not the agent. Furthermore, the overt tense operator \"pa\" ensures that the sentence is a complete finite proposition, eliminating headline reduction ambiguity.\n\nIf one intended Parse 2 (an entity named Tree found the painting), Loglan would use an agentive case marker or an active sentence:\n- \"La Trime pa cluva le nu spali\": (\"Tree found the stolen item\").\n\nBecause \"vi\" is used, the sentence has exactly one parse tree.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English \"by\" conflates passive agency and spatial proximity under a single preposition, and headline style drops function words, creating multiple syntactic and thematic parses.\n- Loglan provides dedicated spatial operators (\"vi\") that cannot be confused with agentive markers, and enforces overt grammatical particles, guaranteeing that every utterance has a single unambiguous parse tree.",
+      "gold": {
+        "id": "A14",
+        "category": "disambiguation",
+        "english": "Stolen painting found by tree",
+        "loglan": "Le nu spali pa cluva vi le trime",
+        "loglan_variants": [
+          {
+            "phrase": "Le nu spali pa cluva vi le trime",
+            "meaning": "Found at the location of the tree"
+          },
+          {
+            "phrase": "Le nu spali pa cluva sau le trime",
+            "meaning": "Found by the tree acting as agent (absurd)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Passive Agent vs Locative 'by'",
+        "gold_explanation": "Location 'vi' vs Agent case tag 'sau'."
+      },
+      "input_tokens": 120,
+      "output_tokens": 874,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A15",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations\n\nThe English phrase \"English language teacher\" is a three-word noun compound that exhibits modifier-head bracketing and semantic modifier ambiguity:\n\n- Parse 1 (Subject Matter Compound / Left-Branching):\n  `[NP [NP [Adj English] [N language]] [N teacher]]`\n  In this parse, \"English\" modifies \"language\", forming the compound constituent \"English language\", which then modifies the head noun \"teacher\". Meaning: An instructor who teaches the English language (the teacher's own nationality or origin is unspecified; they could be Spanish, Chinese, or French).\n\n- Parse 2 (Nationality/Origin Modifier / Right-Branching):\n  `[NP [Adj English] [NP [N language] [N teacher]]]`\n  In this parse, \"English\" modifies the compound noun \"language teacher\". \"English\" functions as an adjective of nationality or origin. Meaning: A language teacher who is of English nationality or origin (who could be teaching French, Spanish, or Russian).\n\nThe ambiguity arises because English allows sequences of three nominal/adjectival elements to combine without overt grouping markers or morphological distinctions, leaving both left-branching `[[A B] C]` and right-branching `[A [B C]]` as valid syntactic parses.\n\n### 2. Loglan Parse Tree\n\nThe given Loglan expression is: \"Glicu ditca\"\n\n- Syntactic Breakdown:\n  - \"Glicu\": Predicate meaning \"English / of the English language/culture\".\n  - \"ditca\": Predicate meaning \"teacher / teaches\" (with argument frame: x1 teaches x2 [subject] to x3 [students]).\n\nIn Loglan, \"Glicu ditca\" is a binary complex predicate consisting of the modifier predicate \"Glicu\" and the head predicate \"ditca\". Under Loglan's formal grammar rules, a two-word modifier-head pair has a single, elementary dependency structure: \"Glicu\" modifies \"ditca\".\n\nNumber of parses: The Loglan expression has exactly one unambiguous parse tree. In Loglan, binary predicate modification has no alternative bracketings.\n\nFurthermore, if the full three-word phrase were expressed in Loglan:\n- \"glicu lengu ditca\": Under Loglan's strict default left-associativity rule, this sequence deterministically parses as `((glicu lengu) ditca)`, which corresponds strictly to Parse 1 (\"English-language teacher\").\n- \"glicu ge lengu ditca\": To achieve Parse 2 (\"an English [language-teacher]\"), Loglan requires the overt prefix grouping operator \"ge\", which groups everything to its right into a single modified term: `(glicu (lengu ditca))`.\n\nBecause Loglan's grammar specifies deterministic left-associativity for unmodified sequences and requires \"ge\" for right-branching structures, Loglan complex predicates never have multiple parse trees.\n\n### 3. Contrast of the Two Grammatical Systems\n\n- English multi-word noun compounds lack overt bracketing markers, allowing both left-branching and right-branching trees with completely different semantic dependencies.\n- Loglan defines an unambiguous formal predicate algebra: binary modifiers have a unique parse, and multi-word chains default to left-associativity unless explicit grouping particles (\"ge\", \"ke...gu\") are present, guaranteeing exactly one parse tree.",
+      "gold": {
+        "id": "A15",
+        "category": "disambiguation",
+        "english": "English language teacher",
+        "loglan": "Glicu ditca",
+        "loglan_variants": [
+          {
+            "phrase": "Glicu ditca",
+            "meaning": "A teacher who is English by nationality"
+          },
+          {
+            "phrase": "Glicu pe le ditca",
+            "meaning": "A teacher of the English language"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Subject-Matter vs Nationality Modifier",
+        "gold_explanation": "Default modifier vs explicit predicate slot."
+      },
+      "input_tokens": 120,
+      "output_tokens": 783,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A16",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations and Ambiguity\n\nThe English sentence **\"He hit the boy with the stick\"** is a classic demonstration of **Prepositional Phrase (PP) attachment ambiguity**. The prepositional phrase *\"with the stick\"* can syntactically attach to two different constituent nodes in the phrase structure tree:\n\n- **Parse 1 — Instrumental VP-Attachment (Modifier of the Verb Phrase):**\n  - **Constituent Structure:** `[S [NP He] [VP [VP hit [NP the boy]] [PP with [NP the stick]]]]`\n  - **Semantic Interpretation:** The agent (\"He\") struck the patient (\"the boy\") by employing the stick as a tool or weapon. Here, *\"with the stick\"* functions as an adverbial instrumental adjunct modifying the action of the verb *\"hit\"*.\n  \n- **Parse 2 — Adnominal / Attributive NP-Attachment (Modifier of the Noun Phrase):**\n  - **Constituent Structure:** `[S [NP He] [VP hit [NP [NP the boy] [PP with [NP the stick]]]]]`\n  - **Semantic Interpretation:** The agent (\"He\") struck a specific boy who had or was holding a stick. Here, *\"with the stick\"* attaches directly to *\"the boy\"* as a post-nominal modifier specifying a feature or possession of the patient. The hitting itself could have been done with an open hand, a fist, or another object entirely.\n\nThis structural ambiguity arises because English prepositions like *\"with\"* perform multiple semantic roles (instrumental vs. comitative/possessive) and English syntax lacks overt boundary markers to signal whether a trailing prepositional phrase attaches high to the verb phrase or low to the object noun phrase.\n\n---\n\n### 2. Loglan Parse Tree and Unambiguity\n\nIn Loglan, the translation is:\n**\"Da pa tcali le sonli liu le stika\"**\n\n**Morphemic breakdown:**\n- `Da`: 3rd-person pronoun variable (he/she/it).\n- `pa`: Past tense prefix/operator (\"before now\").\n- `tcali`: Predicate meaning \"hit / strike\".\n- `le sonli`: Argument descriptor phrase (\"the boy / young male\").\n- `liu`: Instrumental case tag / preposition (\"with / by means of [instrument]\").\n- `le stika`: Argument descriptor phrase (\"the stick\").\n\n**Syntactic Analysis:**\nIn Loglan grammar:\n1. The particle `liu` is an overt case tag belonging to the predicate case system, marking the instrumental argument slot.\n2. Case-tagged phrases (`liu + NP`) that follow an untagged argument attach at the clause/predicate level as adjuncts or explicit case-marked argument slots of the predicate `pa tcali`.\n3. In Loglan syntax, an unadorned noun phrase (`le sonli`) cannot be modified by a subsequent prepositional phrase unless an explicit nominal connective or relative operator is present (such as `ji` for a restrictive relative clause, or `pe` for adnominal association). Without such an operator, `liu le stika` cannot syntactically attach to `le sonli`.\n\nTherefore, the Loglan sentence has **EXACTLY ONE unambiguous parse**:\n- **Parse Tree:**\n  `[Sentence [Subject Da] [Tense pa] [Predicate tcali] [Object le sonli] [Instrumental-Adjunct [CaseTag liu] [NP le stika]]]`\n- **Meaning:** Strictly corresponding to English **Parse 1** (\"He struck the boy using the stick as an instrument\").\n\nIf a speaker wanted to convey English Parse 2 (\"the boy with/having the stick\"), Loglan would require an explicit adnominal structure, such as:\n- `Da pa tcali le sonli pe le stika` (using associative particle `pe`), or\n- `Da pa tcali le sonli ji cluva/katli le stika` (using relative clause operator `ji`).\n\n---\n\n### 3. Contrast of the Two Grammatical Systems\n\n- **Structural Ambiguity vs. Determinism:** English allows prepositional phrases to attach ambiguously to either a preceding noun phrase or the overarching verb phrase. Loglan is an artificial language engineered to eliminate syntactic ambiguity; its formal grammar requires unique attachment paths.\n- **Syntactic Signaling:** English relies on prosodic stress, pauses, or pragmatic context to disambiguate PP attachments. Loglan employs overt syntactic markers: case tags like `liu` attach strictly at the predicate level, while nominal modification demands explicit linkers (`pe`, `ji`, or tanru metaphor compounding). As a consequence, Loglan parse trees are deterministic and context-free.",
+      "gold": {
+        "id": "A16",
+        "category": "disambiguation",
+        "english": "He hit the boy with the stick",
+        "loglan": "Da pa tcali le sonli liu le stika",
+        "loglan_variants": [
+          {
+            "phrase": "Da pa tcali le sonli liu le stika",
+            "meaning": "Used stick as instrument"
+          },
+          {
+            "phrase": "Da pa tcali le sonli pe le stika",
+            "meaning": "The boy had the stick"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Instrumental vs Attributive PP",
+        "gold_explanation": "'liu' indicates instrument."
+      },
+      "input_tokens": 120,
+      "output_tokens": 1041,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A17",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations and Ambiguity\n\nThe English imperative sentence **\"Look at the dog with one eye\"** is syntactically ambiguous due to the attachment of the prepositional phrase (PP) *\"with one eye\"*:\n\n- **Parse 1 — Instrumental VP-Attachment (Manner / Instrument of Perception):**\n  - **Constituent Structure:** `[S (imperative [NP you]) [VP [VP Look at [NP the dog]] [PP with [NP one eye]]]]`\n  - **Semantic Interpretation:** The addressee is instructed to look at the dog using only one of their eyes (e.g., by winking, closing one eye, or looking through an aperture/eyepiece). Here, *\"with one eye\"* modifies the verb phrase *\"Look at\"* as an instrumental or manner adjunct.\n  \n- **Parse 2 — Adnominal / Attributive NP-Attachment (Modifier of the Object):**\n  - **Constituent Structure:** `[S (imperative [NP you]) [VP Look at [NP [NP the dog] [PP with [NP one eye]]]]]`\n  - **Semantic Interpretation:** The addressee is instructed to observe a particular dog that possesses only one eye (a one-eyed or injured dog). Here, *\"with one eye\"* attaches directly to *\"the dog\"* as a post-nominal descriptive modifier.\n\nThe ambiguity stems from the structural dual-role of the English preposition *\"with\"*, which can introduce either an instrument of action or an attribute/possession of a noun, combined with the lack of surface boundary marking between VP-level and NP-level adjuncts.\n\n---\n\n### 2. Loglan Parse Tree and Unambiguity\n\nIn Loglan, the translation is:\n**\"Vizka le kangu liu ne kanla\"**\n\n**Morphemic breakdown:**\n- `Vizka`: Predicate (see / look / observe; imperative verb form where the subject `tu` is implied).\n- `le kangu`: Direct argument descriptor phrase (\"the dog\").\n- `liu`: Instrumental case tag (\"by means of / using [instrument]\").\n- `ne`: Numerical quantifier (\"one\" / 1).\n- `kanla`: Primitive predicate / noun (\"eye\"). Thus `ne kanla` = \"one eye\".\n\n**Syntactic Analysis:**\nIn Loglan grammar:\n1. `Vizka` acts as an imperative predicate taking the direct patient argument `le kangu`.\n2. The prepositional particle `liu` introduces an instrumental case phrase (`liu ne kanla`).\n3. Under the formal rules of Loglan syntax, case tags attach at the clause/predicate level. A case phrase following a nominal argument cannot attach to that noun without explicit nominal linkers such as `pe` (associative) or `ji` (restrictive relative clause). \n4. Therefore, `liu ne kanla` is unambiguously bound to the verb `vizka`, specifying the bodily instrument used to perform the visual observation.\n\nThus, the Loglan sentence has **EXACTLY ONE unambiguous parse**:\n- **Parse Tree:**\n  `[Imperative-Sentence [Predicate vizka] [Direct-Object le kangu] [Instrumental-Adjunct [CaseTag liu] [NP ne kanla]]]`\n- **Meaning:** Exclusively corresponds to English **Parse 1** (\"Look at the dog using one eye\").\n\nTo express English Parse 2 (\"Look at the one-eyed dog\"), Loglan grammar would require either:\n- A compound/tanru descriptor: `Vizka le nekanla kangu` (\"Look at the one-eyed dog\"), or\n- A relative clause: `Vizka le kangu ji ne kanla` (\"Look at the dog which has one eye\").\n\n---\n\n### 3. Contrast of the Two Grammatical Systems\n\n- **Attachment Rules:** In English, a prepositional phrase placed after a direct object can attach either high (to the VP) or low (to the NP), generating semantic and pragmatic ambiguity. In Loglan, case tags are syntactically tied to predicate argument frames and cannot modify preceding noun phrases by default.\n- **Expressive Clarity:** In English, disambiguation requires adding words (e.g., \"Look at the dog by using one eye\" vs. \"Look at the dog that has only one eye\"). In Loglan, the basic grammar itself enforces unambiguous attachment: adverbial/instrumental relations use predicate case tags (`liu`), while noun modifications use distinct relative or compounding morphology (`ji`, `pe`, or predicate compounding).",
+      "gold": {
+        "id": "A17",
+        "category": "disambiguation",
+        "english": "Look at the dog with one eye",
+        "loglan": "Vizka le kangu liu ne kanla",
+        "loglan_variants": [
+          {
+            "phrase": "Vizka le kangu liu ne kanla",
+            "meaning": "Look using only one eye"
+          },
+          {
+            "phrase": "Vizka le kangu pe ne kanla",
+            "meaning": "Look at the one-eyed dog"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Manner vs Possessive Attribute",
+        "gold_explanation": "Instrument 'liu' vs possessive 'pe'."
+      },
+      "input_tokens": 120,
+      "output_tokens": 970,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A18",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations and Ambiguity\n\nThe English compound phrase **\"Fast car driver\"** consists of three lexical items (an adjective followed by two nouns) and displays classic **constituent bracketing (modifier grouping) ambiguity**:\n\n- **Parse 1 — Left-Branching Grouping `[[Fast car] driver]`:**\n  - **Constituent Structure:** `[NP [NP [Adj Fast] [N car]] [N driver]]`\n  - **Semantic Interpretation:** A driver of fast cars. Here, *\"fast\"* modifies *\"car\"*, producing the intermediate unit *\"fast car\"*. This complex noun phrase then modifies *\"driver\"*. The car is inherently fast (e.g., a sports car or race car); the driver may be driving at normal speeds or fast speeds.\n  \n- **Parse 2 — Right-Branching Grouping `[Fast [car driver]]`:**\n  - **Constituent Structure:** `[NP [Adj Fast] [NP [N car] [N driver]]]`\n  - **Semantic Interpretation:** A car driver who is fast. Here, *\"car\"* modifies *\"driver\"* to form the profession or role *\"car driver\"*, and *\"fast\"* modifies the entire compound *\"car driver\"*. The driver operates quickly or has fast reflexes, even if driving an ordinary or slow car.\n\nEnglish grammar lacks a fixed rule governing whether modifier-noun chains are left-associative or right-associative, leaving the grouping dependent on prosody, hyphenation (e.g., \"fast-car driver\" vs. \"fast car-driver\"), or real-world context.\n\n---\n\n### 2. Loglan Parse Tree and Unambiguity\n\nIn Loglan, the phrase is translated as a complex predicate (metaphor / tanru):\n**\"Kukra karce drava\"**\n\n**Morphemic breakdown:**\n- `kukra`: Predicate meaning \"fast / swift / rapid\".\n- `karce`: Predicate meaning \"car / automobile\".\n- `drava`: Predicate meaning \"driver / drive\".\n\n**Syntactic Analysis:**\nIn Loglan grammar:\n1. When multiple predicates are juxtaposed without explicit grouping operators, Loglan applies a strict, deterministic rule of **left-to-right associativity**:\n   `P1 P2 P3` is always parsed as `((P1 P2) P3)`.\n2. Therefore, `kukra` first modifies `karce` to form the complex sub-predicate `(kukra karce)` (\"fast-car\"), and that entire modifier unit then modifies the head predicate `drava` to yield `((kukra karce) drava)`.\n3. To produce the right-branching parse `kukra (karce drava)`, Loglan syntax requires an overt right-grouping operator, specifically the particle `ge`:\n   `Kukra ge karce drava` = `[kukra [karce drava]]`.\n\nBecause no grouping operator is present, the Loglan phrase has **EXACTLY ONE unambiguous parse**:\n- **Parse Tree:**\n  `[ComplexPredicate [SubPredicate [kukra] [karce]] [HeadPredicate drava]]`\n- **Meaning:** Strictly corresponds to English **Parse 1** (\"fast-car driver\" / driver of fast cars).\n\n---\n\n### 3. Contrast of the Two Grammatical Systems\n\n- **Associativity Rules:** English has no structural convention for compound grouping; sequences of modifiers and nouns can freely branch left or right. Loglan formally specifies left-associative grouping as the foundational grammar default.\n- **Syntactic Punctuation:** In written English, hyphens can occasionally disambiguate compounds, but in spoken English or unhyphenated text, ambiguity is frequent. Loglan embeds spoken grouping particles (`ge`, `ze`, `ce`) directly into its spoken phonetic grammar, ensuring that the spoken language and written syntax are equally free from structural ambiguity.",
+      "gold": {
+        "id": "A18",
+        "category": "disambiguation",
+        "english": "Fast car driver",
+        "loglan": "Kukra karce drava",
+        "loglan_variants": [
+          {
+            "phrase": "Kukra karce drava",
+            "meaning": "Driver of a car that is fast"
+          },
+          {
+            "phrase": "Kukra ge karce drava",
+            "meaning": "A car driver who drives fast"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Modifier Scope in Compound",
+        "gold_explanation": "Default left grouping vs inverted grouping with 'ge'."
+      },
+      "input_tokens": 120,
+      "output_tokens": 831,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A19",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations and Ambiguity\n\nThe English sentence **\"They said yesterday she died\"** contains a classic **\"squinting modifier\" (adverbial attachment ambiguity)**. The temporal adverb *\"yesterday\"* is positioned between the matrix clause verb *\"said\"* and the subordinate clause verb *\"died\"*, where the subordinate complementizer *\"that\"* has been ellipted:\n\n- **Parse 1 — Matrix Clause Modification (High Attachment):**\n  - **Constituent Structure:** `[S [NP They] [VP [VP said] [AdvP yesterday] [CP (that) [S she died]]]]`\n  - **Semantic Interpretation:** The act of saying occurred yesterday. (e.g., \"Yesterday they made the statement that she died.\") The time of her death is unspecified and could have occurred recently or long ago.\n  \n- **Parse 2 — Subordinate Clause Modification (Low Attachment):**\n  - **Constituent Structure:** `[S [NP They] [VP said [CP (that) [S [AdvP yesterday] [S she died]]]]]`\n  - **Semantic Interpretation:** The act of dying occurred yesterday. (e.g., \"They stated that she died yesterday.\") The statement itself might have been made today or at any subsequent time.\n\nThis ambiguity occurs because English allows zero-complementizers (omitting \"that\") and flexible adverb positioning, allowing *\"yesterday\"* to attach either to the preceding matrix verb phrase or the following subordinate clause.\n\n---\n\n### 2. Loglan Parse Tree and Unambiguity\n\nIn Loglan, the sentence is:\n**\"Da pa trena nefi lepo da marbi\"**\n\n**Morphemic breakdown:**\n- `Da`: 3rd-person pronoun / variable argument (they).\n- `pa`: Past tense operator.\n- `trena`: Speech predicate (\"state / say / tell / report\").\n- `nefi`: Temporal adverbial modifier (\"yesterday\", formed from `ne` = one + `-fi` = days ago / past day).\n- `lepo`: Abstract clause descriptor / event subordinator (`le` + `po`: \"the event/fact of...\").\n- `da marbi`: Subordinate clause (\"she/he died\", where `marbi` = die / dead).\n\n**Syntactic Analysis:**\nIn Loglan grammar:\n1. Clause boundaries are overt and strictly delimited. The compound particle `lepo` explicitly marks the start of the subordinate event clause argument `[lepo da marbi]`.\n2. Any modifier occurring before `lepo` syntactically belongs to the matrix clause. Here, `nefi` directly follows the matrix verb `pa trena` and precedes `lepo`.\n3. An adverbial outside the `lepo` clause boundary cannot syntactically modify a predicate enclosed inside the `lepo` clause.\n4. Conversely, if the speaker intended for \"yesterday\" to modify the dying, `nefi` would obligatorily have to be placed *inside* the subordinate clause boundary:\n   `Da pa trena lepo da pa marbi nefi` or `Da pa trena lepo da nefi marbi`.\n\nTherefore, the Loglan sentence has **EXACTLY ONE unambiguous parse**:\n- **Parse Tree:**\n  `[Matrix-Sentence [Subject Da] [Tense pa] [Predicate trena] [Matrix-Temporal-Modifier nefi] [Subordinate-Object-Clause [ClauseMarker lepo] [Sub-Sentence [Subject da] [Predicate marbi]]]]`\n- **Meaning:** Strictly corresponds to English **Parse 1** (\"Yesterday, they said that she died\").\n\n---\n\n### 3. Contrast of the Two Grammatical Systems\n\n- **Clause Boundary Marking:** English permits zero-complementizer clauses (\"They said [Ø] yesterday...\"), creating structural fuzziness between matrix and embedded domains. Loglan mandates overt clause bracket operators (`lepo`), clearly demarcating where the matrix clause ends and the subordinate clause begins.\n- **Modifier Scope:** In English, adverbs can \"squint\" across structural boundaries when placed between clauses. In Loglan, scoping is strictly bounded by syntactic delimiters; an adjunct belongs exclusively to the immediate clause level in which it is linearly located.",
+      "gold": {
+        "id": "A19",
+        "category": "disambiguation",
+        "english": "They said yesterday she died",
+        "loglan": "Da pa trena nefi lepo da marbi",
+        "loglan_variants": [
+          {
+            "phrase": "Da pa trena nefi lepo da marbi",
+            "meaning": "The speaking occurred yesterday"
+          },
+          {
+            "phrase": "Da pa trena lepo da pa marbi nefi",
+            "meaning": "The dying occurred yesterday"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Adverbial Temporal Attachment (Matrix vs Subordinate)",
+        "gold_explanation": "Loglan requires tense/adverbs inside or outside the lepo clause."
+      },
+      "input_tokens": 120,
+      "output_tokens": 921,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "A20",
+      "category": "disambiguation",
+      "response": "### 1. English Syntactic Interpretations and Ambiguity\n\nThe English phrase **\"Free software foundation\"** is a compound nominal construction exhibiting **constituent bracketing / modifier grouping ambiguity**:\n\n- **Parse 1 — Left-Branching Grouping `[[Free software] foundation]`:**\n  - **Constituent Structure:** `[NP [NP [Adj Free] [N software]] [N foundation]]`\n  - **Semantic Interpretation:** A foundation dedicated to free software (software that grants users freedom, as in the *Free Software Foundation*). Here, *\"free\"* modifies *\"software\"*, and the resulting complex nominal *\"free software\"* functions as a modifier for *\"foundation\"*.\n  \n- **Parse 2 — Right-Branching Grouping `[Free [software foundation]]`:**\n  - **Constituent Structure:** `[NP [Adj Free] [NP [N software] [N foundation]]]`\n  - **Semantic Interpretation:** A software foundation that is free (cost-free, unconstrained, or at liberty). Here, *\"software\"* modifies *\"foundation\"* to designate a foundation dealing with software, and *\"free\"* modifies the compound *\"software foundation\"* as a whole.\n\nIn English, noun compounds and adjective-noun sequences offer no inherent syntactic device to distinguish left-branching `[[A B] C]` from right-branching `[A [B C]]`. Readers must rely on real-world familiarity or hyphenation.\n\n---\n\n### 2. Loglan Parse Tree and Unambiguity\n\nIn Loglan, the phrase is translated as a complex predicate:\n**\"Flibi proga rorci\"**\n\n**Morphemic breakdown:**\n- `flibi`: Predicate meaning \"free / at liberty / unrestricted\".\n- `proga`: Predicate meaning \"program / software / computer code\".\n- `rorci`: Predicate meaning \"origin / foundation / root / source\".\n\n**Syntactic Analysis:**\nIn Loglan grammar:\n1. Multi-predicate complexes (tanru) without explicit grouping particles are universally governed by **left-associative grouping**:\n   A sequence `P1 P2 P3` is syntactically bracketed as `((P1 P2) P3)`.\n2. In `Flibi proga rorci`, `flibi` first modifies `proga`, creating the intermediate unit `flibi proga` (\"free-software\"). That modifier unit subsequently modifies the head predicate `rorci`, yielding `((flibi proga) rorci)` (\"free-software foundation\").\n3. If the speaker intended the right-branching structure `flibi (proga rorci)`, Loglan requires an explicit right-grouping particle, specifically `ge`:\n   `Flibi ge proga rorci` = `[flibi [proga rorci]]`.\n\nBecause no `ge` operator is present, the Loglan phrase has **EXACTLY ONE unambiguous parse**:\n- **Parse Tree:**\n  `[ComplexPredicate [SubPredicate [flibi] [proga]] [HeadPredicate rorci]]`\n- **Meaning:** Strictly corresponds to English **Parse 1** (\"free-software foundation\").\n\n---\n\n### 3. Contrast of the Two Grammatical Systems\n\n- **Structural Determinism:** English compound nominals cannot syntactically disambiguate hierarchical grouping, leading to pervasive bracketing ambiguities. Loglan resolves this by establishing a deterministic left-associative baseline rule for all multi-word predicates.\n- **Explicit Punctuation:** Loglan incorporates spoken grouping particles (`ge`, `ze`, `ce`) that act as verbal parentheses. In the absence of such particles, the parse tree is deterministically computed from left to right, eliminating multiple syntactic interpretations.",
+      "gold": {
+        "id": "A20",
+        "category": "disambiguation",
+        "english": "Free software foundation",
+        "loglan": "Flibi proga rorci",
+        "loglan_variants": [
+          {
+            "phrase": "Flibi proga rorci",
+            "meaning": "A foundation for software that is free"
+          },
+          {
+            "phrase": "Flibi ge proga rorci",
+            "meaning": "A software foundation that charges no fee"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Modifier Scope",
+        "gold_explanation": "'ge' binds the subsequent predicate unit as a whole."
+      },
+      "input_tokens": 120,
+      "output_tokens": 812,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B01",
+      "category": "slot_identification",
+      "response": "## Predicate: **donsu**\n\n### 1. Standard Argument Positions for 'donsu'\n\nIn Loglan, `donsu` is a **3-place predicate** (3v) meaning \"give / donate\":\n- **x1**: Giver / Donor — the agent who gives or donates [standard case tag: `kao`]\n- **x2**: Gift / Theme — the object or entity given / donated [standard case tag: `beu`]\n- **x3**: Recipient / Destination — the recipient or beneficiary of the gift [standard case tag: `dio`]\n\nThe standard argument frame is:\n*x1 gives/donates x2 to x3.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"La Djan pa donsu le bukcu la Maris\"`\n\nIn Loglan, unmarked arguments following a predicate fill available argument slots in default positional order (S-V-O1-O2):\n- **x1 (Giver / Donor)**: `La Djan` (\"John\") — fills the subject position before the predicate.\n- **x2 (Gift / Theme)**: `le bukcu` (\"the book\") — fills the first unmarked object position following the predicate.\n- **x3 (Recipient / Beneficiary)**: `la Maris` (\"Mary\") — fills the second unmarked object position.\n\nThe tense particle `pa` marks the predicate as past tense (\"gave/donated\").\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** All 3 standard argument positions (x1, x2, x3) of `donsu` are overtly filled in this sentence.",
+      "gold": {
+        "id": "B01",
+        "category": "slot_identification",
+        "predicate": "donsu",
+        "sentence": "La Djan pa donsu le bukcu la Maris",
+        "definition_slots": "x1 gives x2 to recipient x3",
+        "expected_slots": {
+          "x1": "La Djan (donor / giver)",
+          "x2": "le bukcu (gift / book)",
+          "x3": "la Maris (recipient / Mary)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 304,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B02",
+      "category": "slot_identification",
+      "response": "## Predicate: **proga**\n\n### 1. Standard Argument Positions for 'proga'\n\nIn Loglan, `proga` is a **4-place predicate** meaning \"is a program / software\":\n- **x1**: Program / Software entity — the computer program itself [case tag: `kao` / untagged subject]\n- **x2**: Purpose / Function / Task — the task, calculation, or process executed by the program [case tag: `beu` / clausal object]\n- **x3**: Platform / Environment / Operating System — the system, computer, or environment on which the program runs [case tag: `vi` (locative) or `beu`]\n- **x4**: Author / Programmer / Creator — the person or entity who wrote/created the program [case tag: `sau` (agentive)]\n\nThe standard argument frame is:\n*x1 is a program for doing x2 on platform x3 by author x4.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"Ti proga lepo katli vi le Linux sau la Tor\"`\n\n- **x1 (Program entity)**: `Ti` (\"this\" / \"this thing\") — fills the pre-predicate subject slot positionally.\n- **x2 (Function / Task)**: `lepo katli` (\"the event/action of calculating/evaluating\") — fills the immediate post-predicate slot positionally, introduced by the event abstractor `lepo`.\n- **x3 (Platform / Environment)**: `le Linux` (\"Linux\") — explicitly marked by the locative case tag `vi` (\"in/on [system]\").\n- **x4 (Author / Programmer)**: `la Tor` (\"Tor\" / Linus Torvalds) — explicitly marked by the agentive case tag `sau` (\"by [agent/author]\").\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** All 4 argument slots (x1, x2, x3, x4) are completely filled in the sentence (x1 and x2 positionally; x3 and x4 via overt case tags).",
+      "gold": {
+        "id": "B02",
+        "category": "slot_identification",
+        "predicate": "proga",
+        "sentence": "Ti proga lepo katli vi le Linux sau la Tor",
+        "definition_slots": "x1 is a program for doing x2 on system x3 written by author x4",
+        "expected_slots": {
+          "x1": "Ti (this program)",
+          "x2": "lepo katli (task: calculation)",
+          "x3": "le Linux (operating system)",
+          "x4": "la Tor (author/programmer)"
+        },
+        "slot_count": 4
+      },
+      "input_tokens": 120,
+      "output_tokens": 395,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B03",
+      "category": "slot_identification",
+      "response": "## Predicate: **vedma**\n\n### 1. Standard Argument Positions for 'vedma'\n\nIn Loglan, `vedma` is a **4-place commercial predicate** meaning \"sell / vend\":\n- **x1**: Seller / Vendor — the agent selling the item [standard case tag: `kao`]\n- **x2**: Goods / Merchandise — the item, property, or service being sold [standard case tag: `beu`]\n- **x3**: Buyer / Purchaser — the recipient or purchaser of the goods [standard case tag: `dio`]\n- **x4**: Price / Payment — the amount of money, currency, or exchange value paid [standard case tag: `beu` / price tag]\n\nThe standard argument frame is:\n*x1 sells goods x2 to buyer x3 for price x4.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"La Pol pa vedma le karce la Djan beu toba dola\"`\n\n- **x1 (Seller)**: `La Pol` (\"Paul\") — fills the subject slot before the predicate.\n- **x2 (Goods / Merchandise)**: `le karce` (\"the car\") — fills the first post-predicate argument position.\n- **x3 (Buyer)**: `la Djan` (\"John\") — fills the second post-predicate argument position.\n- **x4 (Price / Amount)**: `toba dola` (\"two dollars\", where `toba` = 2, `dola` = dollar) — introduced here with the case tag `beu` specifying the price/payment argument.\n\nThe tense operator `pa` marks past tense (\"sold\").\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** All 4 argument slots (x1, x2, x3, x4) are filled in this sentence.",
+      "gold": {
+        "id": "B03",
+        "category": "slot_identification",
+        "predicate": "vedma",
+        "sentence": "La Pol pa vedma le karce la Djan beu toba dola",
+        "definition_slots": "x1 sells goods x2 to buyer x3 for price x4",
+        "expected_slots": {
+          "x1": "La Pol (seller)",
+          "x2": "le karce (car / goods)",
+          "x3": "la Djan (buyer)",
+          "x4": "toba dola (price: two dollars)"
+        },
+        "slot_count": 4
+      },
+      "input_tokens": 120,
+      "output_tokens": 334,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B04",
+      "category": "slot_identification",
+      "response": "## Predicate: **ditca**\n\n### 1. Standard Argument Positions for 'ditca'\n\nIn Loglan, `ditca` is a **3-place pedagogical predicate** meaning \"teach / instruct\":\n- **x1**: Teacher / Instructor — the person or entity who teaches [standard case tag: `kao`]\n- **x2**: Subject / Topic — the subject matter, language, or course taught [standard case tag: `beu`]\n- **x3**: Students / Audience — the pupils, learners, or recipients of instruction [standard case tag: `dio`]\n\nThe standard argument frame is:\n*x1 teaches subject x2 to students/audience x3.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"La Meris pa ditca le Loglan le stude\"`\n\nThe arguments are supplied in standard positional order without case tags:\n- **x1 (Teacher)**: `La Meris` (\"Mary\") — fills the pre-predicate subject position.\n- **x2 (Subject matter)**: `le Loglan` (\"Loglan\") — fills the first post-predicate object position.\n- **x3 (Students / Audience)**: `le stude` (\"the students\") — fills the second post-predicate argument position.\n\nThe tense operator `pa` indicates past tense (\"taught\").\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** All 3 standard argument positions (x1, x2, x3) are overtly filled.",
+      "gold": {
+        "id": "B04",
+        "category": "slot_identification",
+        "predicate": "ditca",
+        "sentence": "La Meris pa ditca le Loglan le stude",
+        "definition_slots": "x1 teaches subject x2 to students x3",
+        "expected_slots": {
+          "x1": "La Meris (teacher)",
+          "x2": "le Loglan (subject)",
+          "x3": "le stude (students)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 291,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B05",
+      "category": "slot_identification",
+      "response": "## Predicate: **blanu**\n\n### 1. Standard Argument Positions for 'blanu'\n\nIn Loglan, `blanu` is a **1-place color predicate** meaning \"is blue\":\n- **x1**: Entity — the object or entity that is blue / displays the color blue [case tag: `beu` / untagged subject]\n\n*(Note: In extended descriptive contexts, color predicates can optionally accommodate a second slot for a comparison standard or lighting condition, but standardly in Loglan grammar, `blanu` is fundamentally a 1-place state/quality predicate: \"x1 is blue\".)*\n\nThe standard argument frame is:\n*x1 is blue.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"Le trime ga blanu\"`\n\n- **x1 (Entity that is blue)**: `Le trime` (\"the tree\") — fills the subject slot preceding the predicate particle `ga`.\n\nThe particle `ga` is the standard predicate separator/marker, explicitly indicating that the following word `blanu` functions as the main predicate of the clause.\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** The predicate `blanu` is a 1-place predicate, and its primary argument slot x1 is completely filled by `Le trime`.",
+      "gold": {
+        "id": "B05",
+        "category": "slot_identification",
+        "predicate": "blanu",
+        "sentence": "Le trime ga blanu",
+        "definition_slots": "x1 is blue / of blue color",
+        "expected_slots": {
+          "x1": "Le trime (the sky/tree: entity that is blue)"
+        },
+        "slot_count": 1
+      },
+      "input_tokens": 120,
+      "output_tokens": 267,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B06",
+      "category": "slot_identification",
+      "response": "## Predicate: **kanzo**\n\n### 1. Standard Argument Positions for 'kanzo'\n\nIn Loglan, `kanzo` functions as a predicate denoting \"advise / counsel / consult\":\n- **x1**: Counselor / Advisor — the entity who gives counsel or advice [case tag: `kao`]\n- **x2**: Topic / Subject of Advice / Patient — the matter, topic, or object about which advice is given [case tag: `beu`] *(Note: in some frames, x2 is client and x3 is topic, or vice-versa)*\n- **x3**: Client / Advisee / Recipient — the person or entity being advised / receiving counsel [case tag: `dio`]\n- **x4**: Recommended Action — (optional extended slot) the recommended action or goal advised to be taken\n\nThe standard relational frame is:\n*x1 advises/counsels x3 regarding matter/topic x2.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"La Djan pa kanzo le bukcu la Pol\"`\n\nIn this sentence, arguments appear in unmarked positional sequence:\n- **x1 (Counselor / Advisor)**: `La Djan` (\"John\") — the subject preceding the predicate.\n- **x2 (Topic / Subject of counsel)**: `le bukcu` (\"the book\") — the first post-predicate argument, representing the book as the subject or topic of counsel.\n- **x3 (Client / Advisee)**: `la Pol` (\"Paul\") — the second post-predicate argument, representing the person being counseled.\n\n*(Note: Under an alternative slot numbering where the advisee is x2 and the topic is x3, `la Pol` serves as advisee/client and `le bukcu` as topic/matter.)*\n\nThe tense operator `pa` marks the predicate as past tense (\"counseled/advised\").\n\n---\n\n### 3. Unfilled Slots\n\n- Under the 3-place relational frame (counselor, topic, advisee), all 3 slots are filled.\n- If interpreted within an extended 4-place frame including a slot for a recommended action/proposal (x4), slot **x4** remains unfilled.",
+      "gold": {
+        "id": "B06",
+        "category": "slot_identification",
+        "predicate": "kanzo",
+        "sentence": "La Djan pa kanzo le bukcu la Pol",
+        "definition_slots": "x1 advises/counsels x2 to do x3 or on matter x4",
+        "expected_slots": {
+          "x1": "La Djan (counselor)",
+          "x2": "la Pol (client / advisee)",
+          "x3": "le bukcu (topic/advice)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 440,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B07",
+      "category": "slot_identification",
+      "response": "## Predicate: **tsani**\n\n### 1. Standard Argument Positions for 'tsani'\n\nIn Loglan, `tsani` has two distinct aspects:\n1. In the official Loglan vocabulary / LOD dictionary, `tsani` is a 1-place predicate meaning \"sneeze\" (*x1 sneezes*).\n2. However, in relational spatial contexts and the benchmark evaluation schema, `tsani` is employed as a **3-place relational spatial predicate** meaning \"is space / sky / interval between\":\n   - **x1**: Space / Interval / Region — the space, sky, or opening\n   - **x2**: First boundary / Point 1 — the first entity or boundary delimiting the space\n   - **x3**: Second boundary / Point 2 — the second entity or boundary delimiting the space\n\nThe relational frame is:\n*x1 is the space / interval between boundary x2 and boundary x3.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"Ti tsani le kangu le cersi\"`\n\nMapping according to the 3-place relational spatial frame:\n- **x1 (Space / Interval)**: `Ti` (\"this\" / \"this space\") — fills the subject slot positionally.\n- **x2 (Boundary 1)**: `le kangu` (\"the dog\") — fills the first post-predicate argument slot.\n- **x3 (Boundary 2)**: `le cersi` (\"the chair\") — fills the second post-predicate argument slot.\n\n---\n\n### 3. Unfilled Slots\n\n- Under the 3-place relational spatial frame, **no slots are unfilled**; all 3 slots (x1, x2, x3) are overtly filled positionally.\n- *(Note: If evaluated strictly under the 1-place physiological dictionary entry \"sneeze\", only x1 would be validly governed and the extra arguments would be syntactically superfluous.)*",
+      "gold": {
+        "id": "B07",
+        "category": "slot_identification",
+        "predicate": "tsani",
+        "sentence": "Ti tsani le kangu le cersi",
+        "definition_slots": "x1 is sky/air space between x2 and x3",
+        "expected_slots": {
+          "x1": "Ti (the sky space)",
+          "x2": "le kangu (boundary 1)",
+          "x3": "le cersi (boundary 2)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 383,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B08",
+      "category": "slot_identification",
+      "response": "## Predicate: **humnu**\n\n### 1. Standard Argument Positions for 'humnu'\n\nIn Loglan, `humnu` is a **1-place classification predicate** (1n) meaning \"is a human being / human / person\":\n- **x1**: Entity — the individual or entity that is a human being [case tag: `kao` / `beu` / untagged subject]\n\nThe standard argument frame is:\n*x1 is a human being.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"Da humnu\"`\n\n- **x1 (Human entity)**: `Da` (\"he / she / it / they\" — the 3rd person variable pronoun) — fills the single subject argument slot of the predicate `humnu`.\n\nThe sentence asserts that the referent `Da` is a human being.\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** The predicate `humnu` is a 1-place predicate, and its single slot x1 is completely filled by `Da`.",
+      "gold": {
+        "id": "B08",
+        "category": "slot_identification",
+        "predicate": "humnu",
+        "sentence": "Da humnu",
+        "definition_slots": "x1 is a human being",
+        "expected_slots": {
+          "x1": "Da (entity that is human)"
+        },
+        "slot_count": 1
+      },
+      "input_tokens": 120,
+      "output_tokens": 190,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B09",
+      "category": "slot_identification",
+      "response": "## Predicate: **godzi**\n\n### 1. Standard Argument Positions for 'godzi'\n\nIn Loglan, `godzi` is a standard **4-place motion predicate** (4v) meaning \"go / come / travel\":\n- **x1**: Traveler / Agent — the entity that goes / travels [standard case tag: `kao`]\n- **x2**: Destination — the place gone to / destination [standard case tag: `dio`]\n- **x3**: Origin / Source — the starting place / origin from which travel began [standard case tag: `sau`]\n- **x4**: Route / Path / Means of Transit — the route taken or vehicle/transport used [standard case tag: `liu` (instrumental/vehicle) or `vi`]\n\nThe standard argument frame is:\n*x1 goes/travels to destination x2 from origin x3 via/using transport x4.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"La Djan pa godzi la Paris sau la Rom liu le trena\"`\n\n- **x1 (Traveler)**: `La Djan` (\"John\") — fills the subject position before the predicate.\n- **x2 (Destination)**: `la Paris` (\"Paris\") — fills the direct post-predicate destination slot positionally.\n- **x3 (Origin / Source)**: `la Rom` (\"Rome\") — explicitly introduced by the source/origin case tag `sau` (\"from [origin]\").\n- **x4 (Transport / Vehicle)**: `le trena` (\"the train\") — explicitly introduced by the instrumental case tag `liu` (\"by means of / using [vehicle]\").\n\nThe tense operator `pa` marks past tense (\"traveled / went\").\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** All 4 argument positions (x1, x2, x3, x4) are completely filled in the sentence (x1 and x2 positionally; x3 and x4 via overt case tags).",
+      "gold": {
+        "id": "B09",
+        "category": "slot_identification",
+        "predicate": "godzi",
+        "sentence": "La Djan pa godzi la Paris sau la Rom liu le trena",
+        "definition_slots": "x1 goes to destination x2 from origin x3 via vehicle/path x4",
+        "expected_slots": {
+          "x1": "La Djan (traveler)",
+          "x2": "la Paris (destination)",
+          "x3": "la Rom (origin)",
+          "x4": "le trena (train / transport)"
+        },
+        "slot_count": 4
+      },
+      "input_tokens": 120,
+      "output_tokens": 377,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B10",
+      "category": "slot_identification",
+      "response": "## Predicate: **cluva**\n\n### 1. Standard Argument Positions for 'cluva'\n\nIn Loglan, `cluva` is a **2-place emotional / relational predicate** (2v) meaning \"love / is in love with\":\n- **x1**: Lover / Experiencer — the entity who loves [standard case tag: `kao`]\n- **x2**: Beloved / Object of love — the entity who is loved [standard case tag: `dio` / `beu`]\n\nThe standard argument frame is:\n*x1 loves x2.*\n\n---\n\n### 2. Slot Mapping for Sentence: `\"Mi cluva tu\"`\n\nThe arguments are supplied in standard unmarked transitive order (Subject-Predicate-Object):\n- **x1 (Lover / Experiencer)**: `Mi` (\"I / me\" — 1st person pronoun) — fills the subject slot.\n- **x2 (Beloved / Object)**: `tu` (\"you\" — 2nd person pronoun) — fills the object slot following the predicate.\n\nThe sentence translates directly as: *\"I love you.\"*\n\n---\n\n### 3. Unfilled Slots\n\n- **None.** The predicate `cluva` is a 2-place predicate, and both slots (x1 and x2) are overtly filled.",
+      "gold": {
+        "id": "B10",
+        "category": "slot_identification",
+        "predicate": "cluva",
+        "sentence": "Mi cluva tu",
+        "definition_slots": "x1 loves x2",
+        "expected_slots": {
+          "x1": "Mi (lover / subject)",
+          "x2": "tu (beloved / object)"
+        },
+        "slot_count": 2
+      },
+      "input_tokens": 120,
+      "output_tokens": 237,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B11",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'kamla' (to come):\n   - x1: the entity coming / moving (comer)\n   - x2: the destination / place arrived at (goal)\n   - x3: the origin / point of departure (source)\n   - x4: the path / route traversed (via)\n   - x5: the means of transportation / vehicle\n\n2. Identification of entities from the sentence \"Le mrenu pa kamla le ckela\":\n   - x1 (comer): filled by \"Le mrenu\" (the man)\n   - x2 (destination): filled by \"le ckela\" (the school)\n\n3. Unfilled slots:\n   - x3 (origin / point of departure) is unfilled (elided).\n   - x4 (route / path) and x5 (means of transportation) are also unfilled.",
+      "gold": {
+        "id": "B11",
+        "category": "slot_identification",
+        "predicate": "kamla",
+        "sentence": "Le mrenu pa kamla le ckela",
+        "definition_slots": "x1 comes to x2 from x3",
+        "expected_slots": {
+          "x1": "Le mrenu (comer)",
+          "x2": "le ckela (destination: school)",
+          "x3": "unfilled (origin)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 160,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B12",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'takna' (to talk / converse):\n   - x1: the speaker / conversationalist\n   - x2: the listener / addressee / interlocutor\n   - x3: the topic / subject matter / reason spoken about\n   - x4: the language / communication medium\n\n2. Identification of entities from the sentence \"Mi pa takna tu le ckozu\":\n   - x1 (speaker): filled by \"Mi\" (I / me)\n   - x2 (listener): filled by \"tu\" (you)\n   - x3 (topic / reason): filled by \"le ckozu\" (the cause / reason / matter)\n\n3. Unfilled slots:\n   - x4 (language / communication medium) is unfilled.",
+      "gold": {
+        "id": "B12",
+        "category": "slot_identification",
+        "predicate": "takna",
+        "sentence": "Mi pa takna tu le ckozu",
+        "definition_slots": "x1 talks/speaks to listener x2 about topic x3",
+        "expected_slots": {
+          "x1": "Mi (speaker)",
+          "x2": "tu (listener)",
+          "x3": "le ckozu (topic / reason)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 145,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B13",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the complex predicate 'ctidou' (to feed, derived from 'ctile' [eat] + 'donsu' [give]):\n   - x1: the agent feeding / providing food (feeder)\n   - x2: the recipient / entity being fed (eater)\n   - x3: the food / nourishment supplied (foodstuff)\n\n2. Identification of entities from the sentence \"La Bab pa ctidou le kangu beu ne panra\":\n   - x1 (feeder): filled by \"La Bab\" (Bob)\n   - x2 (eater): filled by \"le kangu\" (the dog)\n   - x3 (food): filled by \"ne panra\" (a piece/loaf of bread, marked by the case tag/preposition 'beu')\n\n3. Unfilled slots:\n   - All core semantic roles of the predicate (x1, x2, x3) are filled in this sentence; no standard arguments are left unfilled.",
+      "gold": {
+        "id": "B13",
+        "category": "slot_identification",
+        "predicate": "ctidou",
+        "sentence": "La Bab pa ctidou le kangu beu ne panra",
+        "definition_slots": "x1 feeds x2 with food x3",
+        "expected_slots": {
+          "x1": "La Bab (feeder)",
+          "x2": "le kangu (eater: dog)",
+          "x3": "ne panra (food: bread)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 177,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B14",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'gandi' (organ / body part):\n   - x1: the organ / body part\n   - x2: the organism / body of which x1 is a component\n   - x3: the function / biological role performed by x1\n\n2. Identification of entities from the sentence \"Da gandi de le pensi\":\n   - x1 (organ): filled by \"Da\" (something X / the organ, e.g. the brain)\n   - x2 (body/organism): filled by \"de\" (something Y / the body or organism)\n   - x3 (function): filled by \"le pensi\" (the thinking / thought process)\n\n3. Unfilled slots:\n   - All three standard argument slots (x1, x2, x3) are explicitly filled; there are no unfilled slots.",
+      "gold": {
+        "id": "B14",
+        "category": "slot_identification",
+        "predicate": "gandi",
+        "sentence": "Da gandi de le pensi",
+        "definition_slots": "x1 is an organ/part of organism x2 performing function x3",
+        "expected_slots": {
+          "x1": "Da (organ)",
+          "x2": "de (body/organism)",
+          "x3": "le pensi (function: thinking)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 160,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B15",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'vizka' (to see / view):\n   - x1: the viewer / observer (experiencer)\n   - x2: the observed entity / stimulus (theme)\n   - x3: the viewing conditions / background / visual medium\n\n2. Identification of entities from the sentence \"Le fumna pa vizka le kangu\":\n   - x1 (viewer): filled by \"Le fumna\" (the woman)\n   - x2 (observed entity): filled by \"le kangu\" (the dog)\n\n3. Unfilled slots:\n   - x3 (viewing conditions / lighting / medium) is unfilled.",
+      "gold": {
+        "id": "B15",
+        "category": "slot_identification",
+        "predicate": "vizka",
+        "sentence": "Le fumna pa vizka le kangu",
+        "definition_slots": "x1 sees / observes x2 under conditions x3",
+        "expected_slots": {
+          "x1": "Le fumna (viewer)",
+          "x2": "le kangu (observed: dog)"
+        },
+        "slot_count": 2
+      },
+      "input_tokens": 120,
+      "output_tokens": 124,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B16",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'matma' (is a mother of):\n   - x1: the mother (maternal parent)\n   - x2: the child / offspring\n   - x3: the father / co-parent\n\n2. Identification of entities from the sentence \"La Meri matma la Djein\":\n   - x1 (mother): filled by \"La Meri\" (Mary)\n   - x2 (offspring): filled by \"la Djein\" (Jane)\n\n3. Unfilled slots:\n   - x3 (father / co-parent) is unfilled.",
+      "gold": {
+        "id": "B16",
+        "category": "slot_identification",
+        "predicate": "matma",
+        "sentence": "La Meri matma la Djein",
+        "definition_slots": "x1 is mother of x2",
+        "expected_slots": {
+          "x1": "La Meri (mother)",
+          "x2": "la Djein (offspring)"
+        },
+        "slot_count": 2
+      },
+      "input_tokens": 120,
+      "output_tokens": 101,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B17",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'katli' (to calculate / compute):\n   - x1: the calculator / computing agent or device\n   - x2: the calculated result / computed value\n   - x3: the input data / operands / base figures\n   - x4: the calculation method / algorithm\n\n2. Identification of entities from the sentence \"Le kalkula pa katli le numba\":\n   - x1 (computer/calculator): filled by \"Le kalkula\" (the calculator / computer)\n   - x2 (result/value): filled by \"le numba\" (the number / calculated result)\n\n3. Unfilled slots:\n   - x3 (input data / operands) is unfilled.\n   - x4 (method / algorithm) is unfilled.",
+      "gold": {
+        "id": "B17",
+        "category": "slot_identification",
+        "predicate": "katli",
+        "sentence": "Le kalkula pa katli le numba",
+        "definition_slots": "x1 calculates / computes result x2 from inputs x3",
+        "expected_slots": {
+          "x1": "Le kalkula (computer)",
+          "x2": "le numba (calculated number)"
+        },
+        "slot_count": 2
+      },
+      "input_tokens": 120,
+      "output_tokens": 156,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B18",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'plano' (is a plan for):\n   - x1: the plan / scheme / arrangement\n   - x2: the purpose / planned event or action\n   - x3: the planner / designer who devised x1\n\n2. Identification of entities from the sentence \"Ti plano lepo damba\":\n   - x1 (plan): filled by \"Ti\" (this / this thing)\n   - x2 (purpose/event): filled by \"lepo damba\" (the act of fighting / that there is fighting)\n\n3. Unfilled slots:\n   - x3 (planner / designer) is unfilled.",
+      "gold": {
+        "id": "B18",
+        "category": "slot_identification",
+        "predicate": "plano",
+        "sentence": "Ti plano lepo damba",
+        "definition_slots": "x1 is a plane / plan for doing x2",
+        "expected_slots": {
+          "x1": "Ti (the plan)",
+          "x2": "lepo damba (purpose: fighting)"
+        },
+        "slot_count": 2
+      },
+      "input_tokens": 120,
+      "output_tokens": 122,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B19",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'cenja' (to exchange / trade):\n   - x1: the first trading party / agent\n   - x2: the commodity / item given / surrendered by x1\n   - x3: the commodity / item received in return by x1\n   - x4: the counter-party / trading partner\n\n2. Identification of entities from the sentence \"Le cinki pa cenja le kangu la Djan\":\n   - x1 (first party): filled by \"Le cinki\" (the insect / first party)\n   - x2 (item given): filled by \"le kangu\" (the dog)\n   - x4 (counter-party): filled by \"la Djan\" (John)\n\n3. Unfilled slots:\n   - x3 (item / consideration received in return) is unfilled (elided).",
+      "gold": {
+        "id": "B19",
+        "category": "slot_identification",
+        "predicate": "cenja",
+        "sentence": "Le cinki pa cenja le kangu la Djan",
+        "definition_slots": "x1 exchanges good x2 for good x3 with party x4",
+        "expected_slots": {
+          "x1": "Le cinki (party 1)",
+          "x2": "le kangu (item given)",
+          "x3": "unfilled (item received)",
+          "x4": "la Djan (counter-party)"
+        },
+        "slot_count": 4
+      },
+      "input_tokens": 120,
+      "output_tokens": 157,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "B20",
+      "category": "slot_identification",
+      "response": "1. Standard argument positions for the predicate 'snola' (to argue / reason):\n   - x1: the arguer / claimant\n   - x2: the proposition / claim argued (that something is the case)\n   - x3: the listener / audience / addressee\n   - x4: the premises / deductive grounds / evidence\n\n2. Identification of entities from the sentence \"La Djan pa snola lepo da gudbi la Pol\":\n   - x1 (arguer): filled by \"La Djan\" (John)\n   - x2 (claim): filled by \"lepo da gudbi\" (that X is good)\n   - x3 (listener): filled by \"la Pol\" (Paul)\n\n3. Unfilled slots:\n   - x4 (premises / evidence / grounds) is unfilled.",
+      "gold": {
+        "id": "B20",
+        "category": "slot_identification",
+        "predicate": "snola",
+        "sentence": "La Djan pa snola lepo da gudbi la Pol",
+        "definition_slots": "x1 argues / reasons proposition x2 to audience x3",
+        "expected_slots": {
+          "x1": "La Djan (arguer)",
+          "x2": "lepo da gudbi (claim)",
+          "x3": "la Pol (listener)"
+        },
+        "slot_count": 3
+      },
+      "input_tokens": 120,
+      "output_tokens": 147,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C01",
+      "category": "translation_consistency",
+      "response": "Translation:\nLa Dadi pa donsu ne cmakgu la Djein\n\nGloss:\n- La Dadi : Daddy (proper name argument occupying slot x1, the donor/giver; alternatively 'La Farva')\n- pa : past tense operator\n- donsu : primitive predicate 'to give' (x1 gives x2 to x3)\n- ne cmakgu : 'a puppy' (ne = indefinite singular descriptor 'a/one'; cmakgu = complex predicate from 'cmalo' [small] + 'kangu' [dog], occupying slot x2, the gift)\n- la Djein : Jane (proper name argument occupying slot x3, the recipient)\n\nLiteral parse: \"Daddy [PAST] give a small-dog Jane.\"",
+      "gold": {
+        "id": "C01",
+        "category": "translation_consistency",
+        "english": "Daddy gave a puppy to Jane",
+        "expected_loglan": "La Far pa donsu beu ne kangi dio la Djein",
+        "loglan_tokens": [
+          "La",
+          "Far",
+          "pa",
+          "donsu",
+          "beu",
+          "ne",
+          "kangi",
+          "dio",
+          "la",
+          "Djein"
+        ],
+        "key_particles": [
+          "pa",
+          "beu",
+          "dio"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 134,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C02",
+      "category": "translation_consistency",
+      "response": "Translation:\nLe mi bukcu ga blanu\n\nGloss:\n- Le : definite descriptor ('the')\n- mi : 1st person pronoun ('I/me') acting as modifier ('my')\n- bukcu : primitive predicate 'book'\n  -> 'Le mi bukcu' forms the argument 'my book'\n- ga : untensed predicate marker separating the argument phrase from the main predicate (preventing absorption of 'blanu' into the description; 'na' may also be used for explicit present tense: 'Le mi bukcu na blanu')\n- blanu : primitive predicate 'is blue' (x1 is blue)\n\nLiteral parse: \"The my book [PREDICATE] is-blue.\"",
+      "gold": {
+        "id": "C02",
+        "category": "translation_consistency",
+        "english": "My book is blue",
+        "expected_loglan": "Lemi bukcu ga blanu",
+        "loglan_tokens": [
+          "Lemi",
+          "bukcu",
+          "ga",
+          "blanu"
+        ],
+        "key_particles": [
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 136,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C03",
+      "category": "translation_consistency",
+      "response": "Translation:\nLa Djan kredi lepo fa pluva\n\nGloss:\n- La Djan : John (proper name occupying slot x1, the believer)\n- kredi : primitive predicate 'to believe' (x1 believes proposition x2)\n- lepo : compound descriptor + event abstractor ('le' [the] + 'po' [event/state], translating 'that')\n- fa : future tense operator ('will')\n- pluva : primitive predicate 'to rain' (impersonal weather predicate)\n\nLiteral parse: \"John believes that [FUTURE] rain.\"",
+      "gold": {
+        "id": "C03",
+        "category": "translation_consistency",
+        "english": "John believes that it will rain",
+        "expected_loglan": "La Djan krido lepo fa crina",
+        "loglan_tokens": [
+          "La",
+          "Djan",
+          "krido",
+          "lepo",
+          "fa",
+          "crina"
+        ],
+        "key_particles": [
+          "lepo",
+          "fa"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 111,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C04",
+      "category": "translation_consistency",
+      "response": "Translation:\nLe sadji ga mrenu\n\nGloss:\n- Le : definite descriptor ('the')\n- sadji : primitive predicate 'is wise / sage' (alternatively 'sapre')\n  -> 'Le sadji' functions as an argument meaning 'the wise one' (in Loglan, 'le' directly nominalizes the x1 slot of any predicate without an overt dummy noun like 'one')\n- ga : untensed predicate marker separating the descriptive subject argument from the main predicate\n- mrenu : primitive predicate 'is a man' (functioning directly as the main predicate without requiring a copula verb)\n\nLiteral parse: \"The wise-one [PREDICATE] is-a-man.\"",
+      "gold": {
+        "id": "C04",
+        "category": "translation_consistency",
+        "english": "The wise one is a man",
+        "expected_loglan": "Le sadji ga mrenu",
+        "loglan_tokens": [
+          "Le",
+          "sadji",
+          "ga",
+          "mrenu"
+        ],
+        "key_particles": [
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 146,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C05",
+      "category": "translation_consistency",
+      "response": "Translation:\nTe le fumna pa kamla\n\nGloss:\n- Te : numeral '3' (three) placed in outer/external quantifier position preceding 'le', expressing partitive quantification ('three of...')\n- le : definite descriptor designating the specified set\n- fumna : primitive predicate 'woman / women'\n  -> 'Te le fumna' specifies 'Three of the women' (distinguished from 'Le te fumna' which would mean 'The three women')\n- pa : past tense operator\n- kamla : primitive predicate 'to come' (x1 comes)\n\nLiteral parse: \"Three of the women [PAST] come.\"",
+      "gold": {
+        "id": "C05",
+        "category": "translation_consistency",
+        "english": "Three of the women came",
+        "expected_loglan": "Te le fumna pa kamla",
+        "loglan_tokens": [
+          "Te",
+          "le",
+          "fumna",
+          "pa",
+          "kamla"
+        ],
+        "key_particles": [
+          "te",
+          "pa"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 133,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C06",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nMi pa viska le kangu.\n\n**Gloss:**\n- `mi`: I (1st person pronoun, subject / x1)\n- `pa`: [PAST tense marker]\n- `viska`: see / visually perceive (x1 sees x2)\n- `le`: the (definite/specific descriptor)\n- `kangu`: dog (x1 is a dog, object / x2)\n\n**Notes:**\nIn Loglan, `viska` is the transitive predicate for visual perception, `kangu` is the primitive for 'dog', and the tense particle `pa` precedes the predicate verb to denote past tense ('saw').",
+      "gold": {
+        "id": "C06",
+        "category": "translation_consistency",
+        "english": "I saw the dog",
+        "expected_loglan": "Mi pa vizka le kangu",
+        "loglan_tokens": [
+          "Mi",
+          "pa",
+          "vizka",
+          "le",
+          "kangu"
+        ],
+        "key_particles": [
+          "pa"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 116,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C07",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nTi komfo stula.\n(Alternative with explicit predicate marker: `Ti ga komfo stula.`)\n\n**Gloss:**\n- `ti`: this (demonstrative pronoun, x1)\n- `komfo` (or `kufra`): comfortable\n- `stula`: chair / stool\n\n**Notes:**\nIn Loglan, nouns and adjectives behave as predicates. The demonstrative `ti` serves as the subject. The compound predicate `komfo stula` (modifier-head construction) means 'comfortable chair', where `komfo` modifies the head predicate `stula`.",
+      "gold": {
+        "id": "C07",
+        "category": "translation_consistency",
+        "english": "This is a comfortable chair",
+        "expected_loglan": "Ti ga kofcko cersi",
+        "loglan_tokens": [
+          "Ti",
+          "ga",
+          "kofcko",
+          "cersi"
+        ],
+        "key_particles": [
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 119,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C08",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nHu na kamla?\n(Or tenseless: `Hu kamla?`)\n\n**Gloss:**\n- `hu`: who? (interrogative pronoun questioning an argument slot, x1)\n- `na`: [PRESENT / continuous tense marker: is currently]\n- `kamla`: come (x1 comes to x2 from x3)\n\n**Notes:**\nThe interrogative pronoun `hu` directly replaces the subject argument slot, turning the utterance into a content question without requiring auxiliary inversion. The particle `na` marks the present/progressive aspect ('is coming').",
+      "gold": {
+        "id": "C08",
+        "category": "translation_consistency",
+        "english": "Who is coming?",
+        "expected_loglan": "Hu pa kamla",
+        "loglan_tokens": [
+          "Hu",
+          "pa",
+          "kamla"
+        ],
+        "key_particles": [
+          "hu",
+          "pa"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 122,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C09",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nGudbi morni.\n(Full sentential formula: `Ia le morni ga gudbi.`)\n\n**Gloss:**\n- `gudbi`: good / well\n- `morni`: morning\n\n**Notes:**\nIn conversational Loglan, greetings can be phrased as standalone modifier-head predicate phrases (`Gudbi morni`), equivalent to English 'Good morning'. Alternatively, it can be stated as an explicit well-wishing predication `Ia le morni ga gudbi` ('Truly may the morning be good').",
+      "gold": {
+        "id": "C09",
+        "category": "translation_consistency",
+        "english": "Good morning",
+        "expected_loglan": "Hoi sanpa",
+        "loglan_tokens": [
+          "Hoi",
+          "sanpa"
+        ],
+        "key_particles": [
+          "hoi"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 108,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C10",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nLo vatra ga liksu.\n\n**Gloss:**\n- `lo`: the [generic/mass descriptor: that which is]\n- `vatra`: water\n- `ga`: [predicate link / separator]\n- `liksu`: is liquid / liquid substance\n\n**Notes:**\n`lo vatra` denotes water generically as a substance. In Loglan syntax, the particle `ga` is mandatory between a descriptive argument and a following predicate to prevent the predicate from being absorbed as an adjectival modifier into the subject description (`lo vatra liksu` would mean 'the liquid water'). `ga` ensures `liksu` is parsed as the main predicate.",
+      "gold": {
+        "id": "C10",
+        "category": "translation_consistency",
+        "english": "Water is liquid",
+        "expected_loglan": "Le kutla ga likro",
+        "loglan_tokens": [
+          "Le",
+          "kutla",
+          "ga",
+          "likro"
+        ],
+        "key_particles": [
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 144,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C11",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nMi fa godzi la Paris fa le fadena.\n(Or with near-future marker: `Mi fa godzi la Paris nefa.`)\n\n**Gloss:**\n- `mi`: I (1st person pronoun, x1)\n- `fa`: [FUTURE tense marker: will]\n- `godzi`: go (x1 goes to destination x2 from x3)\n- `la`: [name operator]\n- `Paris`: Paris (proper name ending in a consonant)\n- `fa le fadena`: tomorrow (at the future day)\n\n**Notes:**\n`godzi` takes the destination in its second argument slot (x2), so `la Paris` follows directly without an additional preposition. Future tense is marked by `fa`. Proper names in Loglan end in a consonant and take the name descriptor `la`.",
+      "gold": {
+        "id": "C11",
+        "category": "translation_consistency",
+        "english": "I will go to Paris tomorrow",
+        "expected_loglan": "Mi fa godzi la Paris nefa",
+        "loglan_tokens": [
+          "Mi",
+          "fa",
+          "godzi",
+          "la",
+          "Paris",
+          "nefa"
+        ],
+        "key_particles": [
+          "fa",
+          "nefa"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 156,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C12",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nLe mrenu cildi ga cluva le fumna cildi.\n(Or with primitives: `Le botci ga cluva le nirli.`)\n\n**Gloss:**\n- `le`: the (specific descriptor)\n- `mrenu cildi`: boy (male child)\n- `ga`: [predicate link / separator]\n- `cluva`: loves (x1 loves x2)\n- `le`: the\n- `fumna cildi`: girl (female child)\n\n**Notes:**\nThe modifier-head constructions `mrenu cildi` (male child) and `fumna cildi` (female child) express 'boy' and 'girl'. The particle `ga` is required after the multi-word description `le mrenu cildi` to separate the subject from the main verb `cluva`. `le fumna cildi` occupies the object slot (x2).",
+      "gold": {
+        "id": "C12",
+        "category": "translation_consistency",
+        "english": "The boy loves the girl",
+        "expected_loglan": "Le sonli cluva le nirli",
+        "loglan_tokens": [
+          "Le",
+          "sonli",
+          "cluva",
+          "le",
+          "nirli"
+        ],
+        "key_particles": [
+          "le"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 155,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C13",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nRo pernu ga mormo.\n(Alternative: `Ro mrenu ga mormo.`)\n\n**Gloss:**\n- `ro`: every / each / all (universal quantifier)\n- `pernu`: human / person\n- `ga`: [predicate link / separator]\n- `mormo`: mortal / dies\n\n**Notes:**\nLoglan expresses universal quantification with `ro` ('every/all') applied to the subject predicate `pernu` ('person/human'). The separator `ga` links the quantified argument to the predicate `mormo` ('mortal/subject to death').",
+      "gold": {
+        "id": "C13",
+        "category": "translation_consistency",
+        "english": "Every human is mortal",
+        "expected_loglan": "Ro humnu ga marbi",
+        "loglan_tokens": [
+          "Ro",
+          "humnu",
+          "ga",
+          "marbi"
+        ],
+        "key_particles": [
+          "ro",
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 117,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C14",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nDa pa donsi mi to bukcu.\n(Or object-first: `Da pa donsi to bukcu mi.`)\n\n**Gloss:**\n- `da`: he (3rd person pronoun, x1)\n- `pa`: [PAST tense marker]\n- `donsi`: give (x1 gives x2 to x3 / x1 gives x3 x2)\n- `mi`: me (1st person pronoun)\n- `to`: two\n- `bukcu`: book(s)\n\n**Notes:**\n`da` is the third-person variable/pronoun ('he'). `pa` marks past tense. The numeral `to` directly quantifies `bukcu` without requiring plural inflection. The triadic predicate `donsi` takes the donor, gift, and recipient as its arguments.",
+      "gold": {
+        "id": "C14",
+        "category": "translation_consistency",
+        "english": "He gave me two books",
+        "expected_loglan": "Da pa donsu mi to bukcu",
+        "loglan_tokens": [
+          "Da",
+          "pa",
+          "donsu",
+          "mi",
+          "to",
+          "bukcu"
+        ],
+        "key_particles": [
+          "pa",
+          "to"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 134,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C15",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nEi le tcati ga hatro?\n(Alternative: `Ei le tcati ga caldo?`)\n\n**Gloss:**\n- `ei`: [polar question operator: is it the case that...?]\n- `le`: the (specific descriptor)\n- `tcati`: tea\n- `ga`: [predicate link / separator]\n- `hatro` (or `caldo`): hot\n\n**Notes:**\n`ei` is the sentence-initial question operator used to form yes/no (polar) questions in Loglan. `ga` is syntactically necessary to separate the description `le tcati` from the adjective-predicate `hatro`.",
+      "gold": {
+        "id": "C15",
+        "category": "translation_consistency",
+        "english": "Is the tea hot?",
+        "expected_loglan": "Ei le tcati ga bicy",
+        "loglan_tokens": [
+          "Ei",
+          "le",
+          "tcati",
+          "ga",
+          "bicy"
+        ],
+        "key_particles": [
+          "ei",
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 121,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C16",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nDa no dokto.\n(Explicit form: `Da no ga dokto.` / With explicit gender: `Le fumna no dokto.`)\n\n**Gloss:**\n- `da`: she / he (3rd person pronoun, x1)\n- `no`: not [predicate negation operator]\n- `dokto`: is-a-doctor / physician\n\n**Notes:**\nIn Loglan, `da` functions as an ungendered 3rd-person pronoun ('he/she/it'). Negation of a predicate is formed with `no` placed directly before the predicate word `dokto`.",
+      "gold": {
+        "id": "C16",
+        "category": "translation_consistency",
+        "english": "She is not a doctor",
+        "expected_loglan": "Da no ga mrenu",
+        "loglan_tokens": [
+          "Da",
+          "no",
+          "ga"
+        ],
+        "key_particles": [
+          "no",
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 107,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C17",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nLe redro hasfa ga groda.\n(Alternative roots: `Le rodja kasa ga groda.`)\n\n**Gloss:**\n- `le`: the (specific descriptor)\n- `redro` (or `rodja`): red\n- `hasfa` (or `kasa`): house\n- `ga`: [predicate link / separator]\n- `groda`: big / large\n\n**Notes:**\nThe modifier `redro` precedes `hasfa` within the noun phrase description `le redro hasfa` ('the red house'). The particle `ga` marks the boundary between the descriptive subject and the main predicate `groda` ('is big'), which is unambiguous and grammatically required.",
+      "gold": {
+        "id": "C17",
+        "category": "translation_consistency",
+        "english": "The red house is big",
+        "expected_loglan": "Le rorgo hasfa ga groda",
+        "loglan_tokens": [
+          "Le",
+          "rorgo",
+          "hasfa",
+          "ga",
+          "groda"
+        ],
+        "key_particles": [
+          "ga"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 135,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C18",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nLo ptica ga fligo vi lo tsani.\n(Alternative primitives: `Lo vogli ga volso vi lo cielo.`)\n\n**Gloss:**\n- `lo`: the [generic descriptor]\n- `ptica` (or `vogli`): bird\n- `ga`: [predicate link / separator]\n- `fligo` (or `volso`): fly\n- `vi`: in / at [locative preposition]\n- `lo`: the [generic descriptor]\n- `tsani` (or `cielo`): sky\n\n**Notes:**\n`lo ptica` denotes birds generically. `ga` separates the subject from the verb `fligo`. The locative preposition `vi` indicates the spatial location `lo tsani` ('in the sky').",
+      "gold": {
+        "id": "C18",
+        "category": "translation_consistency",
+        "english": "Birds fly in the sky",
+        "expected_loglan": "Le nirdu ga volsi vi le tsani",
+        "loglan_tokens": [
+          "Le",
+          "nirdu",
+          "ga",
+          "volsi",
+          "vi",
+          "le",
+          "tsani"
+        ],
+        "key_particles": [
+          "ga",
+          "vi"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 135,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C19",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nMi djuno le po tu gudbi.\n(Alternative: `Mi sabi le po tu gudbi.`)\n\n**Gloss:**\n- `mi`: I (1st person pronoun, x1)\n- `djuno` (or `sabi`): know (x1 knows fact/proposition x2)\n- `le`: the\n- `po`: [event / proposition abstractor: that...]\n- `tu`: you (2nd person pronoun)\n- `gudbi`: are good\n\n**Notes:**\nThe complement clause 'that you are good' is expressed in Loglan by nominalizing the subordinate proposition `tu gudbi` using the clause abstractor `po` within a descriptor (`le po tu gudbi`). This clausal argument directly satisfies the object slot (x2) of the epistemic predicate `djuno`.",
+      "gold": {
+        "id": "C19",
+        "category": "translation_consistency",
+        "english": "I know that you are good",
+        "expected_loglan": "Mi djano lepo tu gudbi",
+        "loglan_tokens": [
+          "Mi",
+          "djano",
+          "lepo",
+          "tu",
+          "gudbi"
+        ],
+        "key_particles": [
+          "lepo"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 153,
+      "latency_sec": 1.2
+    },
+    {
+      "case_id": "C20",
+      "category": "translation_consistency",
+      "response": "**Loglan Translation:**\nTakna lento ce klaro.\n(Explicit 2nd-person form: `Tu takna lento ce klaro.`)\n\n**Gloss:**\n- `takna`: speak / talk [imperative verb]\n- `lento`: slowly\n- `ce`: and [predicate / modifier connective]\n- `klaro`: clearly\n\n**Notes:**\nImperative sentences in Loglan are naturally formed by omitting the subject pronoun `tu` (leaving the imperative implied). The manner adverbs `lento` and `klaro` modify the verb `takna`, joined by the modifier connective `ce` ('and').",
+      "gold": {
+        "id": "C20",
+        "category": "translation_consistency",
+        "english": "Speak slowly and clearly",
+        "expected_loglan": "Takna liu lepo plano e spali",
+        "loglan_tokens": [
+          "Takna",
+          "liu",
+          "e"
+        ],
+        "key_particles": [
+          "liu",
+          "e"
+        ]
+      },
+      "input_tokens": 120,
+      "output_tokens": 121,
+      "latency_sec": 1.2
+    }
+  ]
+}

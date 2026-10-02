@@ -131,7 +131,7 @@ However, when parsing the Loglan expressions (`le bilti cmalo nirli ckela` vs `l
 2. **LoRA Fine-Tuning on Open Weights vs. In-Context RAG**:
    On Qwen 2.5 1.5B, zero-shot predicate slot accuracy was 0.0%. Would fine-tuning a compact model on the 9,988-word LOD lexicon allow it to internalize argument slots and reach 100% without needing runtime RAG?
 3. **Kaggle Benchmarks Integration (`kaggle-benchmarks`)**:
-   Packaging the 60-case dataset into the official [`kaggle-benchmarks`](https://github.com/Kaggle/kaggle-benchmarks) task format so that the Kaggle community can run automated evals against new models as they drop on Kaggle Models.
+   Packaging the 60-case dataset into the official [`kaggle-benchmarks`](https://github.com/Kaggle/kaggle-benchmarks) task format (we implemented the prototype `@kbench.task` definitions in [`scripts/kaggle_benchmarks_task.py`](https://github.com/torrua/loglan-bench/blob/main/scripts/kaggle_benchmarks_task.py)) so that the Kaggle community can run automated evals against new models as they drop on Kaggle Models.
 
 ---
 

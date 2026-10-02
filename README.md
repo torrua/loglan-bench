@@ -80,12 +80,12 @@ DEFAULT_MODEL=gemma-3-27b-it
 ```
 *(Note: If no API key is provided, the tool automatically falls back to deterministic offline mock mode or local Ollama)*.
 
-### 3. Ingesting Grammar Articles & Building FTS5
+### 3. Ingesting Grammar Books, Articles & Building FTS5
 
 ```bash
 python src/ingest_docs.py
 ```
-*Scrapes canonical grammar papers from `loglan.org`, segments them into 103 semantic chunks, and builds `doc_fts` and `def_fts` virtual tables.*
+*Scrapes 28 canonical reference sources from `loglan.org` (including the 4th edition of James Cooke Brown's textbook "Loglan 1: A Logical Language", the LOD Lexicon Guide, case-tag treatises, subjunctive studies, and authentic parallel bilingual texts), extracts sentence tables and structural rules, segments them into semantic chunks, and builds `doc_fts` and `def_fts` SQLite FTS5 search indexes.*
 
 ---
 
@@ -194,8 +194,71 @@ This project is built for two simultaneous DEV challenges:
 
 ---
 
-## 📜 License & Credits
+## 📚 Knowledge Base & Grammar Corpus
 
-- Developed by **[@torrua](https://github.com/torrua)**, maintainer of [LOD Manager](https://github.com/torrua/LOD_manager).
-- Licensed under the **MIT License**.
-- Linguistic definitions based on the **Loglan Institute** materials and the **LOD** corpus.
+Loglan Bench ingests **28 canonical sources** from [loglan.org](https://www.loglan.org/) organized across five linguistic categories:
+
+| Category | Source Title | Canonical URL | Focus & Role |
+|---|---|---|---|
+| **Textbook** | *Loglan 1: Chap 1* | [chap1.html](https://www.loglan.org/Loglan1/chap1.html) | Linguistic design principles, Sapir-Whorf hypothesis, AI interfaces |
+| **Textbook** | *Loglan 1: Chap 2* | [chap2.html](https://www.loglan.org/Loglan1/chap2.html) | Phonology, affix shapes, word-form resolution, stress/pause rules |
+| **Textbook** | *Loglan 1: Chap 3* | [chap3.html](https://www.loglan.org/Loglan1/chap3.html) | Predicate grammar, tenses (`pa/na/fa`), modifiers, grouping (`ge/go`), connectives |
+| **Textbook** | *Loglan 1: Chap 4* | [chap4.html](https://www.loglan.org/Loglan1/chap4.html) | Argument grammar, case tags (Table 4.1), descriptions (`le/lo`), variables (`da..du`) |
+| **Textbook** | *Loglan 1: Chap 5* | [chap5.html](https://www.loglan.org/Loglan1/chap5.html) | Utterance grammar, modal/causal operators, punctuation, boundary markers (`ga/gu`) |
+| **Textbook** | *Loglan 1: Chap 6* | [chap6.html](https://www.loglan.org/Loglan1/chap6.html) | Morphology growth, complex making, borrowings, affix joining rules |
+| **Textbook** | *Loglan 1: App A* | [app-a.html](https://www.loglan.org/Loglan1/app-a.html) | Little words & little affixes complete lookup |
+| **Textbook** | *Loglan 1: App D* | [app-d.html](https://www.loglan.org/Loglan1/app-d.html) | Predicate affixes complete dictionary reference |
+| **Textbook** | *Loglan 1: App G* | [app-g.html](https://www.loglan.org/Loglan1/app-g.html) | Authentic parallel translations from *Scientific American* |
+| **Dictionary** | *LOD Reading Guide* | [ReadingTheDictionary.html](https://www.loglan.org/LOD/ReadingTheDictionary.html) | Guide to LOD entry structure, grammar codes (`Prim`, `Cpx`, `2-Pl`), slot tags |
+| **Articles** | *Easy Loglan Introduction* | [easy-loglan-introduction.html](https://www.loglan.org/Articles/easy-loglan-introduction.html) | Pedagogical primer with basic conversational sentences |
+| **Articles** | *Easy Loglan Description* | [easy-loglan-description.html](https://www.loglan.org/Articles/easy-loglan-description.html) | High-level summary of Loglan structural mechanics |
+| **Articles** | *Case Tag Theory* | [case-tag-theory.html](https://www.loglan.org/Articles/case-tag-theory.html) | Deep foundation of case tags, role assignment, and predicate slots |
+| **Articles** | *Complex Word Making* | [complex-making.html](https://www.loglan.org/Articles/complex-making.html) | Mathematical rules for building complex predicates from primitives |
+| **Articles** | *The Faces of Gu* | [faces-of-gu.html](https://www.loglan.org/Articles/faces-of-gu.html) | Disambiguation mechanics of right-boundary particle `gu` |
+| **Articles** | *Logic and Economy* | [logic-and-economy.html](https://www.loglan.org/Articles/logic-and-economy.html) | Economy of expression and formal predicate calculus in syntax |
+| **Articles** | *Sets and Masses* | [sets-and-masses.html](https://www.loglan.org/Articles/sets-and-masses.html) | Semantic distinctions between sets (`loi`), individuals, and masses (`lo`) |
+| **Articles** | *Sets and Multiples* | [sets-and-multiples.html](https://www.loglan.org/Articles/sets-and-multiples.html) | Set operations, quantification, and numerical predicates |
+| **Articles** | *Clarity and Unambiguity* | [clarity-abstract.html](https://www.loglan.org/Articles/clarity-abstract.html) | Theoretical proof and demonstration of zero-syntactic-ambiguity |
+| **Semantics** | *The Mia System* | [mia-subjunctives.html](https://www.loglan.org/Articles/mia-subjunctives.html) | Subjunctive mood and counterfactual condition handling |
+| **Semantics** | *I Would If I Could* | [I-would-if-I-could.html](https://www.loglan.org/Articles/I-would-if-I-could.html) | Practical counterfactual expressions and modal operators |
+| **Semantics** | *Counterfactuals in Perspective* | [counterfactual-perspective.html](https://www.loglan.org/Articles/counterfactual-perspective.html) | Linguistic analysis of counterfactual conditionals |
+| **Semantics** | *Assigning Case Tags* | [assigning-case-tags.html](https://www.loglan.org/Articles2/assigning-case-tags.html) | Systematic procedure for annotating LOD predicate argument slots |
+| **Semantics** | *Progress on Case-Tags* | [case-tag-report.html](https://www.loglan.org/Articles2/case-tag-report.html) | Empirical report on slot alignment in the lexicon |
+| **Semantics** | *Identity Predas and MEX* | [ident-predas-and-MEX.html](https://www.loglan.org/Articles/ident-predas-and-MEX.html) | Identity relations (`bi/bie`) and mathematical expressions |
+| **Semantics** | *Exploring the PA Lexeme* | [exploring-PA.html](https://www.loglan.org/Sanpa/exploring-PA.html) | Detailed usage of tense and aspect markers (`pa`, `na`, `fa`) with examples |
+| **Semantics** | *Numbers and How to Use Them* | [sanpa93-2-numbers.html](https://www.loglan.org/Sanpa/sanpa93-2-numbers.html) | Number system, fractions, and mathematical predication |
+| **Texts** | *Sophie's World Excerpt* | [from-sophies-world.html](https://www.loglan.org/Texts/from-sophies-world.html) | Bilingual parallel philosophical text translation |
+| **Texts** | *Ne Rorlensia* | [ne-rorlensia.html](https://www.loglan.org/Texts/ne-rorlensia.html) | Authentic short story in Loglan with parallel English translation |
+
+---
+
+## 📜 License, Copyright & Legal Attribution
+
+### Software License
+The codebase, benchmark harness, and evaluation tooling of **Loglan Bench** are open-source software licensed under the [MIT License](LICENSE) &copy; 2026 **[@torrua](https://github.com/torrua)**, maintainer of [LOD Manager](https://github.com/torrua/LOD_manager).
+
+### Linguistic Materials & Copyright Notice
+- **Loglan Language Design & Literature**: Created by **Dr. James Cooke Brown** (1921–2000) and developed by **The Loglan Institute, Inc. (TLI)**.
+- **Copyright &copy; 1975–2026 The Loglan Institute, Inc.** All rights reserved by the original copyright holders. Canonical texts, dictionaries, and grammar publications are accessible at the official repository [https://www.loglan.org](https://www.loglan.org).
+- **LOD (Loglan Online Dictionary)**: The lexicon database `export.db` is derived from the official Loglan Online Dictionary compiled and maintained by the Loglan Institute community.
+- **Fair Use & Research Purpose**: The ingestion of grammar chapters and articles into SQLite FTS5 is performed strictly for **non-commercial educational, linguistic research, and AI benchmarking evaluation purposes** (transformative fair use under 17 U.S.C. &sect; 107). No commercial redistribution or claim of ownership over the underlying linguistic grammar or texts is made.
+- **Automated Retrieval Etiquette**: The ingestion crawler identifies itself via the research User-Agent header `LoglanBenchBot/1.0 (+https://github.com/torrua/loglan-bench)` and queries public static HTML documents with rate-friendly sequential timeouts.
+- **Citation Guidance**: If you use Loglan Bench or the extracted datasets in academic publications, please cite both the software repository and the original Loglan Institute foundation:
+  ```bibtex
+  @misc{loglanbench2026,
+    author = {Torrua},
+    title = {Loglan Bench: First Open Benchmark & RAG Grammar Assistant for a Syntactically Unambiguous Human Language},
+    year = {2026},
+    publisher = {GitHub},
+    url = {https://github.com/torrua/loglan-bench}
+  }
+  @book{brown1989loglan1,
+    author = {Brown, James Cooke},
+    title = {Loglan 1: A Logical Language},
+    edition = {4th},
+    year = {1989},
+    publisher = {The Loglan Institute, Inc.},
+    address = {Gainesville, Florida},
+    url = {https://www.loglan.org/Loglan1/}
+  }
+  ```

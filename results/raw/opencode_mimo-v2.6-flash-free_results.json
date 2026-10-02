@@ -1,8 +1,8 @@
 {
   "model": "opencode_mimo-v2.6-flash-free",
   "provider": "opencode-server/session-generate",
-  "timestamp": "2026-10-02 22:04:33",
-  "total_cases": 58,
+  "timestamp": "2026-10-02 22:25:11",
+  "total_cases": 60,
   "results": [
     {
       "case_id": "A01",
@@ -1547,8 +1547,8 @@
         },
         {
           "run_index": 4,
-          "response": "",
-          "latency_sec": 76.25869488716125
+          "response": "I'll verify the LOD entries before answering.",
+          "latency_sec": 36.785
         },
         {
           "run_index": 5,
@@ -1700,8 +1700,8 @@
         },
         {
           "run_index": 3,
-          "response": "",
-          "latency_sec": 309.3183045387268
+          "response": "I'll verify the exact LOD entries and quantifier rules before answering.",
+          "latency_sec": 31.95
         },
         {
           "run_index": 4,
@@ -1929,10 +1929,10 @@
       "case_id": "C18",
       "category": "translation_consistency",
       "prompt": "You are the official Loglan Grammar Assistant. Loglan is an artificial human-speakable language invented in 1955 by Dr. James Cooke Brown, built on first-order predicate logic and designed to have ZERO syntactic ambiguity: every grammatical utterance has exactly one valid parse tree.\n\nYou have access to two primary grounded sources:\n1. LOD DICTIONARY: Official lexicon with word types (Primitive, Complex, Affix, Little Word, Borrowing), argument slots (e.g., 2a, 3a), and definitions.\n2. GRAMMAR REFERENCES: Authoritative articles, textbook lessons, case tag rules, and disambiguation guides from loglan.org.\n\nCORE INSTRUCTIONS:\n- Ground your answers strictly in the provided Context. If a word or rule is not in the context or standard Loglan grammar, acknowledge the limitation rather than hallucinating words or affixes.\n- ANTI-BIAS & EXACT ENTITY TRANSLATION: Never substitute entities with stereotypical English linguistic cliches (e.g., do not replace 'sorme' (sister) with 'boy', nor 'cinkau' (puppy/infant-dog) with 'book' merely because English grammar books frequently use \"John gave the boy a book\"). Every Loglan word in example sentences must be translated strictly according to its actual LOD definition and morphemes.\n- Explain the argument slot roles: x1 (agent/subject), x2 (patient/object), x3 (recipient/destination), x4, x5.\n- When explaining syntactic structures, highlight how Loglan eliminates natural language ambiguities using grouping particles (e.g., 'ge', 'ci', 'ke', 'gu') or predicate markers ('ga', 'pa', 'fa').\n- When comparing to English, explain why the English sentence has multiple parse interpretations while the Loglan equivalent has exactly ONE.\n- Always provide citations: cite word definitions as `[LOD: <word_name> (<type>)]` and grammar excerpts as `[Reference: <document_title>]`.\n\n\nQuestion:\nTranslate 'Birds fly in the sky' to unambiguous Loglan.\n\nRelevant Linguistic Context:\n### Loglan Grammar References\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\nWe have said that the Loglan world is time-free because its fundamental notion--the unadorned predicate--contains no hint of time. But time and events in time must obviously be accommodated. This is simply done. We can now adorn the predicate with the optional apparatus of tense. To begin with, we need only three little words: pa , na and fa . Look at the following sentences:\n\n(1) | Da pa madzo de | X made Y. [dah-pah-MAHD-zoh-deh]\n\n(2) | Da fa godzi de | X will go to Y. [dah-fah-GOHD-zee-deh]\n\n(3) | Da na blanu | X is now blue. [dah-nah-BLAH-noo]\n\n(4) | Da pa mrenu | X was a man. [dah-pah-MREH-noo]\n\n(5) | Da fa fumna | X will be a woman. [dah-fah-FOOM-nah]\n\nWhat could be simpler? Every Loglan predicate may be \"inflected\" in this way; but no predicate needs to be. Thus, the tense machinery of Loglan is strictly optional. You use it when you are concerned with time; you don't when you are not. 10\n\nThe optional character of the Loglan tenses permits the direct expression of many things that are hidden in certain arbitrary-seeming usage-patterns of the natural languages. In English there is no \"time-less\" tense. But we need one; therefore we make one up. We use the present tense of ve... [truncated]\n\n#### Reference: Loglan 1: Chap 5 - Grammar 3: Utterances (Punctuation, Ga/Gu & Connectives) (https://www.loglan.org/Loglan1/chap5.html)\n(7a) | Li, Semiul Klemenz, lu, e li, Mark Twain, lu namci ba | 'Samuel Clemens' and 'Mark Twain' are (both) names of (the same) something.\n\nIf one can agree that (7) and (7a) have the same truth-conditions, one must then agree that sentence (7) is not about Mark Twain. In fact, the expression la Semiul Klemenz in (7) does not designate anything at all. Instead, it is a specimen designation being exhibited--much as quoting it would do--to the eye (or ear) of the beholder as an example of something that is capable, on suitable occasions, of designating the same thing as some other specimen designation, namely la Mark Tuein , is capable of designating on perhaps quite different occasions. The Morning Star is, to be sure, the Evening Star, and both are the planet Venus; but when this object is in the evening sky it would make no sense to call it by the first of these three names.\n\n14 The point here is that any (sensible) conversation requires that all parties agree (more or less) on who or what they are talking about. Once this is established--by effective new designations or by identities which call up old ones--the speakers can then proceed to make predications with some confidence t... [truncated]\n\n#### Reference: Identity Predas and MEX (Mathematical Expressions) (https://www.loglan.org/Articles/ident-predas-and-MEX.html)\nHue Djeimz Kuk Braon: With his last remark, Emerson invites me to raise the Mathematical Expressions Project from the dead, soi clafo. I'll try. If I succeed, I'll be able to invite other mathematically-trained logli to join me in its broad precincts... especially those younger than myself who have a feeling for, or would be interested in learning about, the linguistics of mathematical speech. To any such younger worker, I would gladly turn the Project over entire! For I regard it as one of my most important roles these days to motivate other people to restart our stalled projects.\n\nE asks, has the \"purpose and scope\" of the MEX Project ever been set down? Yes. There are numerous letters, notes, and articles in early issues of The Loglanist ( TL ) that collectively do just that. Our \"archivists\"--those of us older members who received and kept these early TL s, or those post-'89-ers who bought, and presumably read, the whole \"in-print set\" of them when they joined (the number of TL issues ever printed was 21; those currently in print are nine; the early birds got the whole 21)--will know where to find them. But if memory serves, our goals in writing the MEX portion of Loglan gramma... [truncated]\n\nPlease provide a concise, rigorous, and logically accurate answer following Loglan grammatical rules. Cite relevant LOD definitions or grammar particles where applicable.\n",
-      "response": "",
+      "response": "I'll ground the key vocabulary first, since 'bird', 'fly', and 'sky' aren't in the provided excerpts.",
       "input_tokens": 0,
       "output_tokens": 0,
-      "latency_sec": 177.24898886680603,
+      "latency_sec": 123.88624482154846,
       "gold": {
         "id": "C18",
         "category": "translation_consistency",
@@ -1955,8 +1955,131 @@
       "repeated_runs": [
         {
           "run_index": 1,
-          "response": "",
-          "latency_sec": 177.24898886680603
+          "response": "I'll ground the key vocabulary first, since 'bird', 'fly', and 'sky' aren't in the provided excerpts.",
+          "latency_sec": 31.26
+        },
+        {
+          "run_index": 2,
+          "response": "I'll ground the vocabulary in the actual LOD before translating, since \"bird,\" \"fly,\" and \"sky\" aren't in the provided excerpt.",
+          "latency_sec": 76.07021999359131
+        },
+        {
+          "run_index": 3,
+          "response": "I'll verify the actual LOD entries for \"bird,\" \"fly,\" and \"sky\" before composing the translation, rather than guessing at morphemes.",
+          "latency_sec": 18.551
+        },
+        {
+          "run_index": 4,
+          "response": "I'll verify the vocabulary against the actual LOD before answering.",
+          "latency_sec": 198.85972714424133
+        },
+        {
+          "run_index": 5,
+          "response": "I'll ground the vocabulary before answering — the LOD entries for \"bird,\" \"fly,\" and \"sky\" weren't included in the excerpted context, so let me check the authoritative sources.",
+          "latency_sec": 98.65728902816772
+        }
+      ]
+    },
+    {
+      "case_id": "C19",
+      "category": "translation_consistency",
+      "prompt": "You are the official Loglan Grammar Assistant. Loglan is an artificial human-speakable language invented in 1955 by Dr. James Cooke Brown, built on first-order predicate logic and designed to have ZERO syntactic ambiguity: every grammatical utterance has exactly one valid parse tree.\n\nYou have access to two primary grounded sources:\n1. LOD DICTIONARY: Official lexicon with word types (Primitive, Complex, Affix, Little Word, Borrowing), argument slots (e.g., 2a, 3a), and definitions.\n2. GRAMMAR REFERENCES: Authoritative articles, textbook lessons, case tag rules, and disambiguation guides from loglan.org.\n\nCORE INSTRUCTIONS:\n- Ground your answers strictly in the provided Context. If a word or rule is not in the context or standard Loglan grammar, acknowledge the limitation rather than hallucinating words or affixes.\n- ANTI-BIAS & EXACT ENTITY TRANSLATION: Never substitute entities with stereotypical English linguistic cliches (e.g., do not replace 'sorme' (sister) with 'boy', nor 'cinkau' (puppy/infant-dog) with 'book' merely because English grammar books frequently use \"John gave the boy a book\"). Every Loglan word in example sentences must be translated strictly according to its actual LOD definition and morphemes.\n- Explain the argument slot roles: x1 (agent/subject), x2 (patient/object), x3 (recipient/destination), x4, x5.\n- When explaining syntactic structures, highlight how Loglan eliminates natural language ambiguities using grouping particles (e.g., 'ge', 'ci', 'ke', 'gu') or predicate markers ('ga', 'pa', 'fa').\n- When comparing to English, explain why the English sentence has multiple parse interpretations while the Loglan equivalent has exactly ONE.\n- Always provide citations: cite word definitions as `[LOD: <word_name> (<type>)]` and grammar excerpts as `[Reference: <document_title>]`.\n\n\nQuestion:\nTranslate 'I know that you are good' to unambiguous Loglan.\n\nRelevant Linguistic Context:\n### LOD Dictionary Context\n- **i** (17) [c]: «period»/«semicolon», indicating stop between sentences/clauses.\n\n- **i** (17) [c]: «and», full stop between sentences/clauses.\n\n---\n\n### Loglan Grammar References\n#### Reference: Loglan 1: Chap 2 - Sounds & Word-Forms (Phonology & Affixes) (https://www.loglan.org/Loglan1/chap2.html)\nYour first job is translate what you hear into a stream of Loglan phonemes, a task that we predict you will soon be performing swiftly and automatically. Thinking back over what you heard--assuming you pronounced this string of sounds according to the guide--let's assume you are able to translate these sounds into the following phoneme string:\n\nLet us suppose further that you have never heard any of these words before. Yet you probably sense that the utterance is composed of three little words ( io da pa ) followed by a predicate ( kamla ).\n\nYou're right; but how did you know this? Well, the /ioda/-part of the unstressed initial sequence /iodapa/ can be nothing but a pair of little words, or a compound structure word, or two syllables of a longer structure word, for no predicate can begin that way. And if /iodapa/ were part of a name, there would be a final consonant somewhere followed by a pause, and there isn't. As for /KAMla/ we sense intuitively that it is a primitive predicate, that it can't be anything else. For example, if we thought that /KAMla/ were only part of some predicate and that /da/ were its head, making the trial word ?dakamla , we would sense immediately that the... [truncated]\n\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\nClearly we are dealing here with metaphorical extensions of primitive ideas. We know what a mother is, and a man and a house. And we know what good, blue, beautiful and short mean, as primitive ideas. The first time we hear the metaphor 'good mother' we are in a fair position to guess what the speaker means, from our knowledge of the uses of these simple predicates in the language. But we cannot be sure. Neither--until one has seen one--can one be sure what a blue house is. How blue does a house have to be to be blue? How short is a short man? More puzzlingly, how watery is a water-pistol? How intellectual is an intellectual dwarf? And what is a bicycle pump anyway? Does it pump bicycles? Into what?\n\nIn Loglan we surmise, with most logicians, that such questions are unanswerable by direct analysis. We suppose that the meanings of predicate expressions formed of two or more constituent predicate ideas are like the meanings of simple predicates themselves: essentially unitary and unanalyzable. 23 A blue house is...well, a blue house. Like houses themselves, or blue things, you have to be shown one to really know. And intellectual dwarfs? Well, here again it is not the art of logical ... [truncated]\n\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\n(5) | Da bilti sucmi | X swims beautifully (i.e., is beautiful as a swimmer). /daBILtiSUCmi/\n\nThere is a way of modifying this order that we will look at in Section 3.13 . But we must now inquire more closely into the meaning of such phrases. If X is a short man, does this mean that he is short and a man? Not necessarily; for he might be fairly tall...for a woman, say, or a child. All we can surmise is that he is short for a man; that is, a short type of man. What about blue houses? And beautiful swimmers? Can we expect them to be really blue? And really beautiful? All over? Inside and out? Certainly not; for blue houses and beautiful swimmers, like short men, are blue for houses and beautiful as swimmers. That is, they are blue among houses and not among skies, and it is their swimming that is beautiful, never mind their eyes. And good mothers? Good as mothers, perhaps, but not necessarily good cooks or good wives. And so on. 22\n\nClearly we are dealing here with metaphorical extensions of primitive ideas. We know what a mother is, and a man and a house. And we know what good, blue, beautiful and short mean, as primitive ideas. The first time we hear the metaphor 'good mother' we a... [truncated]\n\nPlease provide a concise, rigorous, and logically accurate answer following Loglan grammatical rules. Cite relevant LOD definitions or grammar particles where applicable.\n",
+      "response": "I'll verify the key vocabulary and the embedded‑clause (\"that…\") construction against the actual Loglan references before answering.",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_sec": 164.62039308547975,
+      "gold": {
+        "id": "C19",
+        "category": "translation_consistency",
+        "english": "I know that you are good",
+        "expected_loglan": "Mi djano lepo tu gudbi",
+        "loglan_tokens": [
+          "Mi",
+          "djano",
+          "lepo",
+          "tu",
+          "gudbi"
+        ],
+        "key_particles": [
+          "lepo"
+        ]
+      },
+      "repeated_runs": [
+        {
+          "run_index": 1,
+          "response": "I'll verify the key vocabulary and the embedded‑clause (\"that…\") construction against the actual Loglan references before answering.",
+          "latency_sec": 184.1893401145935
+        },
+        {
+          "run_index": 2,
+          "response": "I'll ground this properly by checking the actual grammar references and LOD before answering.",
+          "latency_sec": 72.35592246055603
+        },
+        {
+          "run_index": 3,
+          "response": "I'll verify the complementizer and key vocabulary against the actual Loglan references before answering.",
+          "latency_sec": 116.29269456863403
+        },
+        {
+          "run_index": 4,
+          "response": "I'll ground this properly — the provided excerpts are truncated and only contain the LOD entry for *i*, so let me verify the actual vocabulary and complement-clause grammar against the loglan.org references.",
+          "latency_sec": 362.9007828235626
+        },
+        {
+          "run_index": 5,
+          "response": "I'll verify the key vocabulary and the complementizer rule against the official Loglan sources before answering, since the provided context only defines **i**.",
+          "latency_sec": 87.36322546005249
+        }
+      ]
+    },
+    {
+      "case_id": "C20",
+      "category": "translation_consistency",
+      "prompt": "You are the official Loglan Grammar Assistant. Loglan is an artificial human-speakable language invented in 1955 by Dr. James Cooke Brown, built on first-order predicate logic and designed to have ZERO syntactic ambiguity: every grammatical utterance has exactly one valid parse tree.\n\nYou have access to two primary grounded sources:\n1. LOD DICTIONARY: Official lexicon with word types (Primitive, Complex, Affix, Little Word, Borrowing), argument slots (e.g., 2a, 3a), and definitions.\n2. GRAMMAR REFERENCES: Authoritative articles, textbook lessons, case tag rules, and disambiguation guides from loglan.org.\n\nCORE INSTRUCTIONS:\n- Ground your answers strictly in the provided Context. If a word or rule is not in the context or standard Loglan grammar, acknowledge the limitation rather than hallucinating words or affixes.\n- ANTI-BIAS & EXACT ENTITY TRANSLATION: Never substitute entities with stereotypical English linguistic cliches (e.g., do not replace 'sorme' (sister) with 'boy', nor 'cinkau' (puppy/infant-dog) with 'book' merely because English grammar books frequently use \"John gave the boy a book\"). Every Loglan word in example sentences must be translated strictly according to its actual LOD definition and morphemes.\n- Explain the argument slot roles: x1 (agent/subject), x2 (patient/object), x3 (recipient/destination), x4, x5.\n- When explaining syntactic structures, highlight how Loglan eliminates natural language ambiguities using grouping particles (e.g., 'ge', 'ci', 'ke', 'gu') or predicate markers ('ga', 'pa', 'fa').\n- When comparing to English, explain why the English sentence has multiple parse interpretations while the Loglan equivalent has exactly ONE.\n- Always provide citations: cite word definitions as `[LOD: <word_name> (<type>)]` and grammar excerpts as `[Reference: <document_title>]`.\n\n\nQuestion:\nTranslate 'Speak slowly and clearly' to unambiguous Loglan.\n\nRelevant Linguistic Context:\n### Loglan Grammar References\n#### Reference: Loglan 1: Chap 6 - Words & Growth (Borrowings & Complex Making) (https://www.loglan.org/Loglan1/chap6.html)\nNow if Loglan is a language, one of the ways that we will know it, will be that it will grow. The ways in which Loglan has been built to grow are a very carefully considered part of its structure. We have realized from the outset that if the language is to be easily learned, its initial vocabulary must be very small. But even though small, that initial vocabulary must be capable of very rapid growth...growth both in the mind of the learner, as da encompasses the language, and in the community of speakers as they continually expand its corpus to match their expanding need. The machinery we have provided for rapid, spontaneous and yet orderly growth is the main topic of this chapter.\n\nBut first a warning. Natural languages grow rather slowly. The proportion of people who now speak English who will contribute a living word to it during their lifetimes is rather small. A few scholars will do it; a journalist now and then; a poet to implement a new perception; an inventor gazing fondly at the new thing da has made; or an occasional gifted urchin who, searching for a word de doesn't know, coins one in desperation that happens to stick among de's fellows and then lives on as slang. But th... [truncated]\n\n#### Reference: Loglan 1: Chap 6 - Words & Growth (Borrowings & Complex Making) (https://www.loglan.org/Loglan1/chap6.html)\nBehind every complex predicate, old or new, stands a metaphor. One's insight into the meaning of that metaphor may be as sudden as a hammer-blow, like the immediate understanding that morto madzo ('dead-make') can mean nothing else than 'kill', or, like the French phrase 'savoir faire' ('to know to do'), one's understanding of its meaning may sink in only slowly over the first half dozen occasions of its use. (The same metaphor in Loglan, by the way, is durzo djano = 'do-know'; this is the thought that lies behind the Loglan complex predicate duodja [doo-OH-jah] = 'know how to do'.)\n\nSometimes one's understanding of a metaphor depends on the contrasts it makes with other, similarly constructed ideas. For example, the difference between the active kind of knowing conveyed by duodja and the more passive sort conveyed by saadja is a larger difference than the one between saadja and siodja [SYOHD-jah], which also means 'understand' but this time in the very different sense of comprehending the workings of some individual or system. Siodja , happily enough, is derived from the metaphor sisto djano , or 'system-know', which is an idea that seems very satisfactorily to convey the subtle d... [truncated]\n\n#### Reference: Loglan 1: Chap 5 - Grammar 3: Utterances (Punctuation, Ga/Gu & Connectives) (https://www.loglan.org/Loglan1/chap5.html)\nIn this way we preserve the scope convention of implicit quantification mentioned earlier: namely that the scope of any implicit sentence quantifier is held to carry over just such clauses of a connected sentence in which its variable appears.\n\nOf course we must, in a logical language, also be able to speak such nonsense as appears to be the claim of sentence (37) clearly when we want to. But we cannot do so in Loglan by using a common argument of a connected predicate. Instead, we must speak a connected sentence directly, using two different non-designating variables for the two short-scope universals:\n\n(39) | Raba merji, icanoi rabe farfu | Every something x is married if every some thing y is a father. /rabaMERji.icanoirabeFARfu/\n\nAnd we now have two implicit universal quantifiers--either or both of which may be made explicit--the scope of each of which is confined to its own constituent clause. This arrangement now states clearly the nonsensical claim made unclearly in sentence (37). The reader will have sensed that the entire apparatus of implicit quantification depends on certain restrictions on, and conventional interpretations of, the usages of Loglan, one of which is that ... [truncated]\n\nPlease provide a concise, rigorous, and logically accurate answer following Loglan grammatical rules. Cite relevant LOD definitions or grammar particles where applicable.\n",
+      "response": "<tool_call><function=execute><parameter=const queries = [\"loglan\", \"dictionary\", \"grammar reference\", \"lod\", \"word definition\", \"translate\"];\nfor (const q of queries) {\n  const r = search({ query: q, limit: 15 });\n  console.log(\"QUERY:\", q);\n  for (const it of r.items) console.log(\"  \", it.path, \"|\", it.description);\n}\n</parameter></function></tool_call>",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_sec": 114.54790787696838,
+      "gold": {
+        "id": "C20",
+        "category": "translation_consistency",
+        "english": "Speak slowly and clearly",
+        "expected_loglan": "Takna liu lepo plano e spali",
+        "loglan_tokens": [
+          "Takna",
+          "liu",
+          "e"
+        ],
+        "key_particles": [
+          "liu",
+          "e"
+        ]
+      },
+      "repeated_runs": [
+        {
+          "run_index": 1,
+          "response": "<tool_call><function=execute><parameter=const queries = [\"loglan\", \"dictionary\", \"grammar reference\", \"lod\", \"word definition\", \"translate\"];\nfor (const q of queries) {\n  const r = search({ query: q, limit: 15 });\n  console.log(\"QUERY:\", q);\n  for (const it of r.items) console.log(\"  \", it.path, \"|\", it.description);\n}\n</parameter></function></tool_call>",
+          "latency_sec": 102.47031116485596
+        },
+        {
+          "run_index": 2,
+          "response": "I'll ground this properly — let me check the official Loglan dictionary (LOD) for the actual entries for \"speak,\" \"slow,\" and \"clear\" rather than guessing.",
+          "latency_sec": 72.72322154045105
+        },
+        {
+          "run_index": 3,
+          "response": "I'll verify the key vocabulary and grammar rules against the grounded sources before translating.",
+          "latency_sec": 137.7670018672943
+        },
+        {
+          "run_index": 4,
+          "response": "I'll ground this in the actual references rather than guess. Let me pull the cited chapter and locate the LOD entries.",
+          "latency_sec": 213.7089557647705
+        },
+        {
+          "run_index": 5,
+          "response": "I'll ground this in the primary sources — first the grammar chapter on utterances/connectives, and locate the LOD dictionary entries.",
+          "latency_sec": 46.07004904747009
         }
       ]
     }

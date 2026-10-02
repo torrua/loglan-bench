@@ -1,0 +1,1475 @@
+{
+  "metadata": {
+    "description": "Compact RAG context for the 60-case Loglan benchmark. Contains LOD definitions for all referenced words and essential Loglan grammar rules.",
+    "total_definitions": 57,
+    "grammar_rules": 8,
+    "grammar_documents": 20
+  },
+  "definitions": {
+    "beu": {
+      "word": "beu",
+      "type": "Struct",
+      "origin": "be(kti)",
+      "definitions": [
+        {
+          "body": "Patients/Parts, «accusative» case tag (DIO) («patient»/«part»).",
+          "grammar": "pp"
+        },
+        {
+          "body": "a combining form of {bendu}, «band».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "bilti": {
+      "word": "bilti",
+      "type": "Predicate",
+      "origin": "4/5E beauty | 2/3F belle | 3/5C mei li | 2/6S belleza",
+      "definitions": [
+        {
+          "body": "G is more «beautiful» to D than J is to D. (D and D may be the same or different; and if the same, is not rementioned.).",
+          "slots": 4,
+          "case_tags": "G-DJD",
+          "grammar": "a"
+        },
+        {
+          "body": "a «beauty», a beautiful person/thing.",
+          "grammar": "n"
+        },
+        {
+          "body": "«beauty», a state of being -ful.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«beauty», mass states of being -ful.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«beauty», mass term of -ful things.",
+          "usage": "lo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«beauty», the mass property of being -ful.",
+          "usage": "lopu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«beauty», the property of being -ful.",
+          "usage": "pu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "blanu": {
+      "word": "blanu",
+      "type": "Predicate",
+      "origin": "3/3E blue | 3/3C lan | 4/4G blau | 2/3F bleu | 2/4H nila | 2/4S azul | 2/7R galuboi",
+      "definitions": [
+        {
+          "body": "G is more «blue»/«bluer» than J.",
+          "slots": 2,
+          "case_tags": "G-J",
+          "grammar": "a"
+        },
+        {
+          "body": "«blueness», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«blue», a blue coloured thing/object.",
+          "grammar": "a"
+        },
+        {
+          "body": "«blue», a blue thing.",
+          "grammar": "n"
+        },
+        {
+          "body": "«blue», the colour, mass term.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "botsu": {
+      "word": "botsu",
+      "type": "Predicate",
+      "origin": "3/3E boat | 3/3G boot | 3/4S bote | 3/4J boto | 2/5C chuan",
+      "definitions": [
+        {
+          "body": "B is a «boat»/«canoe»/«craft»/«cutter»/«vessel», a generic term for all types of water craft.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        }
+      ]
+    },
+    "bukcu": {
+      "word": "bukcu",
+      "type": "Predicate",
+      "origin": "2/2C shu | 2/3E book | 2/3G buch",
+      "definitions": [
+        {
+          "body": "B is a «book» about V by S, any bound document.",
+          "slots": 3,
+          "case_tags": "B-VS",
+          "grammar": "n"
+        },
+        {
+          "body": "«binding» (of a book), the cover.",
+          "usage": "% nu kuadru",
+          "grammar": "n"
+        },
+        {
+          "body": "«bookbinder», one who -s books.",
+          "usage": "% kuadru",
+          "grammar": "ph"
+        },
+        {
+          "body": "«bookbinding», pertaining to -ing books.",
+          "usage": "% kuadru",
+          "grammar": "ph"
+        },
+        {
+          "body": "«cover»/«bind» a book with ....",
+          "usage": "% kuadru",
+          "grammar": "ph"
+        }
+      ]
+    },
+    "car": {
+      "word": "car",
+      "type": "Affix",
+      "origin": "car(bo)",
+      "definitions": [
+        {
+          "body": "a combining form of {carbo}, «carbon».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "cenja": {
+      "word": "cenja",
+      "type": "Predicate",
+      "origin": "3/5E change | 3/5J henka | 3/6R mienia t | 2/4C bien | 2/4F chang er | 2/4G änder n",
+      "definitions": [
+        {
+          "body": "B «become»/«change naturally»/«vary» into P from S, as auxiliary før intransitive, passive or cause unspecified causations.",
+          "slots": 3,
+          "case_tags": "B-PS",
+          "grammar": "v"
+        },
+        {
+          "body": "a «becoming», an event/process of changing.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «changeability», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «change»/«transition», a spec. event/process.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«change», mass term.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«changing»/«changeable»/«unsettled»/«fickle», naturally, without intervention.",
+          "grammar": "a"
+        },
+        {
+          "body": "B «become»/«change naturally»/«vary» into P from S, as auxiliary for intransitive, passive or cause unspecified causations.",
+          "slots": 3,
+          "case_tags": "B-PS",
+          "grammar": "v"
+        },
+        {
+          "body": "a «becoming», an event/process of changing.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «changeability», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «change»/«transition», a spec. event/process.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«change», mass term.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«changing»/«changeable»/«unsettled»/«fickle», naturally, without intervention.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "cersi": {
+      "word": "cersi",
+      "type": "Predicate",
+      "origin": "3/4E chair | 2/3F chaise | 3/5H kursi | 2/4S silla",
+      "definitions": [
+        {
+          "body": "B is a «chair», furniture for sitting.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        }
+      ]
+    },
+    "ckela": {
+      "word": "ckela",
+      "type": "Predicate",
+      "origin": "4/5R shkola | 4/7S escuela | 2/4E school | 2/4F ecole | 3/7C syue syiao | 3/7H pathshala",
+      "definitions": [
+        {
+          "body": "B is a «school» of community F.",
+          "slots": 2,
+          "case_tags": "B-F",
+          "grammar": "n"
+        },
+        {
+          "body": "«school», pert. to schools.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "ckozu": {
+      "word": "ckozu",
+      "type": "Predicate",
+      "origin": "3/3F cause | 3/4C sh you | 2/3E cause",
+      "definitions": [
+        {
+          "body": "S «cause»/«effect»/«give rise to» P under conditions N, used as auxiliary for non intentional or non human causation.",
+          "slots": 3,
+          "case_tags": "S-PN",
+          "grammar": "v"
+        },
+        {
+          "body": "a «causation», a spec. event/process.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «cause», that which -s.",
+          "grammar": "n"
+        },
+        {
+          "body": "a «condition», material, as in causation.",
+          "usage": "fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "an «effectiveness», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "an «effect», conv. of cause, but see {nurcko}.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«actually»/«effectively».",
+          "grammar": "av"
+        },
+        {
+          "body": "«actual»/«causal»/«effective»/in «effect», effective, causing ... under ....",
+          "grammar": "a"
+        },
+        {
+          "body": "«causation», mass term.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«effectiveness», mass term of props.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "cluva": {
+      "word": "cluva",
+      "type": "Predicate",
+      "origin": "2/3E love | 3/6C syi huan | 3/6R liubov",
+      "definitions": [
+        {
+          "body": "K (is in) «love» (with) D.",
+          "slots": 2,
+          "case_tags": "K-D",
+          "grammar": "v"
+        },
+        {
+          "body": "a «lover», one who -s.",
+          "grammar": "n"
+        },
+        {
+          "body": "a «lovingness», a property of lovers.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a/the «beloved»/«lover»/«mistress», a -ed person.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a/the «love», an act/event/state of -ing.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«beloved»/«loveable», conv. of love.",
+          "usage": "nu %",
+          "grammar": "a"
+        },
+        {
+          "body": "«love», mass term of states.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«loving», of someone who -s.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "cmalo": {
+      "word": "cmalo",
+      "type": "Predicate",
+      "origin": "3/4C syiao | 3/4R malo | 3/4G schmal | 2/4E small",
+      "definitions": [
+        {
+          "body": "J is more «small»/«smaller»/«littler»/«lesser» than G, in bulk/mass by amount C.",
+          "slots": 2,
+          "case_tags": "J-GC",
+          "grammar": "a"
+        },
+        {
+          "body": "a «little»/«somewhat», in a small way/degree.",
+          "grammar": "av"
+        },
+        {
+          "body": "the «size»/«smallness», smallness, a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«least», smaller than anything in a set ....",
+          "usage": "% le da",
+          "grammar": "a"
+        },
+        {
+          "body": "«least», smaller than anything.",
+          "usage": "% ra ba",
+          "grammar": "a"
+        },
+        {
+          "body": "«size»/«smallness», mass term of properties.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "cti": {
+      "word": "cti",
+      "type": "Affix",
+      "origin": "cti(fu)",
+      "definitions": [
+        {
+          "body": "a combining form of {ctifu}, «stiff».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "ctidou": {
+      "word": "ctidou",
+      "type": "Predicate",
+      "origin": "cti(fu)+do(ns)u",
+      "definitions": [
+        {
+          "body": "K «substantiate»/give substance to D.",
+          "slots": 2,
+          "case_tags": "K-D",
+          "grammar": "v"
+        },
+        {
+          "body": "a «substantiation».",
+          "usage": "po %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "dio": {
+      "word": "dio",
+      "type": "Struct",
+      "origin": "di(rc)o",
+      "definitions": [
+        {
+          "body": "Destinations/Receivers, case tag («destination»/«receiver»).",
+          "grammar": "pp"
+        },
+        {
+          "body": "a combining form of {dirco}, «direction».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "ditca": {
+      "word": "ditca",
+      "type": "Predicate",
+      "origin": "3/4E teach | 2/3R uch it | 3/5C jiao | 2/5G zeig en",
+      "definitions": [
+        {
+          "body": "K «teach»/«instruct» subject N to D.",
+          "slots": 3,
+          "case_tags": "K-ND",
+          "grammar": "v"
+        },
+        {
+          "body": "a «subject», of instruction, conv. of teach.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "an «instruction», a spec. act of «teaching».",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "an «instructor»/«teacher», one who teaches.",
+          "grammar": "n"
+        },
+        {
+          "body": "«docile»/«teachable», teachable, conv. of teach, q.v.",
+          "usage": "fu %",
+          "grammar": "a"
+        }
+      ]
+    },
+    "donsu": {
+      "word": "donsu",
+      "type": "Predicate",
+      "origin": "3/3S don ar | 2/3C sung | 2/3F donn er | 3/5E donate | 2/4H dena",
+      "definitions": [
+        {
+          "body": "K «give»/«donate» B to D.",
+          "slots": 3,
+          "case_tags": "K-BD",
+          "grammar": "v"
+        },
+        {
+          "body": "a «donation», an act of -ing.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «donor»/«giver», one who gives.",
+          "grammar": "n"
+        },
+        {
+          "body": "a «gift»/«present»/«donation», a gift, conv. of give.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «recipient», a receiver of a gift, 2nd conv. of give.",
+          "usage": "fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«receipt», of a gift from ....",
+          "usage": "po fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«receive»/be «given» gift/present/donation ... from ....",
+          "usage": "fu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "famva": {
+      "word": "famva",
+      "type": "Predicate",
+      "origin": "4/4S fama | 3/4F fameu x | 2/3E fame | 3/5R slava",
+      "definitions": [
+        {
+          "body": "D is «famous» for V among F.",
+          "slots": 3,
+          "case_tags": "D-VF",
+          "grammar": "a"
+        },
+        {
+          "body": "«fame», of an individual.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«fame», properties that lead to fame.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "fumna": {
+      "word": "fumna",
+      "type": "Predicate",
+      "origin": "3/4C fu nyu | 2/3F femme | 3/5E woman | 3/6J fujin | 2/9R zhenshchina",
+      "definitions": [
+        {
+          "body": "B is a «woman», female human adult.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        },
+        {
+          "body": "a «female»/«woman», female of the human species.",
+          "grammar": "n"
+        },
+        {
+          "body": "a «womanhood», a property of being a woman,.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «womanhood», a spec. state/condition.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«female», pert. to female humans.",
+          "grammar": "a"
+        },
+        {
+          "body": "«womanhood», mass term of states.",
+          "usage": "lopo %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "gandi": {
+      "word": "gandi",
+      "type": "Predicate",
+      "origin": "3/3E god | 2/3F dieu | 3/5C shang di | 2/4S dios",
+      "definitions": [
+        {
+          "body": "B is a/the «god»/«deity»/«divine being» of people F.",
+          "slots": 2,
+          "case_tags": "B-F",
+          "grammar": "n"
+        },
+        {
+          "body": "a «deity»/(the) «divinity», the mass of such beings.",
+          "usage": "lo %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «divinity», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«divine», pert. to deities.",
+          "grammar": "a"
+        },
+        {
+          "body": "«divinity», mass term of properties.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "godzi": {
+      "word": "godzi",
+      "type": "Predicate",
+      "origin": "2/2E go | 2/4C dzou | 2/4R idti",
+      "definitions": [
+        {
+          "body": "K «go»/«come» to D from S via V.",
+          "slots": 4,
+          "case_tags": "K-DSV",
+          "grammar": "v"
+        },
+        {
+          "body": "a/the «destination», of an act of going/coming to it, q.v.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a/the «start», of going/coming to ... from ..., q.v.",
+          "usage": "fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "is a/the «route» taken during an act of going/coming, q.v.",
+          "usage": "ju %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "gudbi": {
+      "word": "gudbi",
+      "type": "Predicate",
+      "origin": "2/3E good | 2/3F bien | 2/3G gut | 3/6R dobriy | 2/4S bien",
+      "definitions": [
+        {
+          "body": "(the) «good»/«acceptability», mass term of props.",
+          "usage": "lopu %",
+          "grammar": "n"
+        },
+        {
+          "body": "G is «better than»/«superior to» J for purpose P.",
+          "slots": 3,
+          "case_tags": "G-JP",
+          "grammar": "a"
+        },
+        {
+          "body": "a «goodness»/«acceptability»/«quality», goodness, a spec. prop.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "the «best», better than anything in a set ....",
+          "usage": "% le da",
+          "grammar": "ph"
+        },
+        {
+          "body": "the «best»/the «cream of the crop», better than anything ....",
+          "usage": "% ra ba",
+          "grammar": "ph"
+        },
+        {
+          "body": "«acceptable»/«good»/«nice», better than ... for purpose ....",
+          "grammar": "a"
+        }
+      ]
+    },
+    "humnu": {
+      "word": "humnu",
+      "type": "Predicate",
+      "origin": "humni",
+      "definitions": [
+        {
+          "body": "B is a «human being», generic term.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        },
+        {
+          "body": "«humanity», a spec. prop. of being human.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«humanity», the mass of such props.",
+          "usage": "lopu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«humanity»/«man»/«mankind», the class of all humans.",
+          "usage": "lea %",
+          "grammar": "n"
+        },
+        {
+          "body": "«humanity»/«man»/«mankind», the mass of all humans.",
+          "usage": "lo %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "kamla": {
+      "word": "kamla",
+      "type": "Predicate",
+      "origin": "3/3G kam | 3/4J kima su | 2/3E come | 2/3C lai",
+      "definitions": [
+        {
+          "body": "K «come»/«go» from S to D via V.",
+          "slots": 4,
+          "case_tags": "K-SDV",
+          "grammar": "v"
+        },
+        {
+          "body": "a «coming»/«going», an event/act of coming/going from somewhere.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «destination», of coming/going from ... to ....",
+          "usage": "fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «start», of coming/going from ... to ..., q.v. ....",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«come» here!, w/o; 1st arg., an imperative.",
+          "grammar": "i"
+        }
+      ]
+    },
+    "kangu": {
+      "word": "kangu",
+      "type": "Predicate",
+      "origin": "3/4F canin | 2/3C guo | 3/6E canine | 2/6R sobaka",
+      "definitions": [
+        {
+          "body": "B is a «dog», unspecific.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        }
+      ]
+    },
+    "kanla": {
+      "word": "kanla",
+      "type": "Predicate",
+      "origin": "Int.",
+      "definitions": [
+        {
+          "body": "B is a «canal» between points F over route V.",
+          "slots": 3,
+          "case_tags": "B-FV",
+          "grammar": "n"
+        }
+      ]
+    },
+    "kanmo": {
+      "word": "kanmo",
+      "type": "Predicate",
+      "origin": "2/2R mo ch | 2/3E can | 2/5S capaz | 2/6C neng gan | 2/6F capable",
+      "definitions": [
+        {
+          "body": "K «can»/«able to» do V under conditions N.",
+          "slots": 3,
+          "case_tags": "K-VN",
+          "grammar": "v"
+        },
+        {
+          "body": "an «ability»/«capability»/«talent»/«faculty», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "an «incapacity»/«inability», a spec. property.",
+          "usage": "pu no %",
+          "grammar": "n"
+        },
+        {
+          "body": "«able»/«capable»/«talented», capable of doing ... under condition ....",
+          "grammar": "a"
+        },
+        {
+          "body": "«cannot», not be able to do ... under ....",
+          "usage": "no %",
+          "grammar": "v"
+        },
+        {
+          "body": "«unable»/«incapable»/«unequal to», not able to do ... under ....",
+          "usage": "no %",
+          "grammar": "a"
+        }
+      ]
+    },
+    "katli": {
+      "word": "katli",
+      "type": "Predicate",
+      "origin": "4/6F qualite | 3/4H jati | 4/7E quality | 4/7S calidad | 4/9R katshiestv o2/6C j liang",
+      "definitions": [
+        {
+          "body": "B «have»/be «characterized by» quality/property/feature/relation N.",
+          "slots": 2,
+          "case_tags": "B-N",
+          "grammar": "v"
+        },
+        {
+          "body": "a «characteristic»/«feature»/«property»/«quality»/«attribute» of ..., a property.",
+          "usage": "nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "had ..., was «characterized» by feature ....",
+          "usage": "pa %",
+          "grammar": "vt"
+        },
+        {
+          "body": "«qualitatively», by means of qualities.",
+          "usage": "nu %",
+          "grammar": "av"
+        },
+        {
+          "body": "«qualitative», of properties generally.",
+          "usage": "nu %",
+          "grammar": "a"
+        }
+      ]
+    },
+    "kau": {
+      "word": "kau",
+      "type": "Struct",
+      "origin": "ka(nmo)",
+      "definitions": [
+        {
+          "body": "«can»/is «able to» ..., used before predicates (PA). E.g. {Mi kau godzi da} -- I can go to X.",
+          "grammar": "aux"
+        },
+        {
+          "body": "«in»/«during»/«under» ..., used before event/state terms to specify the conditions of an ability/ capability.",
+          "grammar": "pp"
+        },
+        {
+          "body": "a combining form of {kangu}, «dog».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "kinsei": {
+      "word": "kinsei",
+      "type": "Predicate",
+      "origin": "kin(ci)+se(tc)i",
+      "definitions": [
+        {
+          "body": "F is a «bouquet»/«bunch»/«cluster» of B.",
+          "slots": 2,
+          "case_tags": "F-B",
+          "grammar": "n"
+        }
+      ]
+    },
+    "kukra": {
+      "word": "kukra",
+      "type": "Predicate",
+      "origin": "3/4E quick | 3/4C kuai | 2/3G rasch | 2/5S rapid o | 2/5F rapide",
+      "definitions": [
+        {
+          "body": "G is «swifter»/«faster» than J by C in motion N.",
+          "slots": 4,
+          "case_tags": "G-JCN",
+          "grammar": "a"
+        },
+        {
+          "body": "a «velocity», rate of speed.",
+          "usage": "zo %",
+          "grammar": "n"
+        },
+        {
+          "body": "the «rapidity»/«speed»/«swiftness»/«quickness» of ..., a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«quick»/«rapid»/«fast»/«swift», swifter than ... in motion ....",
+          "grammar": "a"
+        },
+        {
+          "body": "«rapidly»/«quickly»/«swiftly», in a rapid manner.",
+          "grammar": "av"
+        },
+        {
+          "body": "«swiftness»/«speed», mass term of properties.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "liu": {
+      "word": "liu",
+      "type": "Struct",
+      "origin": "li(tn)u",
+      "definitions": [
+        {
+          "body": "«the word» ..., single word quotation.",
+          "grammar": "pm"
+        },
+        {
+          "body": "a combining form of {litnu}, «restrain».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "loglan": {
+      "word": "Loglan",
+      "type": "Name",
+      "origin": "Log. Loglan",
+      "definitions": [
+        {
+          "body": "the «Loglan» language.",
+          "usage": "la %",
+          "grammar": "na"
+        }
+      ]
+    },
+    "matma": {
+      "word": "matma",
+      "type": "Predicate",
+      "origin": "3/3E mom | 2/2C ma | 4/4H mata | 3/3R mat | 4/4S mama | 3/4F maman | 2/4G mutter | 3/7J okasama",
+      "definitions": [
+        {
+          "body": "K is the «mother» of P by father S.",
+          "slots": 3,
+          "case_tags": "K-PS",
+          "grammar": "n"
+        },
+        {
+          "body": "a «motherhood», a spec. state/condition.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«maternal», pert. to mothers.",
+          "grammar": "a"
+        },
+        {
+          "body": "«motherhood», mass term of states.",
+          "usage": "lopo %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "mrenu": {
+      "word": "mrenu",
+      "type": "Predicate",
+      "origin": "3/3E men | 3/4G mensch | 2/3C ren | 3/5S hombre | 3/7H manushya",
+      "definitions": [
+        {
+          "body": "B is a «man», male human adult.",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        },
+        {
+          "body": "a «manhood», a property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «manhood», a spec. state/condition.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«manhood», mass term of states.",
+          "usage": "lopo %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "nefi": {
+      "word": "nefi",
+      "type": "Struct",
+      "origin": "ne+fi",
+      "definitions": [
+        {
+          "body": "«firstly», in the first place.",
+          "grammar": "av"
+        }
+      ]
+    },
+    "nirli": {
+      "word": "nirli",
+      "type": "Predicate",
+      "origin": "2/3E girl | 2/3C nyu r | 3/5S nina | 2/5H larki",
+      "definitions": [
+        {
+          "body": "B is a «girl»/female human «child».",
+          "slots": 1,
+          "case_tags": "B-",
+          "grammar": "n"
+        }
+      ]
+    },
+    "paris": {
+      "word": "Paris",
+      "type": "Name",
+      "origin": "F. Paris",
+      "definitions": [
+        {
+          "body": "«Parisian», as in {mela Paris hotle}, a Parisian hotel.",
+          "usage": "mela %",
+          "grammar": "a"
+        }
+      ]
+    },
+    "pligo": {
+      "word": "pligo",
+      "type": "Predicate",
+      "origin": "2/3E apple | 3/5J ringo | 4/7C pieng guo",
+      "definitions": [
+        {
+          "body": "B is an «apple» from S, an edible fruit.",
+          "slots": 2,
+          "case_tags": "B-S",
+          "grammar": "n"
+        }
+      ]
+    },
+    "pol": {
+      "word": "pol",
+      "type": "Affix",
+      "origin": "pol(di)",
+      "definitions": [
+        {
+          "body": "a combining form of {poldi}, «nation».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "proga": {
+      "word": "proga",
+      "type": "Predicate",
+      "origin": "Int.",
+      "definitions": [
+        {
+          "body": "B is a «program» for/to do P on system F written by K.",
+          "slots": 4,
+          "case_tags": "B-PFK",
+          "grammar": "n"
+        }
+      ]
+    },
+    "rom": {
+      "word": "rom",
+      "type": "Affix",
+      "origin": "rom(ny)",
+      "definitions": [
+        {
+          "body": "a combining form of {romna/e/i/o}, \"«Roman»/«Latin»\".",
+          "grammar": "af"
+        }
+      ]
+    },
+    "sau": {
+      "word": "sau",
+      "type": "Struct",
+      "origin": "sa(tci)",
+      "definitions": [
+        {
+          "body": "Sources/Reasons/Causes, case tag («source»/«reason»/«cause»).",
+          "grammar": "pp"
+        }
+      ]
+    },
+    "setfa": {
+      "word": "setfa",
+      "type": "Predicate",
+      "origin": "3/3E set | 3/4R stav it | 2/3C fang | 2/3F mett re | 2/4G setz en",
+      "definitions": [
+        {
+          "body": "K «set»/«put»/«place» B at/on D.",
+          "slots": 3,
+          "case_tags": "K-BD",
+          "grammar": "v"
+        },
+        {
+          "body": "a «placing»/«localization» (of ... by ...), pert. to the -ing process.",
+          "usage": "fu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "snola": {
+      "word": "snola",
+      "type": "Predicate",
+      "origin": "soa",
+      "definitions": [
+        {
+          "body": "V entail/logically «imply» P under assumptions S by rules N.",
+          "slots": 4,
+          "case_tags": "V-PSN",
+          "grammar": "v"
+        },
+        {
+          "body": "an «entailment», a spec. property.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«entailment», mass term.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "sonli": {
+      "word": "sonli",
+      "type": "Predicate",
+      "origin": "3/3R son | 3/4E sleep | 3/4H sona | 3/5F sommeil | 3/6S sueno",
+      "definitions": [
+        {
+          "body": "K «sleep»/are «asleep»/«sleeping».",
+          "slots": 1,
+          "case_tags": "K-",
+          "grammar": "v"
+        },
+        {
+          "body": "a spec. act of «sleep»/«slumber».",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«sleeping»/«asleep», to be sleeping.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "spali": {
+      "word": "spali",
+      "type": "Predicate",
+      "origin": "3/4E side | 2/3C pang | 2/7F lateral",
+      "definitions": [
+        {
+          "body": "B is a «side»/«surface» of object F bounded by edges N.",
+          "slots": 3,
+          "case_tags": "B-FN",
+          "grammar": "n"
+        },
+        {
+          "body": "«lateral»/«side», pert. to sides.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "stude": {
+      "word": "stude",
+      "type": "Predicate",
+      "origin": "Int.",
+      "definitions": [
+        {
+          "body": "B is a «student»/«scholar» in course of study V at college/university N.",
+          "slots": 3,
+          "case_tags": "B-VN",
+          "grammar": "n"
+        }
+      ]
+    },
+    "takna": {
+      "word": "takna",
+      "type": "Predicate",
+      "origin": "4/5R tolko vat | 3/4J hana su | 2/3E talk | 2/3C tan",
+      "definitions": [
+        {
+          "body": "K «talk»/«speak» to D about V.",
+          "slots": 3,
+          "case_tags": "K-DV",
+          "grammar": "v"
+        },
+        {
+          "body": "a «speaker», one who/that which speaks.",
+          "grammar": "n"
+        },
+        {
+          "body": "a «speech»/«talk», an act/event of talking, q.v.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«oral»/«verbal», pert. to -ing.",
+          "grammar": "a"
+        }
+      ]
+    },
+    "tcali": {
+      "word": "tcali",
+      "type": "Predicate",
+      "origin": "2/3E wall | 2/3G wall | 3/5C chiang",
+      "definitions": [
+        {
+          "body": "B is a «wall» of/around F.",
+          "slots": 2,
+          "case_tags": "B-F",
+          "grammar": "n"
+        }
+      ]
+    },
+    "tor": {
+      "word": "tor",
+      "type": "Affix",
+      "origin": "to",
+      "definitions": [
+        {
+          "body": "a combining form of to, «two».",
+          "grammar": "af"
+        }
+      ]
+    },
+    "trena": {
+      "word": "trena",
+      "type": "Predicate",
+      "origin": "3/7H rel gari | 4/4S tren | 3/4E train | 2/3F train | 2/3G train | 3/5J ressha",
+      "definitions": [
+        {
+          "body": "B is a «railroad train» of transport system F.",
+          "slots": 2,
+          "case_tags": "B-F",
+          "grammar": "n"
+        }
+      ]
+    },
+    "trime": {
+      "word": "trime",
+      "type": "Predicate",
+      "origin": "4/11S instrumento | 2/6C chi jyu | 3/7F instrument | 4/10E instrument | 4/10G instrument | 4/11R instrument",
+      "definitions": [
+        {
+          "body": "B is an «instrument»/«tool»/«implement» for doing V.",
+          "slots": 2,
+          "case_tags": "B-V",
+          "grammar": "n"
+        }
+      ]
+    },
+    "tsani": {
+      "word": "tsani",
+      "type": "Predicate",
+      "origin": "3/4E sneeze | 3/6R tshiha t | 2/4G niesen | 3/7C ta ti pen | 2/6J kusame",
+      "definitions": [
+        {
+          "body": "K «sneeze».",
+          "slots": 1,
+          "case_tags": "K-",
+          "grammar": "v"
+        },
+        {
+          "body": "a «sneeze», a spec. act/event of -ing.",
+          "usage": "po %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "vedma": {
+      "word": "vedma",
+      "type": "Predicate",
+      "origin": "3/4E vend | 3/4S vend er | 2/3C mai | 2/3F vend re",
+      "definitions": [
+        {
+          "body": "K «sell»/«vend» B to D for C, a price.",
+          "slots": 4,
+          "case_tags": "K-BDC",
+          "grammar": "v"
+        },
+        {
+          "body": "a «salesman»/«seller»/«vendor»/«tradesman», one who sells ... to ... for ....",
+          "grammar": "n"
+        },
+        {
+          "body": "a «sale»/«selling», an act/event of selling.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "«Give» (in the sense of sell) that to me, please.",
+          "usage": "% ta mi, eo",
+          "grammar": "ph"
+        },
+        {
+          "body": "«saleable», conv. of sell.",
+          "usage": "nu %",
+          "grammar": "a"
+        },
+        {
+          "body": "«salesmanship», mass prop.",
+          "usage": "lopu %",
+          "grammar": "n"
+        }
+      ]
+    },
+    "vizka": {
+      "word": "vizka",
+      "type": "Predicate",
+      "origin": "2/2S vi | 3/3F vis ion | 2/3E vis ion | 2/3C kan | 2/3R vid yet",
+      "definitions": [
+        {
+          "body": "K «see»/«view»/«perceive»/«spot», visually B against background N.",
+          "slots": 3,
+          "case_tags": "K-BN",
+          "grammar": "v"
+        },
+        {
+          "body": "a «sight»/«seeing»/visual «perception», a spec. instance.",
+          "usage": "po %",
+          "grammar": "n"
+        },
+        {
+          "body": "a «sight»/«vision», visual sense of a spec. organism.",
+          "usage": "pu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a/the «ground»/«background», against which ... is seen by ....",
+          "usage": "fu %",
+          "grammar": "n"
+        },
+        {
+          "body": "a/the «visibility», spec. case of being -ble.",
+          "usage": "pu nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«overlook», not see ... against ..., neg.",
+          "usage": "no %",
+          "grammar": "v"
+        },
+        {
+          "body": "«seeing»/«sight»/visual «perception», mass term.",
+          "usage": "lopo %",
+          "grammar": "n"
+        },
+        {
+          "body": "«sight»/«vision», mass term of visual senses.",
+          "usage": "lopu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«visibility», mass of such cases.",
+          "usage": "lopu nu %",
+          "grammar": "n"
+        },
+        {
+          "body": "«visible», by ... against background ....",
+          "usage": "nu %",
+          "grammar": "a"
+        },
+        {
+          "body": "«visibly», in a visible way.",
+          "usage": "nu %",
+          "grammar": "av"
+        },
+        {
+          "body": "«visually», in a seeing way.",
+          "grammar": "av"
+        },
+        {
+          "body": "«visual», pert. to seeing ... against ....",
+          "grammar": "a"
+        }
+      ]
+    },
+    "volsi": {
+      "word": "volsi",
+      "type": "Predicate",
+      "origin": "3/3S voz | 3/4E voice | 2/5R golos",
+      "definitions": [
+        {
+          "body": "P is a (speech) «sound» made by person/animal S.",
+          "slots": 2,
+          "case_tags": "P-S",
+          "grammar": "n"
+        },
+        {
+          "body": "«voice», the sounds uttered by ind'l ....",
+          "usage": "lo %",
+          "grammar": "n"
+        }
+      ]
+    }
+  },
+  "grammar_rules": {
+    "ge_particle": "The particle 'ge' forces right-grouping of modifiers. Default is left-to-right. 'le bilti cmalo nirli ckela' = (((bilti cmalo) nirli) ckela). 'le bilti ge cmalo nirli ckela' = (bilti (cmalo (nirli ckela))). 'ge' opens a scope extending to end of modifier string.",
+    "ke_gu_particles": "'ke' opens explicit parenthesization, 'gu' closes it. 'le ke bilti cmalo gu nirli ckela' = ((bilti cmalo) (nirli ckela)). Like mathematical brackets in speech.",
+    "ce_particle": "'ce' conjoins modifiers at same scope: 'bilti ce cmalo' = 'both pretty and little'. 'le bilti ce cmalo nirli ckela' = school of girls who are both pretty and little.",
+    "case_tags": "Case tags mark argument roles: 'kao' (actor x1), 'dio' (recipient x3), 'beu' (patient x2), 'liu' (instrument x4). Allow free word order with unambiguous role assignment.",
+    "zero_ambiguity": "Every valid Loglan sentence has exactly ONE parse tree. No dangling modifiers, no ambiguous PP-attachment. Enforced by grouping particles and case tags.",
+    "predicate_slots": "Loglan predicates have numbered argument slots: x1 (agent), x2 (patient), x3 (recipient/goal), x4 (instrument/source), x5 (additional). The LOD defines exact slot structure per predicate.",
+    "complex_words": "Loglan complex words (borrowings/compounds) are built from primitives via affixes. E.g. 'cinkau' = 'cinta' (infant) + 'kangu' (dog) = puppy. 'sorme' = sister (primitive).",
+    "little_words": "Little words are grammatical particles: 'le' (the), 'la' (name marker), 'pa' (past tense), 'nu' (argument reversal), 'leda' (his/her, possessive)."
+  },
+  "grammar_documents": [
+    {
+      "title": "Assigning Case Tags to Argument Slots",
+      "text": "(Originally appeared in Lognet 91/4 )\n\nThe following article was adapted from a letter to JCB.—Tisra\n\nI am fascinated by case tags. I have spent a lot of time trying to understand how to assign them. I am convinced that we need some general principles, or perhaps a collection of standard patterns so that your average case-tag-assigner can be consistent with what has been assigned before.\n\nI have several ideas for such patterns. Let me propose two.\n\nMy first idea is perhaps the most controversial"
+    },
+    {
+      "title": "Assigning Case Tags to Argument Slots",
+      "text": "As I hope my parenthetical comments show, all of the above could be cast as a “B” without losing anything. I believe that they should be so cast.\n\nPossible Exception to the Corrolary : One place complexes might want to reflect the structure of their root words. I’m not sure I like this exception. It depends on how often complexes do borrow the place structures of their roots. It should be considered.\n\nMatma Class Words Should Use S, D, V or Equivalent :\n\nNB3 says: ' matma S is the mother of P by"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "(A page from the Loglan web site .)\n\n(From Lognet 95/1 . Used with the permission of The Loglan Institute, Inc. )\n\nToward a Theory of Case Tags\n\nLoglan case tags have usually been considered somewhat ad hoc . They were added for pragmatic reasons such as avoiding the problem of remembering arbitrary place structures of suteri-place predicates. The \"purists\", like James Cooke Brown, accept case tags only after long thought. The \"extreme purists\" [ like JCB, soi crano--JCB ] not even then.\n\nSuppos"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "The building of new concepts is not a rigorous process. It frequently relies on approximations like metonymy and metaphor. (Incidentally, Lakoff has also written a book on metaphor.) As a result, all languages have words for the \"basic level\" concepts like \"cat\" or \"container\" while the derived concepts differ from language to language. Derived concepts in different languages seem to organize reality in different ways.\n\nWhile reading Lakoff's book, I saw many examples, not of individual case tag"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "The Part-Whole Schema [B-F: e.g., parti = is a part of ]: Our first impression of anything is a \"whole\". When we examine the details we often see \"parts\", even when the parts are seamlessly joined together. Lakoff gives the \"family\" as a sample metaphor that uses this schema. We think of a family as a \"whole\", even though its parts are not connected.\n\nThe Center-Periphery Schema [B-F,P-S]: Lakoff gives as examples, \"A tree that loses its leaves is the same tree. A person whose hair is cut off or"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "The next section of the book is called \"Experiential Bases of Metaphors\". Lakoff's first example is \"more is up; less is down\" [G-M: e.g., groda = is bigger than ]. It's based on the image of, the more you put in a pile, the taller the pile. He gives the examples, \"The crime rate keeps rising . ... That stock has fallen again. Our sales dropped last year.\"\n\nAnother idea that is kicked around a lot in Lakoff's book is the prototype . I don't want to go into detail here but I do want to give you a"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "The above description is particularly important to us because lots of Loglan complexes end with -mao ( madzo , intentional causation) or with -cko ( ckozu , unintentional causation). The main difference between -mao and -cko is, of course, item 8 above, there is an agent which wills the action. All of these \"causal complexes\" will have to deal with the tags involved in the \"causal prototype\", and thus have a \"causal case tag signature\" like [K-BDVP], e.g., nakso = K fixes B for D by doing V .\n\nI"
+    },
+    {
+      "title": "Case Tag Theory & Predicate Roles",
+      "text": "How do we know that we have all the schemata we need? We don't. We make our best guess and allow room for expansion. I gather that the stuff in Lakoff's book is pretty new, mostly less that 15 years old, judging from the bibliography. We would probably be among the pioneers of schema research.\n\nThe Shoot the Engineer objection: We may be loath to rework the Loglan case tag system into \"schema tags\", if only because we want to keep the language stable. It may not be necessary to replace the old c"
+    },
+    {
+      "title": "Clarity and Unambiguity in Predicate Logic",
+      "text": "Loglan and the Option of Clarity Reed Riner has written a very good article about Loglan called Loglan and the Option of Clarity: A Genuinely User-friendly Language For Humans and Their Machines , which was originally published in ETC. et cetera Volume 47(3), Fall 1990 . An abstract follows. Alas, we cannot post it here for copyright reasons, but you can easily request it from him by e-mail . It's about 35K. Abstract The Sapir-Whorf Hypothesis raises questions about the extent\n to which a langua"
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "(A page from the Loglan web site .)\n\n(From Lognet 96/3 . Used with the permission of The Loglan Institute, Inc. )\n\nLopo Duible Le Meliu PA Leksemi (Exploring the PA Lexeme)\n\nBy William G. Gober, Jr. With an endnote by James Jennings\n\nBack in 1993 or 1994, during one of our on-line Loglan discussions, somebody asked for a word meaning habitually, in a time-free sense . I pointed out that in Appendix A (the list of little words) of Loglan 1 he could find gua ; it has relatives pua , nua , and fua "
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "A few of you--those who've been with us for at least four years, or who have read back-issues of Lognet --are thinking that I already wrote a column about the PA lexeme , in LN92/2 . You're right; but that column was mostly about how not to use PA words. This column explores what you can do with PA words, with emphasis on (i) uses that I feel the text of L1 doesn't adequately explore, (ii) uses discussed in NB3 that don't appear in L1 at all, and (iii) new words, introduced since L1 was publishe"
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "Here are examples of the three contexts: (i) Mi titci pa la Rivkás I eat before Rebecca ; (ii) Mi titci pa I eat/ate earlier ; and (iii) Mi pa titci I ate . (Throughout this column, personal names in the Loglan examples are taken from the name's original language, not from any later mangling of it used by another language. [ Lo grada! hue le nu plumou tisra. ])\n\nWhat's more, all three different uses of a PA word are intimately--and simply--related . A PA word is an inflector if it appears right "
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "What's more, all three different uses of a PA word are intimately--and simply--related . A PA word is an inflector if it appears right before the sentence predicate; move it elsewhere in the sentence, and it becomes an adverb...with no real change in the meaning of the sentence. For example, (1) Le mrenu pa titci The man ate becomes (2) Le mrenu ga titci pa The man ate earlier . (Don't forget to mark the sentence predicate in some fashion. (2') Le mrenu titci pa is a sentence fragment meaning Th"
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "Ga is not a member of the PA lexeme.\n\nSometimes people, including me at one time (to say nothing of the writer of NB3, soi crano), believe that it is. But this belief is mistaken. It's an honest mistake. The PA words share an important and prominent job with ga : that of marking sentence predicates, as in Le botci ga corta . You can replace ga in that sentence with any PA word, and the resulting sentence has the same grammatical structure; it's just more specific about time, or place, or cause, "
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "Quite often an English sentence of the form He did A to do B can be restated as He did A and [then] did B . In this case, a simple connective is called for, perhaps with a tense word to make the sequence clear. Da pa trana, e[pa] fresea mi X turned (rotated) and [that was before X] faced (front-set) me .\n\nThat's all well and good. But what if A not only happened before B, but was necessary for B? Finally I realized that the PA words I needed to say this weren't either the modals or the tensors, "
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "Pia nia fia give a sense of filling time: pia means continuously before, until ; nia throughout, during ; fia continuously after, ever since . The three base locatives vi va vu have forms infixed with -i- that fill space: vii via viu , meaning throughout/filling a small place, ...a medium place, and ...a large place , respectively.\n\nUnlike ga , gia and gua are members of the PA lexeme. In particular, they can be used adverbially: Mi clafo gia I laugh continually . They also form--what to call th"
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "But what else can gau do?\n\nClearly it will work as an adverb: Da sucmi gau She's a swimmer--potentially . That puts it in the same league as gia . Then I played with gau for a few weeks and discovered a prepositional use for it...one that suggests that the word is best considered as a modal with a meaning like in the presence of/under [certain][rare or unheard of] conditions... . For example: Lo cutri gau lo fluro, cabro Water in the presence of fluorine will burn . Here's a less extreme example"
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "Loglan has more tense words than the familiar three fa na pa and kin, and more locatives than vi and its five cousins. Any PA word can receive a suffix from the set -zi -za -zu ; L1 gives their meanings as a short interval, a medium interval, and a long interval , respectively.\n\nExample: Lepo telclimao la Mars, fazu nurprati rineni terhybraonu The terraforming (Earth-like-making) of Mars will eventually (after a long time from now) cost (be-priced at) several-ten trillion-browns (terabrowns) . ("
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "These forms are venerable: nafa , pana , fapa , and their ilk appeared in the 1960 Scientific American article about Loglan and have been with the language ever since. Unfortunately, the SA article--and, as far as I can tell, any material before NB3 --will mislead you. The reason: sometime in the early '80s, these words were reversed.\n\nBelieve NB3 ; believe the Loglan Online Dictionary ( LOD ); believe what I tell you here. Napa means has been (the present perfect tense) or already ; fana means "
+    },
+    {
+      "title": "Exploring the PA Lexeme (Tense & Aspect Particles)",
+      "text": "(Some of my fellow explorers have observed that the prepositional meaning of a PA word used as an adverb seems to be, well, ad hoc. I would argue for \"context dependent\", but the observation is still correct: we need more rigor in interpreting the adverbial PA words. Watch for further reports from the explorers in the Keugru; or better yet, get out there and help them explore.)\n\nLOD contains a wide variety of compound locatives; I invite those of you who have LOD to investigate them on your own."
+    }
+  ]
+}

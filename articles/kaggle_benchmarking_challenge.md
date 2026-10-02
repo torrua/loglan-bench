@@ -1,7 +1,7 @@
 ---
-title: "Can LLMs Parse a Language With Zero Ambiguity? Benchmarking 5 Models on Loglan"
+title: "Can LLMs Parse a Language With Zero Ambiguity? Benchmarking 6 Model Setups on Loglan"
 published: false
-description: "We ran 5 model configurations against a 60-problem benchmark built on a 1955 formal language with zero syntactic ambiguity. Without RAG, hallucination rates double and slot accuracy drops to zero. With RAG, frontier models achieve 99.6%–100%."
+description: "We ran 6 model configurations against a 60-problem benchmark built on a 1955 formal language with zero syntactic ambiguity. Without RAG, hallucination rates double and slot accuracy drops to zero. With RAG, frontier models achieve 99.6%–100%."
 tags: "kagglechallenge, devchallenge, ai, machinelearning"
 canonical_url: ""
 cover_image: ""

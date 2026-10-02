@@ -79,6 +79,29 @@ Most LLM benchmarks (MMLU, GSM8k) suffer from contamination: test questions leak
 - Ground truth is mathematically verifiable via single-path CFG parse trees.
 - There is zero subjective ambiguity in grading.
 
+#### 4. The "Puppy vs. Book" Case Study: Exposing Pretraining Prior Bias
+During benchmark evaluations, we uncovered a fascinating failure mode that illustrates why formal benchmarks are essential for catching hidden hallucinations.
+
+Consider the textbook example from Chapter 4 of *Loglan 1: A Logical Language*:
+> `La Djan, pa donsu leda sorme le cinkau`
+> *(Literal: John gave his-sister the puppy / infant-dog)*
+> - `sorme` = sister (Primitive)
+> - `cinkau` = `cinta` (infant) + `kangu` (dog) = puppy / infant-dog (Complex)
+
+When asked to map arguments for `donsu` (`x1`: giver, `x2`: gift, `x3`: recipient) from the tagged variant (`Kao la Djan, pa donsu dio leda sorme beu le cinkau`), the model correctly extracted the Loglan tokens:
+- `x1` = `la Djan`
+- `x2` = `le cinkau`
+- `x3` = `leda sorme`
+
+**However, when translating the extracted entities into English, the model hallucinated:**
+- `le cinkau` $\to$ translated as **"the book"** (instead of *the puppy*)!
+- `leda sorme` $\to$ translated as **"the small boy"** (instead of *his sister*)!
+
+**Why did this happen?**
+In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the textbook example of a ditransitive verb of giving is almost always *"John gave the boy a book"*. The model's pretraining associative prior for this English trope overpowered the explicit definitions in its context!
+
+In natural language evaluation, such a substitution is easily missed because *"John gave the boy a book"* sounds fluent and plausible. But on Loglan's mathematically grounded lexicon, the substitution is immediately flagged: `cinkau` $\neq$ `bukcu` (book) and `sorme` $\neq$ `cmalo mrenu` (small boy). This discovery proves that formal languages act as an unforgiving microscope for LLM prior bias.
+
 ---
 
 ### Real-World Meaning: Why This Matters Beyond Constructed Languages

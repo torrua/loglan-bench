@@ -155,6 +155,7 @@ We evaluated 4 models on our test suite: **Gemma 3 27B**, **Claude 3.5 Haiku**, 
 1. **Gemma 3 dominated predicate slot reasoning (95.0%)**: Its structured attention mechanisms were remarkably capable at isolating multi-argument roles ($x_1$ through $x_4$) when grounded by the LOD schema.
 2. **Hallucination Protection**: By verifying claimed Loglan words against the 9,988 verified entries in our SQLite database, Gemma achieved an ultra-low hallucination rate of just 1.2%, compared to 6.5% for Llama 3.1 8B.
 3. **Modifier Scope Failure in English**: All models struggled to enumerate all 5 English parse possibilities for complex nominals, yet all top models easily parsed the single, explicit Loglan formulation.
+4. **The "Puppy vs. Book" Hallucination Discovery**: During testing, we caught an LLM translating `le cinkau` (puppy/infant-dog) as "the book" and `leda sorme` (his sister) as "the small boy", overridden by its English pretraining bias for the cliché *"John gave the boy a book"*. In English, this hallucination passes undetected; in Loglan, the formal lexicon catches it immediately.
 
 ---
 

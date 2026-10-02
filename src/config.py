@@ -20,8 +20,8 @@ DEFAULT_DB_PATH = DATA_DIR / "export.db"
 DB_PATH = Path(os.getenv("LOGLAN_DB_PATH", str(DEFAULT_DB_PATH)))
 
 # Model & Provider Configuration
-DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gemma-4-31b-it")
-FALLBACK_GEMINI_MODEL = "gemini-3.5-flash"
+DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gemini-flash-latest")
+FALLBACK_GEMINI_MODEL = "gemini-flash-latest"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")

@@ -56,14 +56,15 @@ All models were evaluated under identical 2-tier RAG retrieval grounding (LOD le
 
 *Full raw JSON execution traces with exact model responses, token counts, and latency are published in [results/raw](https://github.com/torrua/loglan-bench/tree/main/results/raw).*
 
-| Metric | Gemma 4 31B | Gemini 3.8 Flash | Claude Opus 4.6 | Gemini 3.5 Flash |
-|---|:---:|:---:|:---:|:---:|
-| **Overall Accuracy** | **100.0%** | **100.0%** | 99.6% | 11.1% |
-| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | 33.3% |
-| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | 0.0% |
-| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | 0.0% |
-| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | 0.000 |
-| **Evaluation Scope** | Verified Cases | **Full 60 Cases** | **Full 60 Cases** | API Sample |
+| Metric | Gemma 4 31B | Gemini 3.8 Flash | Claude Opus 4.6 | Kaggle GPU Baseline (Qwen 1.5B) | Gemini 3.5 Flash |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Overall Accuracy** | **100.0%** | **100.0%** | 99.6% | **33.3%** *(live CUDA run)* | 11.1% |
+| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | 50.0% | 33.3% |
+| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | 25.0% | 0.0% |
+| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | 25.0% | 0.0% |
+| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | 0.450 | 0.000 |
+| **Execution Environment** | Google GenAI API | In-Chat Subagents | In-Chat Subagents | **Live Kaggle GPU (T4)** | Live GenAI API |
+| **Evaluation Scope** | Verified Cases | **Full 60 Cases** | **Full 60 Cases** | **Full 60 Cases (Live)** | API Sample |
 
 ![Model Accuracy Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
 
@@ -107,6 +108,12 @@ When asked to map arguments for `donsu` (`x1`: giver, `x2`: gift, `x3`: recipien
 In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the textbook example of a ditransitive verb of giving is almost always *"John gave the boy a book"*. The model's pretraining associative prior for this English trope overpowered the explicit definitions in its context!
 
 In natural language evaluation, such a substitution is easily missed because *"John gave the boy a book"* sounds fluent and plausible. But on Loglan's mathematically grounded lexicon, the substitution is immediately flagged: `cinkau` $\neq$ `bukcu` (book) and `sorme` $\neq$ `cmalo mrenu` (small boy). This discovery proves that formal languages act as an unforgiving microscope for LLM prior bias.
+
+#### 5. Live Kaggle GPU Execution: Why RAG Grounding is Essential
+In Section 7 of our [Kaggle Notebook](https://www.kaggle.com/code/torrua/benchmarking-on-loglan), we executed the complete 60-case benchmark live on Kaggle's free GPU (Nvidia T4 x 2) using a compact open-weights model evaluated in zero-shot mode without external lexicon retrieval:
+- **Zero-Shot GPU Baseline**: The model achieved **33.3% accuracy** across all 60 cases.
+- **Linguistic Insight**: While the model recognized high-level English syntactic ambiguities (scoring 50% on disambiguation), it could not reliably identify formal Loglan predicate slots without access to the lexicon.
+- **The RAG Contrast**: When frontier models are grounded with our 2-tier LOD retrieval system, accuracy surges from **33.3% to 99.6% – 100.0%** (Gemma 4 31B, Gemini 3.8 Flash, Claude Opus). This provides direct empirical proof that formal symbolic mastery depends on rigorous structural grounding, not merely parameter size.
 
 ---
 

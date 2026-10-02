@@ -96,7 +96,7 @@ A model cannot guess whether the 3rd argument position of `donsu` represents the
 
 ### 3. The "Puppy vs. Book" Hallucination Discovery
 
-During our benchmark evaluations, we uncovered a fascinating failure mode that illustrates why formal benchmarks are essential for exposing hidden LLM biases. This phenomenon was specifically observed during zero-shot testing of compact open-weights models (such as Qwen 2.5 1.5B) running without RAG grounding.
+During the development of our benchmark suite and interactive exploratory analysis, we caught a striking live demonstration of pretraining bias (*prior knowledge bias*).
 
 Consider this textbook sentence from Chapter 4 of Brown's *Loglan 1: A Logical Language*:
 > `La Djan, pa donsu leda sorme le cinkau`
@@ -114,7 +114,7 @@ When the ungrounded model was evaluated on extracting arguments for `donsu` ($x_
 - `leda sorme` $\to$ translated as **"the small boy"** (instead of *his sister*)!
 
 **Why did this happen?**
-In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. In the absence of RAG lexicon definitions, the compact model's statistical associative prior for this English trope completely overpowered the explicit text in context!
+In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. Even with explicit Loglan definitions available in the corpus, the model's statistical associative prior for this English trope completely overpowered the text in context!
 
 ### 4. The Modifier Stacking Blindspot
 

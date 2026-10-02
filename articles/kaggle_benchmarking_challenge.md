@@ -96,7 +96,7 @@ A model cannot guess whether the 3rd argument position of `donsu` represents the
 
 ### 3. The "Puppy vs. Book" Hallucination Discovery
 
-During our benchmark evaluations, we uncovered a fascinating failure mode that illustrates why formal benchmarks are essential for exposing hidden LLM biases.
+During our benchmark evaluations, we uncovered a fascinating failure mode that illustrates why formal benchmarks are essential for exposing hidden LLM biases. This phenomenon was specifically observed during zero-shot testing of compact open-weights models (such as Qwen 2.5 1.5B) running without RAG grounding.
 
 Consider this textbook sentence from Chapter 4 of Brown's *Loglan 1: A Logical Language*:
 > `La Djan, pa donsu leda sorme le cinkau`
@@ -104,17 +104,17 @@ Consider this textbook sentence from Chapter 4 of Brown's *Loglan 1: A Logical L
 > - `sorme` = sister (Primitive)
 > - `cinkau` = `cinta` (infant) + `kangu` (dog) = puppy / infant-dog (Complex)
 
-When models were evaluated on extracting arguments for `donsu` ($x_1$: giver, $x_2$: gift, $x_3$: recipient), they correctly identified the Loglan tokens:
+When the ungrounded model was evaluated on extracting arguments for `donsu` ($x_1$: giver, $x_2$: gift, $x_3$: recipient), it correctly picked out the surface Loglan tokens:
 - $x_1$ = `la Djan`
 - $x_2$ = `le cinkau`
 - $x_3$ = `leda sorme`
 
-**However, when translating the extracted entities into English, models hallucinated:**
+**However, when translating the extracted entities into English, the model hallucinated:**
 - `le cinkau` $\to$ translated as **"the book"** (instead of *the puppy*)!
 - `leda sorme` $\to$ translated as **"the small boy"** (instead of *his sister*)!
 
 **Why did this happen?**
-In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. The model's statistical associative prior for this English trope completely overpowered the explicit text in context!
+In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. In the absence of RAG lexicon definitions, the compact model's statistical associative prior for this English trope completely overpowered the explicit text in context!
 
 ### 4. The Modifier Stacking Blindspot
 

@@ -59,7 +59,8 @@ I built **Loglan Bench** — a 2-tier RAG-powered grammar assistant and evaluati
              │    - Affix connections    │
              │                           │
              │ 2. loglan.org Documents   │
-             │    - 103 textbook chunks  │
+             │    - 769 textbook chunks  │
+             │    - Brown's "Loglan 1"   │
              │    - Case tag theory      │
              │    - 'ge' & 'gu' rules    │
              └─────────────┬─────────────┘
@@ -78,13 +79,15 @@ I built **Loglan Bench** — a 2-tier RAG-powered grammar assistant and evaluati
 ```
 
 ### 1. Ingesting 70 Years of Linguistic Knowledge
-Using `BeautifulSoup` and SQLite's `FTS5`, we built `ingest_docs.py`, which scrapes the canonical articles from `loglan.org`:
-- *Easy Loglan Introduction* (11 fundamental lessons)
+Using `BeautifulSoup` and SQLite's `FTS5`, we built `ingest_docs.py`, which scrapes **28 canonical reference sources** from `loglan.org`:
+- *Loglan 1: A Logical Language* (Chapters 1–6 and Appendices by Dr. James Cooke Brown)
+- *LOD Guide: Reading the Loglan Online Dictionary*
 - *Case Tag Theory & Predicate Roles*
 - *The Faces of Gu* (particle disambiguation rules)
 - *Complex Word Making & Affixes*
+- Authentic parallel translations from *Scientific American*
 
-The script segments articles into ~450-word semantic chunks and indexes both the 103 textbook chunks (`doc_fts`) and all 18,766 dictionary definitions (`def_fts`) into high-performance full-text search tables.
+The script segments books and articles into semantic chunks and indexes all **769 textbook chunks** (`doc_fts`) and **18,766 dictionary definitions** (`def_fts`) into high-performance full-text search tables.
 
 ### 2. Two-Tier Grounded Retrieval
 When a query arrives, `retriever.py` queries:

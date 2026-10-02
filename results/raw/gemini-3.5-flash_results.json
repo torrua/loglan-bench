@@ -1,6 +1,7 @@
 {
   "model": "gemini-3.5-flash",
-  "timestamp": "2026-10-02 11:40:25",
+  "provider": "google-genai-live-api",
+  "timestamp": "2026-10-02 13:30:40",
   "total_cases": 3,
   "results": [
     {

@@ -149,6 +149,7 @@ We evaluated frontier models on our test suite: **Gemma 4 31B**, **Gemini 3.8 Fl
 | **Gemma 4 31B (Google)** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | **0.000** *(zero halluc.)* | Verified Cases |
 | **Gemini 3.8 Flash High** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | 0.044 | Full 60 Cases |
 | **Claude Opus 4.6** | 99.6% | **100.0%** | 98.8% | **100.0%** | 0.106 | Full 60 Cases |
+| **Mimo v2.6 Flash (OpenCode)** | **42.2%** | 25.0% | 70.0% | 31.7% | 0.097 | 57+ Cases |
 | **Kaggle GPU Baseline (Qwen 1.5B)** | **33.3%** | 5.0% | 0.0% | 100.0% | 0.500 | Full 60 Cases (Live CUDA) |
 | **Gemini 3.5 Flash (Live API)** | 11.1% | 33.3% | 0.0% | 0.0% | 0.000 | Live Sample |
 

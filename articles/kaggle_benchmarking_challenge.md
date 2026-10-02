@@ -44,6 +44,7 @@ We evaluated frontier open-weight and proprietary models across our 60-case benc
 | **Gemma 4 31B** | Gemma (Google DeepMind) | Live API / Kaggle GPU | 128k | 31B Open Weights |
 | **Gemini 3.8 Flash High** | Gemini (Google) | High-Reasoning Subagents | 1M | Frontier Multimodal |
 | **Claude Opus 4.6** | Claude (Anthropic) | High-Reasoning Subagents | 200k | Frontier Flagship |
+| **Mimo v2.6 Flash** | OpenCode (Mimo) | OpenCode Free API | 64k | Coding & Agent Model |
 | **Qwen 2.5 1.5B Instruct** | Qwen (Alibaba Cloud) | **Live Kaggle GPU (T4)** | 32k | 1.5B Compact Open Baseline |
 | **Gemini 3.5 Flash** | Gemini (Google) | Live GenAI API | 1M | Lightweight Frontier |
 
@@ -57,16 +58,17 @@ All models were evaluated under identical 2-tier RAG retrieval grounding (LOD le
 
 *Full raw JSON execution traces with exact model responses, token counts, and latency are published in [results/raw](https://github.com/torrua/loglan-bench/tree/main/results/raw).*
 
-| Metric | Gemma 4 31B | Gemini 3.8 Flash | Claude Opus 4.6 | Kaggle GPU Baseline (Qwen 1.5B) | Gemini 3.5 Flash |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Overall Accuracy** | **100.0%** | **100.0%** | 99.6% | **33.3%** *(live CUDA run)* | 11.1% |
-| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | **5.0%** *(1 / 20)* | 33.3% |
-| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | **0.0%** *(0 / 20)* | 0.0% |
-| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | **100.0%** *(20 / 20)* | 0.0% |
-| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | 0.500 | 0.000 |
-| **Execution Environment** | Google GenAI API | In-Chat Subagents | In-Chat Subagents | **Live Kaggle GPU (T4)** | Live GenAI API |
-| **Grounding / Setup** | Two-Tier LOD RAG | Two-Tier LOD RAG | Two-Tier LOD RAG | **Zero-Shot (No RAG)** | Two-Tier LOD RAG |
-| **Evaluation Scope** | Verified Cases | **Full 60 Cases** | **Full 60 Cases** | **Full 60 Cases (Live)** | API Sample |
+| Metric | Gemma 4 31B | Gemini 3.8 Flash | Claude Opus 4.6 | Mimo v2.6 Flash | Kaggle GPU Baseline (Qwen 1.5B) | Gemini 3.5 Flash |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Overall Accuracy** | **100.0%** | **100.0%** | 99.6% | **42.2%** | **33.3%** *(live CUDA)* | 11.1% |
+| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | **25.0%** *(5 / 20)* | **5.0%** *(1 / 20)* | 33.3% |
+| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | **70.0%** *(14 / 20)* | **0.0%** *(0 / 20)* | 0.0% |
+| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | **31.7%** *(runs)* | **100.0%** *(20 / 20)* | 0.0% |
+| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | **9.7%** | 0.500 | 0.000 |
+| **Average Latency (sec)** | 85.4s | <1.0s | <1.0s | 143.6s | 0.72s | 32.0s |
+| **Execution Environment** | Google GenAI API | In-Chat Subagents | In-Chat Subagents | OpenCode API | **Live Kaggle GPU (T4)** | Live GenAI API |
+| **Grounding / Setup** | Two-Tier LOD RAG | Two-Tier LOD RAG | Two-Tier LOD RAG | Two-Tier LOD RAG | **Zero-Shot (No RAG)** | Two-Tier LOD RAG |
+| **Evaluation Scope** | Verified Cases | **Full 60 Cases** | **Full 60 Cases** | **57+ Cases** | **Full 60 Cases (Live)** | API Sample |
 
 ![Model Accuracy Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
 

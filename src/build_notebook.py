@@ -1,9 +1,16 @@
 """Helper to generate notebooks/kaggle_benchmark.ipynb."""
 
+import base64
 import json
+import zlib
 from pathlib import Path
 
 NOTEBOOK_PATH = Path("notebooks/kaggle_benchmark.ipynb")
+DATASET_PATH = Path("data/benchmark_dataset.json")
+
+# Compress dataset for offline embedding in Kaggle notebooks
+raw_dataset_bytes = DATASET_PATH.read_bytes()
+b64_dataset_str = base64.b64encode(zlib.compress(raw_dataset_bytes, 9)).decode("ascii")
 
 cells = [
     {
@@ -32,7 +39,7 @@ cells = [
         "outputs": [],
         "source": [
             "import os\n",
-            "# Suppress debugger warnings in notebook environments\n",
+            "# Suppress debugger warnings in cloud notebook environments\n",
             "os.environ['PYDEVD_DISABLE_FILE_VALIDATION'] = '1'\n",
             "\n",
             "# Install dependencies if not already present\n",
@@ -72,22 +79,40 @@ cells = [
         "metadata": {},
         "outputs": [],
         "source": [
-            "# Load benchmark dataset with auto-fetch from GitHub if run in isolated cloud environment\n",
+            "# Multi-tier loader: works locally, via GitHub, or 100% offline (when Kaggle Internet is disabled)\n",
+            "import base64\n",
+            "import zlib\n",
+            "\n",
             "dataset_file = 'data/benchmark_dataset.json'\n",
             "if not os.path.exists(dataset_file):\n",
             "    dataset_file = '../data/benchmark_dataset.json'\n",
             "\n",
+            "bench_data = None\n",
             "if os.path.exists(dataset_file):\n",
-            "    with open(dataset_file, 'r', encoding='utf-8') as f:\n",
-            "        bench_data = json.load(f)\n",
-            "    print(f'Loaded dataset from local path: {dataset_file}')\n",
-            "else:\n",
-            "    raw_url = 'https://raw.githubusercontent.com/torrua/loglan-bench/main/data/benchmark_dataset.json'\n",
-            "    print(f'Fetching dataset directly from public GitHub: {raw_url}')\n",
-            "    req = urllib.request.Request(raw_url, headers={'User-Agent': 'KaggleBenchmarkNotebook/1.0'})\n",
-            "    with urllib.request.urlopen(req, timeout=15) as resp:\n",
-            "        bench_data = json.loads(resp.read().decode('utf-8'))\n",
-            "    print('Successfully fetched dataset from GitHub!')\n",
+            "    try:\n",
+            "        with open(dataset_file, 'r', encoding='utf-8') as f:\n",
+            "            bench_data = json.load(f)\n",
+            "        print(f'Loaded dataset from local path: {dataset_file}')\n",
+            "    except Exception:\n",
+            "        pass\n",
+            "\n",
+            "if bench_data is None:\n",
+            "    # Attempt 2: Download from public GitHub repository (if Kaggle Internet is enabled)\n",
+            "    try:\n",
+            "        raw_url = 'https://raw.githubusercontent.com/torrua/loglan-bench/main/data/benchmark_dataset.json'\n",
+            "        req = urllib.request.Request(raw_url, headers={'User-Agent': 'KaggleBenchmarkNotebook/1.0'})\n",
+            "        with urllib.request.urlopen(req, timeout=5) as resp:\n",
+            "            bench_data = json.loads(resp.read().decode('utf-8'))\n",
+            "        print('Loaded dataset from GitHub online URL.')\n",
+            "    except Exception:\n",
+            "        pass\n",
+            "\n",
+            "if bench_data is None:\n",
+            "    # Attempt 3: Self-contained embedded offline data (guarantees execution with Internet OFF)\n",
+            f"    EMBEDDED_DATASET_B64 = '{b64_dataset_str}'\n",
+            "    raw_bytes = zlib.decompress(base64.b64decode(EMBEDDED_DATASET_B64.encode('ascii')))\n",
+            "    bench_data = json.loads(raw_bytes.decode('utf-8'))\n",
+            "    print('Loaded dataset from embedded offline archive (Zero-Network Mode).')\n",
             "\n",
             "print(f\"\\nLoaded {len(bench_data['cases'])} test cases across categories:\")\n",
             "for cat, count in bench_data['metadata']['categories'].items():\n",

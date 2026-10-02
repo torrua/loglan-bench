@@ -1,68 +1,53 @@
-"""Kaggle Benchmarks Integration Task for Loglan Bench.
+"""Kaggle Benchmark Task: Loglan Predicate Slot Identification.
 
-Compatible with the official Kaggle Benchmarks Python library (kaggle-benchmarks).
-Reference: https://github.com/Kaggle/kaggle-benchmarks
+Official task definition using the kaggle-benchmarks library.
+Evaluates LLMs on formal argument slot extraction.
 """
 
-import json
-from pathlib import Path
+import kaggle_benchmarks as kbench
+import pandas as pd
+import requests
 
-# Optional import: kaggle_benchmarks is pre-installed in Kaggle Benchmarks environment
-try:
-    import kaggle_benchmarks as kbench
-    HAS_KBENCH = True
-except ImportError:
-    HAS_KBENCH = False
+# 1. Fetch benchmark dataset directly from GitHub
+DATASET_URL = "https://raw.githubusercontent.com/torrua/loglan-bench/main/data/benchmark_dataset.json"
+response = requests.get(DATASET_URL)
+data = response.json()
 
+slot_cases = [c for c in data["cases"] if c["category"] == "slot_identification"]
 
-def create_kbench_tasks():
-    """Register Loglan Benchmark tasks using the official @kbench.task decorator."""
-    if not HAS_KBENCH:
-        print("kaggle-benchmarks library not installed locally.")
-        print("To run in Kaggle: use a Kaggle Benchmarks notebook (https://www.kaggle.com/benchmarks/tasks/new)")
-        return
-
-    @kbench.task(name="loglan_syntactic_disambiguation")
-    def task_disambiguation(llm, english: str, loglan: str):
-        """Evaluate if the model recognizes English ambiguity vs. Loglan single parse tree."""
-        prompt = (
-            f"Analyze the syntactic structure of the English sentence: \"{english}\"\n"
-            f"and compare it with the Loglan translation: \"{loglan}\".\n"
-            f"State all valid English parse interpretations, and state whether Loglan has "
-            f"multiple parses or exactly one unambiguous parse tree."
-        )
-        response = llm.prompt(prompt)
-
-        # Built-in kbench assertion: model must assert Loglan has exactly one parse
-        kbench.assertions.assert_contains_regex(
-            r"(?i)(exactly one|single|unambiguous|one valid)\s+parse",
-            response,
-            expectation="Model must recognize that Loglan has exactly one valid parse tree."
-        )
-
-    @kbench.task(name="loglan_predicate_slot_identification")
-    def task_predicate_slots(llm, predicate: str, sentence: str, expected_x1: str, expected_x2: str):
-        """Evaluate entity-to-slot mapping for multi-place predicates."""
-        prompt = (
-            f"Given the Loglan predicate '{predicate}' and the sentence:\n"
-            f"\"{sentence}\"\n"
-            f"Identify which entity fills slot x1 (agent/donor) and slot x2 (patient/gift)."
-        )
-        response = llm.prompt(prompt)
-
-        kbench.assertions.assert_contains_regex(
-            expected_x1,
-            response,
-            expectation=f"Slot x1 must contain '{expected_x1}'."
-        )
-        kbench.assertions.assert_contains_regex(
-            expected_x2,
-            response,
-            expectation=f"Slot x2 must contain '{expected_x2}'."
-        )
-
-    print("Successfully registered Loglan tasks with @kbench.task decorator.")
+# 2. Build task evaluation DataFrame
+df = pd.DataFrame([
+    {
+        "predicate": c["predicate"],
+        "sentence": c["sentence"],
+        "expected_donor": list(c["expected_slots"].values())[0].split()[0]  # Expected x1 entity
+    }
+    for c in slot_cases
+])
 
 
-if __name__ == "__main__":
-    create_kbench_tasks()
+# 3. Define the official Kaggle Benchmark Task
+@kbench.task(name="loglan_predicate_slots")
+def eval_loglan_slots(llm, predicate: str, sentence: str, expected_donor: str) -> bool:
+    """Evaluates whether the model correctly maps argument slots in Loglan without ambiguity."""
+    prompt = (
+        f"In the Loglan formal language, predicates have strict argument positions.\n"
+        f"For the predicate '{predicate}' in the sentence: '{sentence}',\n"
+        f"which entity fills slot x1 (the agent/donor/subject)?\n"
+        f"State the exact entity name."
+    )
+    response = llm.prompt(prompt)
+    return expected_donor.lower() in response.lower()
+
+
+# 4. Execute evaluation across available Kaggle LLMs
+print(f"Evaluating {len(df)} Loglan predicate slot cases...")
+runs = eval_loglan_slots.evaluate(
+    llm=[kbench.llm],
+    evaluation_data=df
+)
+
+# 5. Output benchmark results
+results_df = runs.as_dataframe()
+accuracy = results_df["result"].mean()
+print(f"Loglan Predicate Slot Accuracy: {accuracy * 100:.1f}%")

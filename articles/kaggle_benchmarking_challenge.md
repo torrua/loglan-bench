@@ -117,7 +117,7 @@ In natural language evaluation, such a substitution is easily missed because *"J
 
 ## Where can we see it?
 
-- **Kaggle Notebook**: [Kaggle Notebook: Loglan Formal Language Benchmark](https://www.kaggle.com/models/google/gemma) *(Single-click runnable on Kaggle GPU)*
+- **Kaggle Notebook**: [Kaggle Notebook: Benchmarking on Loglan](https://www.kaggle.com/code/torrua/benchmarking-on-loglan) *(Full reproducible code & verification suite)*
 - **Kaggle Dataset**: `benchmark_dataset.json` (60 curated test cases across 3 categories)
 - **GitHub Repository**: [https://github.com/torrua/loglan-bench](https://github.com/torrua/loglan-bench) *(MIT Licensed)*
 - **LOD Manager Project**: [https://github.com/torrua/LOD_manager](https://github.com/torrua/LOD_manager)

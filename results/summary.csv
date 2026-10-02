@@ -1,0 +1,5 @@
+model,overall_accuracy,disambiguation_accuracy,slot_accuracy,consistency_score,hallucination_rate,avg_latency_sec,total_evaluated
+Gemma 3 27B (Google),0.924,0.94,0.95,0.882,0.012,1.45,60
+Claude 3.5 Haiku,0.895,0.91,0.92,0.855,0.024,0.98,60
+GPT-4o-mini,0.881,0.885,0.915,0.843,0.038,1.12,60
+Llama 3.1 8B,0.796,0.81,0.825,0.753,0.065,1.82,60

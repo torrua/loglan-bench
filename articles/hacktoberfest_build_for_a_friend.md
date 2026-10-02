@@ -149,7 +149,7 @@ We evaluated frontier models on our test suite: **Gemma 4 31B**, **Gemini 3.8 Fl
 | **Gemma 4 31B (Google)** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | **0.000** *(zero halluc.)* | Verified Cases |
 | **Gemini 3.8 Flash High** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | 0.044 | Full 60 Cases |
 | **Claude Opus 4.6** | 99.6% | **100.0%** | 98.8% | **100.0%** | 0.106 | Full 60 Cases |
-| **Kaggle GPU Baseline (Qwen 1.5B)** | 33.3% | 50.0% | 25.0% | 25.0% | 0.450 | Full 60 Cases (Live CUDA) |
+| **Kaggle GPU Baseline (Qwen 1.5B)** | **33.3%** | 5.0% | 0.0% | 100.0% | 0.500 | Full 60 Cases (Live CUDA) |
 | **Gemini 3.5 Flash (Live API)** | 11.1% | 33.3% | 0.0% | 0.0% | 0.000 | Live Sample |
 
 ![Benchmark Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
@@ -159,7 +159,7 @@ We evaluated frontier models on our test suite: **Gemma 4 31B**, **Gemini 3.8 Fl
 2. **Hallucination Protection**: Gemma 4 31B achieved a 0.000 hallucination rate against the 9,988 verified entries in our SQLite database.
 3. **Modifier Scope Failure in English**: Models struggled to enumerate all 5 English parse possibilities for complex nominals, yet easily parsed the single, explicit Loglan formulation.
 4. **The "Puppy vs. Book" Hallucination Discovery**: Catching associative prior bias where an LLM translates puppy as "book" and sister as "boy".
-5. **Live Kaggle GPU Reproducibility**: Running the benchmark live on Kaggle GPU yields 33.3% without lexicon grounding, which jumps to 99.6%–100.0% with our RAG pipeline.
+5. **Live Kaggle GPU Reproducibility**: Running the benchmark live on Kaggle GPU yields 33.3% without lexicon grounding (scoring 0% on slots and 5% on disambiguation), which surges to 99.6%–100.0% with our Two-Tier RAG pipeline.
 
 ---
 

@@ -60,11 +60,12 @@ All models were evaluated under identical 2-tier RAG retrieval grounding (LOD le
 | Metric | Gemma 4 31B | Gemini 3.8 Flash | Claude Opus 4.6 | Kaggle GPU Baseline (Qwen 1.5B) | Gemini 3.5 Flash |
 |---|:---:|:---:|:---:|:---:|:---:|
 | **Overall Accuracy** | **100.0%** | **100.0%** | 99.6% | **33.3%** *(live CUDA run)* | 11.1% |
-| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | 50.0% | 33.3% |
-| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | 25.0% | 0.0% |
-| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | 25.0% | 0.0% |
-| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | 0.450 | 0.000 |
+| **Disambiguation Accuracy** | **100.0%** | **100.0%** | **100.0%** | **5.0%** *(1 / 20)* | 33.3% |
+| **Predicate Slot Accuracy** | **100.0%** | **100.0%** | 98.8% | **0.0%** *(0 / 20)* | 0.0% |
+| **Translation Consistency (F1)** | **100.0%** | **100.0%** | **100.0%** | **100.0%** *(20 / 20)* | 0.0% |
+| **Hallucination Rate (vs LOD)** | **0.000** | 0.044 | 0.106 | 0.500 | 0.000 |
 | **Execution Environment** | Google GenAI API | In-Chat Subagents | In-Chat Subagents | **Live Kaggle GPU (T4)** | Live GenAI API |
+| **Grounding / Setup** | Two-Tier LOD RAG | Two-Tier LOD RAG | Two-Tier LOD RAG | **Zero-Shot (No RAG)** | Two-Tier LOD RAG |
 | **Evaluation Scope** | Verified Cases | **Full 60 Cases** | **Full 60 Cases** | **Full 60 Cases (Live)** | API Sample |
 
 ![Model Accuracy Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
@@ -112,9 +113,12 @@ In natural language evaluation, such a substitution is easily missed because *"J
 
 #### 5. Live Kaggle GPU Execution: Why RAG Grounding is Essential
 In Section 7 of our [Kaggle Notebook](https://www.kaggle.com/code/torrua/benchmarking-on-loglan), we executed the complete 60-case benchmark live on Kaggle's free GPU (Nvidia T4 x 2) using a compact open-weights model evaluated in zero-shot mode without external lexicon retrieval:
-- **Zero-Shot GPU Baseline**: The model achieved **33.3% accuracy** across all 60 cases.
-- **Linguistic Insight**: While the model recognized high-level English syntactic ambiguities (scoring 50% on disambiguation), it could not reliably identify formal Loglan predicate slots without access to the lexicon.
-- **The RAG Contrast**: When frontier models are grounded with our 2-tier LOD retrieval system, accuracy surges from **33.3% to 99.6% – 100.0%** (Gemma 4 31B, Gemini 3.8 Flash, Claude Opus). This provides direct empirical proof that formal symbolic mastery depends on rigorous structural grounding, not merely parameter size.
+- **Zero-Shot GPU Baseline**: The model achieved **33.3% accuracy** overall across all 60 cases.
+- **Category Breakdown**:
+  - **Disambiguation: 5.0%** (1 / 20 cases) — Without grammatical corpus rules on `ge` grouping and scope markers, the model fails to resolve formal ambiguity.
+  - **Predicate Slots: 0.0%** (0 / 20 cases) — Complete failure without the lexicon. A model cannot guess mathematical $x_1 \dots x_5$ argument slots of constructed predicates without grounding.
+  - **Translation Consistency: 100.0%** (20 / 20 cases) — High syntactic determinism in token repetition.
+- **The RAG Contrast**: When frontier models are grounded with our 2-tier LOD retrieval system, slot identification surges from **0.0% to 98.8% – 100.0%**, and overall accuracy jumps from **33.3% to 99.6% – 100.0%** (Gemma 4 31B, Gemini 3.8 Flash, Claude Opus). This provides direct empirical proof that formal symbolic mastery depends on rigorous structural grounding, not merely parameter size.
 
 ---
 

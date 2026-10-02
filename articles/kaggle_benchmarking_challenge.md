@@ -44,6 +44,7 @@ We evaluated frontier open-weight and proprietary models across our 60-case benc
 | **Gemma 4 31B** | Gemma (Google DeepMind) | Live API / Kaggle GPU | 128k | 31B Open Weights |
 | **Gemini 3.8 Flash High** | Gemini (Google) | High-Reasoning Subagents | 1M | Frontier Multimodal |
 | **Claude Opus 4.6** | Claude (Anthropic) | High-Reasoning Subagents | 200k | Frontier Flagship |
+| **Qwen 2.5 1.5B Instruct** | Qwen (Alibaba Cloud) | **Live Kaggle GPU (T4)** | 32k | 1.5B Compact Open Baseline |
 | **Gemini 3.5 Flash** | Gemini (Google) | Live GenAI API | 1M | Lightweight Frontier |
 
 All models were evaluated under identical 2-tier RAG retrieval grounding (LOD lexicon definitions + canonical grammar articles from `loglan.org`) using standardized system instructions and verified against deterministic CFG parse rules.

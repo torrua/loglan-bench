@@ -1,0 +1,49 @@
+Jobs: 140 total, 57 already done, 83 pending
+Model: opencode/mimo-v2.6-flash-free via http://127.0.0.1:48123
+Sessions: ['ses_f023b6cadffe7oMMdG3aAfkvUW', 'ses_f023b6ca5ffem4As3WTxSa1V5X', 'ses_f023b6c9effehtHwUFGB3ZUNaX']
+[1/83] A20 run=0 29.17s 0 chars ERR=empty completion
+[2/83] C05 run=1 107.66s 2954 chars
+[3/83] C03 run=5 158.46s 45 chars
+[4/83] A04 run=0 262.60s 200 chars
+[5/83] C05 run=2 171.89s 4457 chars
+[6/83] C05 run=4 121.63s 3483 chars
+[7/83] C05 run=5 179.15s 3578 chars
+[8/83] C05 run=3 403.49s 3995 chars
+[9/83] C06 run=3 43.59s 4295 chars
+[10/83] C06 run=1 273.65s 4705 chars
+[11/83] C06 run=4 86.50s 4743 chars
+[12/83] C06 run=5 53.00s 114 chars
+[13/83] C07 run=1 44.15s 4032 chars
+[14/83] C06 run=2 243.79s 4544 chars
+[15/83] C07 run=3 54.30s 3775 chars
+[16/83] C07 run=4 160.34s 131 chars
+[17/83] C07 run=5 229.47s 4781 chars
+[18/83] C08 run=2 43.66s 102 chars
+[19/83] C08 run=1 204.23s 148 chars
+[20/83] C07 run=2 445.64s 6003 chars
+[21/83] C08 run=3 136.16s 70 chars
+[22/83] C08 run=5 67.71s 90 chars
+[23/83] C09 run=2 68.57s 3357 chars
+[24/83] C08 run=4 234.69s 105 chars
+[25/83] C09 run=1 174.29s 142 chars
+[26/83] C09 run=4 61.33s 4621 chars
+[27/83] C09 run=5 32.65s 3930 chars
+[28/83] C09 run=3 127.82s 4798 chars
+[29/83] C10 run=2 24.06s 78 chars
+[30/83] C10 run=1 68.25s 69 chars
+[31/83] C10 run=4 76.26s 0 chars ERR=empty completion
+[32/83] C10 run=3 193.18s 90 chars
+[33/83] C11 run=1 117.32s 90 chars
+[34/83] C10 run=5 195.34s 84 chars
+[35/83] C11 run=3 113.09s 113 chars
+[36/83] C11 run=2 171.34s 74 chars
+[37/83] C11 run=5 217.85s 103 chars
+[38/83] C12 run=1 192.68s 65 chars
+[39/83] C12 run=2 97.12s 129 chars
+[40/83] C12 run=3 81.57s 4630 chars
+[41/83] C11 run=4 437.47s 100 chars
+[42/83] C12 run=5 103.37s 5059 chars
+[43/83] C13 run=1 194.29s 84 chars
+[44/83] C12 run=4 244.48s 5057 chars
+[45/83] C13 run=2 162.83s 109 chars
+[46/83] C13 run=5 124.23s 134 chars

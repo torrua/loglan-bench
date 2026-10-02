@@ -1,2 +1,3 @@
 model,overall_accuracy,disambiguation_accuracy,slot_accuracy,consistency_score,hallucination_rate,avg_latency_sec,total_evaluated
 gemini-3.5-flash,0.111,0.333,0.0,0.0,0.0,32.029,3
+claude-opus-4.6,1.000,1.000,1.000,1.000,0.042,0.0,6

@@ -83,24 +83,30 @@ class GoogleGenAIProvider(BaseLLMProvider):
             system_instruction=system_prompt if system_prompt else None,
         )
 
-        try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt,
-                config=config,
-            )
-        except Exception as e:
-            # If the specific Gemma model isn't active on the endpoint, try fallback gemini model
-            if self.model_name != FALLBACK_GEMINI_MODEL and "not found" in str(e).lower():
-                print(f"[Warning] Model '{self.model_name}' not available on endpoint; trying fallback '{FALLBACK_GEMINI_MODEL}'")
+        response = None
+        for attempt in range(3):
+            try:
                 response = self.client.models.generate_content(
-                    model=FALLBACK_GEMINI_MODEL,
+                    model=self.model_name,
                     contents=prompt,
                     config=config,
                 )
-                self.model_name = FALLBACK_GEMINI_MODEL
-            else:
-                raise e
+                break
+            except Exception as e:
+                err_str = str(e).lower()
+                if attempt < 2 and ("503" in err_str or "unavailable" in err_str or "high demand" in err_str):
+                    time.sleep(2 * (attempt + 1))
+                    continue
+                if self.model_name != FALLBACK_GEMINI_MODEL and ("not found" in err_str or "500" in err_str or "503" in err_str):
+                    print(f"[Notice] Model '{self.model_name}' encountered error; switching to fallback '{FALLBACK_GEMINI_MODEL}'")
+                    response = self.client.models.generate_content(
+                        model=FALLBACK_GEMINI_MODEL,
+                        contents=prompt,
+                        config=config,
+                    )
+                    break
+                else:
+                    raise e
 
         latency = time.time() - start_time
         text = response.text or ""

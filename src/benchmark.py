@@ -14,10 +14,11 @@ if hasattr(sys.stdout, "reconfigure"):
 try:
     from tqdm import tqdm
 except ImportError:
-    tqdm = lambda x, **kwargs: x
+    def tqdm(x, **kwargs):
+        return x
 
 try:
-    from src.config import DATA_DIR, RAW_RESULTS_DIR, DEFAULT_MODEL, DB_PATH
+    from src.config import DATA_DIR, RAW_RESULTS_DIR
     from src.retriever import LoglanRetriever
     from src.prompts import (
         SYSTEM_PROMPT,
@@ -25,9 +26,9 @@ try:
         SLOT_IDENTIFICATION_PROMPT_TEMPLATE,
         BENCHMARK_PROMPT_TEMPLATE,
     )
-    from src.models import get_model_provider, BaseLLMProvider
+    from src.models import get_model_provider
 except ImportError:
-    from config import DATA_DIR, RAW_RESULTS_DIR, DEFAULT_MODEL, DB_PATH
+    from config import DATA_DIR, RAW_RESULTS_DIR
     from retriever import LoglanRetriever
     from prompts import (
         SYSTEM_PROMPT,
@@ -35,7 +36,7 @@ except ImportError:
         SLOT_IDENTIFICATION_PROMPT_TEMPLATE,
         BENCHMARK_PROMPT_TEMPLATE,
     )
-    from models import get_model_provider, BaseLLMProvider
+    from models import get_model_provider
 
 
 def load_dataset(dataset_path: Path) -> List[Dict[str, Any]]:

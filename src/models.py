@@ -1,7 +1,6 @@
 """Unified LLM model adapter for Loglan Bench supporting Google GenAI (Gemma), Ollama, and baselines."""
 
 import json
-import os
 import time
 import urllib.request
 import urllib.error
@@ -13,8 +12,6 @@ try:
     from src.config import (
         GEMINI_API_KEY,
         OLLAMA_BASE_URL,
-        OPENAI_API_KEY,
-        ANTHROPIC_API_KEY,
         DEFAULT_MODEL,
         FALLBACK_GEMINI_MODEL
     )
@@ -22,8 +19,6 @@ except ImportError:
     from config import (
         GEMINI_API_KEY,
         OLLAMA_BASE_URL,
-        OPENAI_API_KEY,
-        ANTHROPIC_API_KEY,
         DEFAULT_MODEL,
         FALLBACK_GEMINI_MODEL
     )
@@ -225,8 +220,8 @@ class MockProvider(BaseLLMProvider):
         else:
             reply = (
                 "### Loglan Grammatical Breakdown\n"
-                f"Based on the provided LOD context, Loglan constructs unambiguous predicates using fixed slot ordering "
-                f"and grouping operators. Every grammatical sentence resolves to exactly ONE parse tree.\n\n"
+                "Based on the provided LOD context, Loglan constructs unambiguous predicates using fixed slot ordering "
+                "and grouping operators. Every grammatical sentence resolves to exactly ONE parse tree.\n\n"
                 "[LOD: Verified via export.db] | [Reference: Easy Loglan Introduction]"
             )
 

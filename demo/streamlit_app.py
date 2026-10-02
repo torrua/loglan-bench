@@ -1,7 +1,5 @@
 """Interactive Streamlit Demo App for Loglan Bench."""
 
-import json
-import sqlite3
 import sys
 from pathlib import Path
 import streamlit as st
@@ -11,9 +9,9 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.config import DB_PATH, RESULTS_DIR, CHARTS_DIR, DATA_DIR, DEFAULT_MODEL
-from src.retriever import LoglanRetriever
-from src.assistant import LoglanAssistant
+from src.config import DB_PATH, RESULTS_DIR, CHARTS_DIR  # noqa: E402
+from src.retriever import LoglanRetriever  # noqa: E402
+from src.assistant import LoglanAssistant  # noqa: E402
 
 st.set_page_config(
     page_title="Loglan Bench — Grammar Assistant & Formal Language Benchmark",

@@ -2,7 +2,6 @@
 
 import argparse
 import sys
-from typing import Optional
 
 # Ensure UTF-8 output on Windows terminals
 if hasattr(sys.stdout, "reconfigure"):
@@ -24,7 +23,6 @@ try:
         SYSTEM_PROMPT,
         DISAMBIGUATION_PROMPT_TEMPLATE,
         SLOT_IDENTIFICATION_PROMPT_TEMPLATE,
-        TRANSLATION_PROMPT_TEMPLATE,
         BENCHMARK_PROMPT_TEMPLATE,
     )
     from src.models import get_model_provider, BaseLLMProvider
@@ -35,7 +33,6 @@ except ImportError:
         SYSTEM_PROMPT,
         DISAMBIGUATION_PROMPT_TEMPLATE,
         SLOT_IDENTIFICATION_PROMPT_TEMPLATE,
-        TRANSLATION_PROMPT_TEMPLATE,
         BENCHMARK_PROMPT_TEMPLATE,
     )
     from models import get_model_provider, BaseLLMProvider

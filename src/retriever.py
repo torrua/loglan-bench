@@ -2,8 +2,7 @@
 
 import re
 import sqlite3
-from typing import Dict, List, Optional, Any
-from pathlib import Path
+from typing import Dict, List, Any
 
 try:
     from src.config import DB_PATH, DEFAULT_TOP_WORDS, DEFAULT_TOP_DOCS
@@ -132,7 +131,7 @@ class LoglanRetriever:
 
             # 2. Fallback to LIKE if FTS yielded few results
             if len(results) < limit:
-                seen_urls = {r["source_url"] for r in results}
+                {r["source_url"] for r in results}
                 like_term = f"%{query.strip()}%"
                 like_rows = conn.execute("""
                     SELECT title, source_url, chunk

@@ -1,13 +1,12 @@
 """Evaluation and metrics calculation engine for Loglan Bench."""
 
 import argparse
-import glob
 import json
 import re
 import sqlite3
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Tuple
+from typing import Dict, Any, Tuple
 
 # Ensure UTF-8 stdout
 if hasattr(sys.stdout, "reconfigure"):
@@ -36,7 +35,7 @@ def load_lod_valid_words(db_path: Path = DB_PATH) -> set:
 def score_disambiguation(item: Dict[str, Any]) -> Tuple[float, float]:
     """Score whether English multi-parse and Loglan single-parse were identified."""
     resp = item.get("response", "").lower()
-    gold = item.get("gold", {})
+    item.get("gold", {})
 
     # Check if multiple English parses mentioned
     has_multi_parse = bool(

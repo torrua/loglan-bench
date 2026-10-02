@@ -1,14 +1,11 @@
 """Generates the benchmark dataset for Loglan Bench (60-90 test cases across 3 categories)."""
 
 import json
-import sqlite3
-from pathlib import Path
-from typing import List, Dict, Any
 
 try:
-    from src.config import DATA_DIR, DB_PATH
+    from src.config import DATA_DIR
 except ImportError:
-    from config import DATA_DIR, DB_PATH
+    from config import DATA_DIR
 
 DATASET_FILE = DATA_DIR / "benchmark_dataset.json"
 

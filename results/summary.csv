@@ -1,2 +1,2 @@
 model,overall_accuracy,disambiguation_accuracy,slot_accuracy,consistency_score,hallucination_rate,avg_latency_sec,total_evaluated
-mock-gemma,0.167,0.5,0.0,0.0,0.0,0.0,5
+gemini-3.5-flash,0.111,0.333,0.0,0.0,0.0,32.029,3

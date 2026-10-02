@@ -94,27 +94,27 @@ On **Qwen 2.5 1.5B** running zero-shot, predicate slot identification accuracy d
 
 A model cannot guess whether the 3rd argument position of `donsu` represents the recipient or the gift without external documentation. But when open models are grounded with the LOD schema, slot accuracy jumps from **0.0% to 70.0%** (Mimo v2.6 Flash) and reaches **98.8%–100.0%** on frontier architectures. Retrieval grounding is not an incremental enhancement for structured extraction; it is the entire difference between zero capability and production accuracy.
 
-### 3. The "Puppy vs. Book" Hallucination Discovery
+### 3. The "Puppy vs. Book" Case: Why Models Substitute Frequency for Fact
 
-During the development of our benchmark suite and interactive exploratory analysis, we caught a striking live demonstration of pretraining bias (*prior knowledge bias*).
-
-Consider this textbook sentence from Chapter 4 of Brown's *Loglan 1: A Logical Language*:
+During benchmark development, an analysis of Chapter 4 of Brown's *Loglan 1: A Logical Language* revealed a characteristic failure mode of autoregressive generation:
 > `La Djan, pa donsu leda sorme le cinkau`
-> *(John gave his sister the puppy / infant-dog)*
+> *(Literal: John gave his sister the puppy / infant-dog)*
 > - `sorme` = sister (Primitive)
 > - `cinkau` = `cinta` (infant) + `kangu` (dog) = puppy / infant-dog (Complex)
 
-When the ungrounded model was evaluated on extracting arguments for `donsu` ($x_1$: giver, $x_2$: gift, $x_3$: recipient), it correctly picked out the surface Loglan tokens:
+When an LLM was asked to extract and translate argument slots for `donsu` ($x_1$: giver, $x_2$: gift, $x_3$: recipient), it correctly picked out the surface Loglan tokens:
 - $x_1$ = `la Djan`
 - $x_2$ = `le cinkau`
 - $x_3$ = `leda sorme`
 
-**However, when translating the extracted entities into English, the model hallucinated:**
-- `le cinkau` $\to$ translated as **"the book"** (instead of *the puppy*)!
-- `leda sorme` $\to$ translated as **"the small boy"** (instead of *his sister*)!
+However, in the English translation, the model generated:
+- `le cinkau` $\to$ **"the book"** (instead of *the puppy*)!
+- `leda sorme` $\to$ **"the small boy"** (instead of *his sister*)!
 
-**Why did this happen?**
-In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. Even with explicit Loglan definitions available in the corpus, the model's statistical associative prior for this English trope completely overpowered the text in context!
+**The fundamental difference between human reasoning and LLMs**:
+Catching this discrepancy requires knowing or looking up word definitions (`cinkau` = puppy, `sorme` = sister). But once a human knows the definition, they would never substitute an unrelated concept simply because it is more common in speech. A human translator translates "puppy" as "puppy", regardless of how rarely people give puppies compared to books in natural conversation.
+
+For an autoregressive model, however, a dictionary definition in context is merely a set of tokens competing for attention against massive pretraining priors. In English corpora, the ditransitive frame `John gave [X] a [Y]` completes with `the boy a book` millions of times. When that statistical prior is strong enough, the model defaults to the path of least resistance: it seamlessly substitutes the high-frequency trope for the factually defined word.
 
 ### 4. The Modifier Stacking Blindspot
 

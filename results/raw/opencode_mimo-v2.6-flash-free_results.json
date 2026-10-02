@@ -1,7 +1,7 @@
 {
   "model": "opencode_mimo-v2.6-flash-free",
   "provider": "opencode-server/session-generate",
-  "timestamp": "2026-10-02 22:25:11",
+  "timestamp": "2026-10-02 22:28:24",
   "total_cases": 60,
   "results": [
     {
@@ -1858,13 +1858,13 @@
         },
         {
           "run_index": 3,
-          "response": "",
-          "latency_sec": 166.56379508972168
+          "response": "I'll verify the key rules (negation particle, pronoun choice, and the `kicmu` entry) against the grounded sources before answering.",
+          "latency_sec": 154.87
         },
         {
           "run_index": 4,
-          "response": "",
-          "latency_sec": 253.5565299987793
+          "response": "I'll verify the negation rules against the authoritative grammar references before answering.",
+          "latency_sec": 49.972
         },
         {
           "run_index": 5,

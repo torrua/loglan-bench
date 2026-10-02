@@ -18,3 +18,9 @@ Sessions: ['ses_f03b8414bffedbY0gLdDhuIkHb', 'ses_f03b8412dffeBc9aUSX62fYRtg', '
     [C18 run=1] empty attempt 1/8
 [4/7] C18 run=1 31.26s 101 chars
 [5/7] C18 run=3 18.55s 132 chars
+    [C16 run=4] empty attempt 1/8
+[6/7] C16 run=3 154.87s 131 chars
+    [C16 run=4] empty attempt 2/8
+[7/7] C16 run=4 49.97s 93 chars
+
+Done: 7 calls in 341.8s (1 errors) -> C:\Users\User\Dropbox\Python\LOGLA\loglan_bench\results\raw\opencode_mimo-v2.6-flash-free_results.json

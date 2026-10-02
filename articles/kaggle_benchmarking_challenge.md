@@ -59,16 +59,16 @@ The **Zero-Shot setups** run with zero external context, testing what raw pretra
 
 *Full raw JSON execution traces with exact model responses, token counts, and latency are published in [results/raw](https://github.com/torrua/loglan-bench/tree/main/results/raw).*
 
-| Metric | Gemini 3.8 Flash (RAG) | Claude Opus 4.6 (RAG) | Gemini 3.8 Flash (Zero-Shot) | Mimo v2.6 Flash (RAG) | Qwen 2.5 1.5B (Zero-Shot) |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Overall Accuracy** | **100.0%** | 99.6% | **100.0%** | 41.4% | 50.0% |
-| **Disambiguation** | **100.0%** | **100.0%** | **100.0%** | 25.0% | 50.0% |
-| **Predicate Slots** | **100.0%** | 98.8% | **100.0%** | 70.0% | **0.0%** |
-| **Consistency** | **100.0%** | **100.0%** | **100.0%** | 29.2% | **100.0%** |
-| **Hallucination Rate** | **0.044** *(4.4%)* | 0.106 *(10.6%)* | **0.096** *(9.6%)* | 0.091 *(9.1%)* | 0.000 |
-| **Average Latency** | < 1.0 s | < 1.0 s | 1.2 s | 144.9 s | 0.72 s |
-| **Grounding** | Two-Tier LOD RAG | Two-Tier LOD RAG | **Zero-Shot (No RAG)** | Two-Tier LOD RAG | **Zero-Shot (No RAG)** |
-| **Evaluated Cases** | **60 / 60** | **60 / 60** | **60 / 60** | **60 / 60** | **60 / 60** |
+| Metric | Gemini 3.8 Flash (RAG) | Claude Opus 4.6 (RAG) | Gemini 3.8 Flash (ZS) | Claude Opus 4.6 (ZS) | Mimo v2.6 Flash (RAG) | Qwen 2.5 1.5B (ZS) |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Overall Accuracy** | **100.0%** | 99.6% | **100.0%** | **100.0%** | 41.4% | 50.0% |
+| **Disambiguation** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | 25.0% | 50.0% |
+| **Predicate Slots** | **100.0%** | 98.8% | **100.0%** | **100.0%** | 70.0% | **0.0%** |
+| **Consistency** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | 29.2% | **100.0%** |
+| **Hallucination Rate** | 0.044 *(4.4%)* | 0.106 *(10.6%)* | 0.096 *(9.6%)* | **0.000** *(0.0%)* | 0.091 *(9.1%)* | 0.000 |
+| **Average Latency** | < 1.0 s | < 1.0 s | 1.2 s | 1.5 s | 144.9 s | 0.72 s |
+| **Grounding** | Two-Tier RAG | Two-Tier RAG | **Zero-Shot** | **Zero-Shot** | Two-Tier RAG | **Zero-Shot** |
+| **Evaluated Cases** | **60 / 60** | **60 / 60** | **60 / 60** | **60 / 60** | **60 / 60** | **60 / 60** |
 
 ![Model Accuracy Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
 
@@ -78,18 +78,19 @@ The **Zero-Shot setups** run with zero external context, testing what raw pretra
 
 ## Core Discoveries
 
-### 1. The RAG Effect: Cutting Hallucinations by More Than Half
+### 1. The RAG Paradox: Grounding Helps Some Models and Hurts Others
 
-Comparing **Gemini 3.8 Flash with RAG** directly against **Gemini 3.8 Flash Zero-Shot** on the identical 60 test cases reveals the precise quantitative impact of lexicon grounding:
+The most unexpected finding in our benchmark: **RAG grounding does not universally improve performance**.
 
-- **With RAG Grounding**: Hallucination rate is **4.4%** (0.044). The model strictly adheres to verified LOD dictionary primitives and compound words.
-- **Without RAG (Zero-Shot)**: Hallucination rate jumps to **9.6%** (0.096) — a **118% surge** in vocabulary errors! Without access to the lexicon, the model borrows root words from Esperanto, Russian (`ptica` for bird, `fligo` for fly), and Lojban, inventing plausible-sounding but invalid Loglan tokens.
+**Claude Opus 4.6** achieves **100.0% accuracy and 0.0% hallucination** in pure zero-shot mode — perfect scores across all 60 cases. But when we add two-tier RAG grounding, accuracy *drops* to 99.6% and hallucination rate *surges* to **10.6%**. The retrieval context floods the prompt with hundreds of LOD dictionary words, and Claude begins misapplying those words in its responses — a form of "context contamination."
 
-Retrieval grounding acts as an immediate factual governor that cuts lexical hallucination by more than half.
+**Gemini 3.8 Flash** shows the opposite pattern: RAG cuts its hallucination rate from **9.6% to 4.4%** — a 54% reduction. For Gemini, the external vocabulary acts as a stabilizing governor.
+
+This asymmetry suggests that RAG's utility depends critically on a model's existing internal knowledge of the target domain. When a model already "knows" the domain well (as Claude Opus does for Loglan), external context can introduce noise. When it doesn't, RAG is indispensable.
 
 ### 2. Compact Models Suffer Total Slot Failure Without Grounding
 
-On **Qwen 2.5 1.5B** running zero-shot, predicate slot identification accuracy drops to **flat 0.0%** (0 of 20 cases). 
+On **Qwen 2.5 1.5B** running zero-shot, predicate slot identification accuracy drops to **flat 0.0%** (0 of 20 cases).
 
 A model cannot guess whether the 3rd argument position of `donsu` represents the recipient or the gift without external documentation. But when open models are grounded with the LOD schema, slot accuracy jumps from **0.0% to 70.0%** (Mimo v2.6 Flash) and reaches **98.8%–100.0%** on frontier architectures. Retrieval grounding is not an incremental enhancement for structured extraction; it is the entire difference between zero capability and production accuracy.
 
@@ -115,11 +116,9 @@ When models were evaluated on extracting arguments for `donsu` ($x_1$: giver, $x
 **Why did this happen?**
 In English linguistics and NLP training corpora (Penn Treebank, Chomsky/Fillmore syntax literature), the canonical textbook example of a ditransitive verb of giving is almost universally *"John gave the boy a book"*. The model's statistical associative prior for this English trope completely overpowered the explicit text in context!
 
-In natural language evaluation, such a substitution is easily missed because *"John gave the boy a book"* sounds fluent and plausible. But on Loglan's mathematically grounded lexicon, the substitution is immediately flagged: `cinkau` $\neq$ `bukcu` (book) and `sorme` $\neq$ `cmalo mrenu` (small boy). Formal languages act as an unforgiving microscope for pretraining bias.
-
 ### 4. The Modifier Stacking Blindspot
 
-When analyzing ambiguous English phrases like *"Pretty little girls' school"*, all models frequently omitted tertiary parses (e.g. failing to notice that *pretty* could modify *little*, or *little* could modify *girls' school*). 
+When analyzing ambiguous English phrases like *"Pretty little girls' school"*, all models frequently omitted tertiary parses (e.g. failing to notice that *pretty* could modify *little*, or *little* could modify *girls' school*).
 
 However, when parsing the Loglan expressions (`le bilti cmalo nirli ckela` vs `le bilti ge cmalo nirli ckela`), the explicit grouping particle `ge` allowed models to parse the exact intended hierarchy with zero confusion. Formal syntax compensates for what models struggle to resolve heuristically.
 

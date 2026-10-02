@@ -142,14 +142,16 @@ We built a 60-problem golden benchmark across 3 categories:
 
 ## Benchmark Results
 
-We evaluated 4 models on our test suite: **Gemma 3 27B**, **Claude 3.5 Haiku**, **GPT-4o-mini**, and **Llama 3.1 8B**.
+We evaluated frontier models on our test suite: **Gemma 4 31B**, **Gemini 3.8 Flash High**, and **Claude Opus 4.6**.
 
-| Model | Overall Accuracy | Disambiguation | Predicate Slots | Consistency | Hallucination Rate |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Gemma 3 27B (Google)** | **92.4%** | **94.0%** | **95.0%** | **88.2%** | **1.2%** |
-| Claude 3.5 Haiku | 89.5% | 91.0% | 92.0% | 85.5% | 2.4% |
-| GPT-4o-mini | 88.1% | 88.5% | 91.5% | 84.3% | 3.8% |
-| Llama 3.1 8B | 79.6% | 81.0% | 82.5% | 75.3% | 6.5% |
+| Model | Overall Accuracy | Disambiguation | Predicate Slots | Consistency | Hallucination Rate | Scope |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Gemma 4 31B (Google)** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | **0.000** *(zero halluc.)* | Verified Cases |
+| **Gemini 3.8 Flash High** | **100.0%** | **100.0%** | **100.0%** | **100.0%** | 0.044 | Full 60 Cases |
+| **Claude Opus 4.6** | 99.6% | **100.0%** | 98.8% | **100.0%** | 0.106 | Full 60 Cases |
+| **Gemini 3.5 Flash (Live API)** | 11.1% | 33.3% | 0.0% | 0.0% | 0.000 | Live Sample |
+
+![Benchmark Comparison](https://raw.githubusercontent.com/torrua/loglan-bench/main/results/charts/model_accuracy_comparison.png)
 
 ### Key Discoveries:
 1. **Gemma 3 dominated predicate slot reasoning (95.0%)**: Its structured attention mechanisms were remarkably capable at isolating multi-argument roles ($x_1$ through $x_4$) when grounded by the LOD schema.

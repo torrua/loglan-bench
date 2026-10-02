@@ -1,0 +1,106 @@
+{
+  "model": "gemini-3.5-flash",
+  "timestamp": "2026-10-02 11:40:25",
+  "total_cases": 3,
+  "results": [
+    {
+      "case_id": "A01",
+      "category": "disambiguation",
+      "prompt": "You are analyzing syntactic ambiguity in natural language versus the syntactic precision of Loglan.\n\nTask:\nCompare the English phrase/sentence below with its Loglan counterpart(s).\n1. Identify all plausible, distinct syntactic interpretations (parses) of the English sentence and explain what each means.\n2. Analyze the Loglan translation(s). Explain how Loglan's grammatical particles (such as 'ge', 'ke', 'gu', 'ci', case tags, or predicate markers) lock the phrase into exactly ONE unambiguous parse tree.\n3. Contrast the two systems directly.\n\nEnglish Phrase: \"Pretty little girls' school\"\nLoglan Expression: \"le bilti cmalo nirli ckela\"\n\nContext:\n### Loglan Grammar References\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\nDespite its many restrictions, the meaning of a modified predicate is sometimes very unclear in English. A classic case is the sentence 'It's a pretty little girls' school'. What on earth does it mean? A school for pretty little girls? A school for girls who are pretty little? A pretty type of little girls' school? A pretty type of little girls' school? Take your pick. There are at least five equally legitimate grammatical interpretations of this innocent remark. 26\n\nThe question behind this confusion in English is, of course, what modifies what? In English we cannot be sure. 27 In Loglan we can be. For there is an operator ge [geh] which groups the modifiers in a string of modifiers in such a way that what-modifies-what is clear. Look at the following sentences: (In them the word bilti [BEEL-tee] means 'beautiful', cmalo [SHMAH-loh] means 'small', nirli [NEER-lee] means 'girl', and [SHKEH-lah] ckela means 'school'.)\n\n(1) | Da bilti cmalo nirli ckela | X is a beautifully small girls' school (i.e., a school for girls who are beautifully small). /daBILtiCMAloNIRliCKEla/\n\n(2) | Da bilti ge cmalo nirli ckela | X is beautiful for asmallgirls' school. /daBILtigeCMAloNIRliCKEla/\n\n(3) | Da... [truncated]\n\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\nThe point is that English is ambiguous, and rather wonderfully so. Loglan is not. Therefore, for most English sentences, there is no hope of translating them into Loglan with any exactness, simply because to find an exact translation of an ambiguous remark one must find a sentence in the target language which has exactly the same set of possible meanings as the original sentence has in the source language. This objective can be approximately met when the source and target languages are closely related natural tongues. And therein lies a large part of the translator's art. But it is not possible in Loglan. To translate into Loglan is like doing a philosophical analysis: One must decide what the original sentence \"really means.\" This is not always possible, if only because the speakers of natural languages often \"really mean\" things that are really ambiguities! It is perhaps an appalling thought that our minds may be helplessly filled with grammatical puns. But it is just this possibility which analysis of this kind reveals.\n\nLet us look once more at the intriguing remark 'It's a pretty little girls' school' from the point of view we have just uncovered. On the pattern of 'It's a big... [truncated]\n\n#### Reference: Loglan 1: Chap 3 - Grammar 1: Predicates (Tenses, Modifiers & Metaphors) (https://www.loglan.org/Loglan1/chap3.html)\n(4) | Da bilti ge cmalo ge nirli ckela | X is beautiful for a small (type of) girls' school. /daBILti.geCMAlo.geNIRliCKEla/ 28\n\nIn the absence of other markings of the predicate string--like go and cue which we will take up presently--the operator ge groups everything that comes after it into what may then be regarded as the modified term. Thus in (2) what bilti modifies is the whole expression cmalo nirli ckela ; X is evidently beautiful for a small girls' school. In (3) bilti modifies just the word cmalo , whence X is a beautifully small something. The ge operator groups nirli ckela into the single idea which remains to be modified, and we see that that something is a girl's-school. Thus the whole claim of (3) is that X is beautifully small for a girl's-school, or slightly rephrased, a girl's-school that is beautifully small. Sentence (4) has both the groupings that occur separately in sentences (2) and (3). Thus it claims that X is a beautiful type of small type of girls'-school. Notice that the English phrase 'type of', while sometimes leading to awkward translations, is nevertheless the best all-around translator of the Loglan operator ge . If English speakers regularly used s... [truncated]\n\nFormat your response:\n### 1. English Syntactic Ambiguities (Parses)\n- **Parse 1**: ...\n- **Parse 2**: ...\n...\n\n### 2. Loglan Unambiguous Parse\n- **Structure**: ...\n- **Particle Roles**: ...\n- **Precise Meaning**: ...\n\n### 3. Conclusion & Contrast\n",
+      "response": "### 1. English Syntactic Ambiguities (Parses)\n\nThe English phrase *\"Pretty little girls' school\"* is notoriously ambiguous because English grammar does not explicitly mark modifier scope (i.e., \"what modifies what\"). There are at least five distinct, grammatically plausible interpretations of",
+      "input_tokens": 1589,
+      "output_tokens": 59,
+      "latency_sec": 25.68509268760681,
+      "gold": {
+        "id": "A01",
+        "category": "disambiguation",
+        "english": "Pretty little girls' school",
+        "loglan": "le bilti cmalo nirli ckela",
+        "loglan_variants": [
+          {
+            "phrase": "le bilti cmalo nirli ckela",
+            "grouping": "(((bilti cmalo) nirli) ckela)",
+            "meaning": "school for unusually small girls"
+          },
+          {
+            "phrase": "le bilti ge cmalo nirli ckela",
+            "grouping": "(bilti (cmalo (nirli ckela)))",
+            "meaning": "an attractive school for little girls"
+          },
+          {
+            "phrase": "le ke bilti cmalo gu nirli ckela",
+            "grouping": "((bilti cmalo) (nirli ckela))",
+            "meaning": "pretty-little girls' school"
+          },
+          {
+            "phrase": "le bilti ce cmalo nirli ckela",
+            "grouping": "((bilti and cmalo) nirli ckela)",
+            "meaning": "school for girls who are both pretty and little"
+          }
+        ],
+        "expected_english_parses": 5,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Modifier Scope / Nominal Compounding",
+        "gold_explanation": "In English, 4 modifiers stack without parenthetical boundaries, creating at least 5 distinct bracketings. In Loglan, default modifier binding is strictly left-to-right unless grouping operators (ge, ke...gu, ce) explicitly alter the tree."
+      }
+    },
+    {
+      "case_id": "A02",
+      "category": "disambiguation",
+      "prompt": "You are analyzing syntactic ambiguity in natural language versus the syntactic precision of Loglan.\n\nTask:\nCompare the English phrase/sentence below with its Loglan counterpart(s).\n1. Identify all plausible, distinct syntactic interpretations (parses) of the English sentence and explain what each means.\n2. Analyze the Loglan translation(s). Explain how Loglan's grammatical particles (such as 'ge', 'ke', 'gu', 'ci', case tags, or predicate markers) lock the phrase into exactly ONE unambiguous parse tree.\n3. Contrast the two systems directly.\n\nEnglish Phrase: \"I saw the man with the telescope\"\nLoglan Expression: \"Mi pa vizka le mrenu liu teletro\"\n\nContext:\n### LOD Dictionary Context\n- **i** (17) [c]: «period»/«semicolon», indicating stop between sentences/clauses.\n\n- **i** (17) [c]: «and», full stop between sentences/clauses.\n\n---\n\n### Loglan Grammar References\n#### Reference: Texts: Ne Rorlensia (The Green Mountain) (https://www.loglan.org/Texts/ne-rorlensia.html)\n(From Lognet 94/1 . Used with the permission of The Loglan Institute, Inc. .) Lo Nurvia Logla\r(Visible Loglan = Loglan Text) The following anecdote was originally told us in Loglan by James Jennings. As it was a veritable plum-pudding of logic problems, Dr. McIvor, JJ, and I tussled over it long and bravely before getting our lodtua, Randall Holmes, to come and referee our discussion. With his help, we've contrived some new logical usages to express its innocent-seeming observations with what we hope is precision and economy.\rAs usual, we'll present the Loglan text first without comment. Then, in the translation, which will be found on a separate page, we'll explain the various logical usages we've adopted. But a word first about the tense-system used here. It was one originally proposed by John Parks-Clifford, the editor of The Loglanist , in a special supplementary issue of that journal which was issued in November 1980 (TL4/3:21-27). That system is roughly as follows. Once a composition has been established as a narrative--which is done by using pa as early as possible in it--the narrative present remains in force to the end of the story, and all departures from it are elastic, ... [truncated]\n\n#### Reference: Loglan 1: Chap 4 - Grammar 2: Arguments (Case Tags & Variables) (https://www.loglan.org/Loglan1/chap4.html)\nis such an indefinite description. What descriptions of this sort usually do, in both languages, is tell the listener that the described individuals are hard to find. This is a useful move for the speaker to make when information about how to locate them would be difficult or impossible to provide. In languages like English which have \"indefinite articles\" ('a' and 'an')--not all do; for example Russian doesn't--those articles are always among the words used to form its indefinite descriptions; but these always include the number words and certain other quantifiers like English 'all' and 'some' as well. To the best of my knowledge, all languages have indefinite descriptions of some kind.\n\nA typical English use of indefinite description is in the sentence 'I just now saw one man in the street' as this might be spoken by someone looking out a window. The observer is apparently quite definite about da's seeing what da takes to be a man. Da is also definite about the number of men da sees: exactly one. But we may infer from da's choice of the indefinite form 'one man' over the definite form 'the man' that da is quite unable to identify the man da has just seen. Da could not, we feel co... [truncated]\n\n#### Reference: Easy Loglan Description (https://www.loglan.org/Articles/easy-loglan-description.html)\nDa ke prano ki sucmi X both runs and swims.\n\nDa ke prano ki ka sucmi ki valti X both runs, and either swims or jumps.\n\nMaybe it’s a good idea to use the inherent grouping of the Keks. As JCB points out “with ordinary afterthought connectives, this particular grouping of terms cannot be conveyed...at least not when spoken in that order.”\n\n4.2 The Demonstrative Variables ti ta\n\nTa bakso That is a box.\n\nLet us keep Toi tradu That's true as an isolated idiom. JCB was particularly fond of this phrase, since it acts as a mnemonic for correct use of the toi toa tio tao set.\n\n4.4 The Free Variables da de di do du\n\nRecommend only using da and de. Soft pedal the strict order of application rules of Loglan 1 , and introduce here ji, as a way of clearly identifying the referents of da and de.\n\nDa ji ditca I mean the X who’s a teacher.\n\n4.5 The Personal Variables mi tu and Their Derivatives\n\nOnly mi, tu and mu will be used.\n\n4.6 The 100 Letter Variables\n\nThese are needed for spelling. At the same time we may mention the possible use of them for anaphora.\n\nWhen names are used as designations, they are preceded by la. A bare name is a call, so:\n\nLa Djan, godzi John goes.\n\nDjan, godzi! John, go!\n\n... [truncated]\n\nFormat your response:\n### 1. English Syntactic Ambiguities (Parses)\n- **Parse 1**: ...\n- **Parse 2**: ...\n...\n\n### 2. Loglan Unambiguous Parse\n- **Structure**: ...\n- **Particle Roles**: ...\n- **Precise Meaning**: ...\n\n### 3. Conclusion & Contrast\n",
+      "response": "\n*   Let's search for \"liu\" in Loglan case tags.\n    Wait! Is `liu` a case tag?\n    Let's look at the case tags in Loglan:\n    `ca` (accompanying)\n    `ci` (instrument",
+      "input_tokens": 1610,
+      "output_tokens": 59,
+      "latency_sec": 26.219339609146118,
+      "gold": {
+        "id": "A02",
+        "category": "disambiguation",
+        "english": "I saw the man with the telescope",
+        "loglan": "Mi pa vizka le mrenu liu teletro",
+        "loglan_variants": [
+          {
+            "phrase": "Mi pa vizka le mrenu liu teletro",
+            "meaning": "I saw the man using a telescope (instrument)"
+          },
+          {
+            "phrase": "Mi pa vizka le mrenu pe le teletro",
+            "meaning": "I saw the man who possessed the telescope (modifier)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Prepositional Phrase Attachment",
+        "gold_explanation": "English 'with' can attach to the verb phrase (instrument) or noun phrase (possession). In Loglan, 'liu' (or case tag 'ka') marks instrument, whereas 'pe' marks noun modification."
+      }
+    },
+    {
+      "case_id": "A03",
+      "category": "disambiguation",
+      "prompt": "You are analyzing syntactic ambiguity in natural language versus the syntactic precision of Loglan.\n\nTask:\nCompare the English phrase/sentence below with its Loglan counterpart(s).\n1. Identify all plausible, distinct syntactic interpretations (parses) of the English sentence and explain what each means.\n2. Analyze the Loglan translation(s). Explain how Loglan's grammatical particles (such as 'ge', 'ke', 'gu', 'ci', case tags, or predicate markers) lock the phrase into exactly ONE unambiguous parse tree.\n3. Contrast the two systems directly.\n\nEnglish Phrase: \"Flying planes can be dangerous\"\nLoglan Expression: \"Lepo volsi da ga kanmo lepo kinsei\"\n\nContext:\n### Loglan Grammar References\n#### Reference: Loglan 1: App G - Parallel Translations (Scientific American) (https://www.loglan.org/Loglan1/app-g.html)\nThe Control of Ribosome Synthesis by Masayasu Nomura SA, January 1984, p.102\n\nRa ribhosomi ga orgeli je ne clivi celhu gu go proteini madzo. I vi le zvotorspa je rei su amhini acdi ga ckelista djicea su rodja ge proteini tcena. I le nu kalmao tcena ga selfodcea ne molhekuli ja kanmo ne parti je le le celhu gu truke gue, a ne enzimi ji cea kathalisi su spebi ge methaboli po kempoa. I soaki ra levi methaboli nurplipra ga cnida lo enzimi, ki moiki su celhu ga rodja, e selkopmao go mordu kukra ki cei gromao lezo cei madzo lo proteini. I loe ribhosomi buo ga katli su nu limji zo djimao je lo amhini acdi jue loe proteini tcena. I bea vi lo bakteri ji lao Escherichia coli , ra ribhosomi ga kanmo lepo djimao nefe amhini acdi na ra sekmi na lepo rei melhatro lio teseCai. I kanoi lepu hatro ga stolo go norcea, ice buo le roacti jio lao En coli , spalii reo ga nu fulrymao ba lo ciircti, ki le bakteri ga sacduo lepo selkopmao duo su ganta ckerao. I soaki lezo loe ribhosomi ga proteini madzo ga nu limji, ki kanoi loe celhu ga eu gromao le ckerao je lopo proteini sintesi, ki cei madzo ba ji mordu lena konte je lecei ribhosomi. I lepo madzo loe ribhosomi ga nerji kusti, ice lepo madzo eu ne groda... [truncated]\n\n#### Reference: Loglan 1: Chap 5 - Grammar 3: Utterances (Punctuation, Ga/Gu & Connectives) (https://www.loglan.org/Loglan1/chap5.html)\nTo see that all the partial claims of sentences (1)-(4) are indeed order-independent, and that they probably do add up to (5), let us arbitrarily rearrange the elements of claims (1)-(4), in particular let us speak them in the inverse order in which they appear in (5):\n\n(6) | Nia lepo da junti gu, lia lo cinkau, vi lo resra, kou tao, da pa clucea | Throughout X's youth, like a puppy, in restaurants, because of that, X fell in love. /nialepodaJUNtigu,lialocinKAu.viloRESra.ko,uTAO.dapacluCEa/\n\nNote that, now that the nia -clause is no longer final, the punctuator gu is required to prevent the sentence inside its lepo -clause from acquiring lia lo cinkau and vi lo resra as its sentence modifiers. The three comma-pauses, however, are optional...designed to break up this long sentence into five breathgroups, so as to make it easier for the newcomer to read aloud, and perhaps also for the listener to understand.\n\nSentence (6) is perhaps a bit more difficult to understand than (5) because one has to wait so long to learn about the main event. But apart from that, it is clear that (6) is merely one of the many possible retellings of the curious story told by (5).\n\nThe most compact form of ... [truncated]\n\n#### Reference: Loglan 1: App G - Parallel Translations (Scientific American) (https://www.loglan.org/Loglan1/app-g.html)\nribosomes. The ribosome is energetically expensive <to\n\nlecei ribhosomi. I < lepo madzo > loe ribhosomi ga nerji kusti,\n\nthe-c's (its) ribosomes. [And] <The-event-of making> The-typical ribosome is energetically costly,\n\nmanufacture>, and making a large surplus of ribosomes would be\n\nice lepo madzo eu ne groda moutsu je lo ribhosomi ga\n\nand the-event-of making let-us-suppose a large more-than-enough (surplus) of the (mass of) ribosomes is\n\nwasteful. Therefore the bacterium must be able to adjust its ribosome\n\nfesti. I nukou ra bakteri ga kanmo lepo stuli lepo ribhosomi\n\nwasting. [And] Therefore each bacterium is able-to-do the-act-of adjusting the-event-of ribosome\n\noutput with considerable sensitivity.\n\nproju guo, tie su fu penso pu cmaceapoa .\n\nproducing [end inner lepo -clause] with some [passive] think-about- able property-of small-change-responding.\n\nInterlinear Analysis of Translation No. 4\n\nThe Descent of Hominoids and Hominids Origen de hominoideos y hominidos Des Primates a l'Homme L'origine degli ominoidei e degli ominidi\n\nDie Abstammung von Hominoiden und Hominiden Copyright © 1984 by Scientific American, Inc.\n\nLepo lo Homhinoideai, e lo Homhinidi ga Futlinkui\n\nThe-Event... [truncated]\n\nFormat your response:\n### 1. English Syntactic Ambiguities (Parses)\n- **Parse 1**: ...\n- **Parse 2**: ...\n...\n\n### 2. Loglan Unambiguous Parse\n- **Structure**: ...\n- **Particle Roles**: ...\n- **Precise Meaning**: ...\n\n### 3. Conclusion & Contrast\n",
+      "response": "### 1. English Syntactic Ambiguities (Parses)\n\nThe English sentence *\"Flying planes can be dangerous\"* is a classic example of syntactic ambiguity. It has two distinct grammatical interpretations depending on whether \"flying\" is parsed as a gerund (a verbal noun) or as a participle",
+      "input_tokens": 1772,
+      "output_tokens": 59,
+      "latency_sec": 44.182093143463135,
+      "gold": {
+        "id": "A03",
+        "category": "disambiguation",
+        "english": "Flying planes can be dangerous",
+        "loglan": "Lepo volsi da ga kanmo lepo kinsei",
+        "loglan_variants": [
+          {
+            "phrase": "Lepo volsi ga kanmo lepo kinsei",
+            "meaning": "The act of flying planes can be dangerous (gerund/action)"
+          },
+          {
+            "phrase": "Le volsi plano ga kanmo lepo kinsei",
+            "meaning": "Airplanes that are in flight can be dangerous (participial adjective)"
+          }
+        ],
+        "expected_english_parses": 2,
+        "expected_loglan_parses": 1,
+        "ambiguity_type": "Gerund vs Participial Adjective",
+        "gold_explanation": "English 'flying' can be a noun (gerund) taking an object, or an adjective modifying 'planes'. Loglan distinguishes events (lepo volsi) from objects (le volsi plano)."
+      }
+    }
+  ]
+}

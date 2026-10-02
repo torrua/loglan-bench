@@ -32,9 +32,9 @@ wheels/
 *.db-wal
 *.db-shm
 
-# Benchmark outputs
-results/raw/*.json
-!results/raw/sample_results.json
+# Benchmark outputs (allow tracking benchmark traces for audit and verification)
+# results/raw/*.json
+
 
 # IDE / OS
 .idea/
